@@ -1,7 +1,5 @@
-%div 企業を作成
-= link_to "企業を作成", new_company_path
-%div 企業にログイン
-= link_to "企業にログイン", login_path
-%div 企業からログアウト
+%div= link_to "企業を作成", new_company_path
 - if logged_in?
-  = link_to "企業からログアウト", logout_path, method: :delete
+  %div= link_to "企業からログアウト", logout_path, method: :delete
+- else
+  %div= link_to "企業にログイン", login_path

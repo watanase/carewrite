@@ -1,4 +1,5 @@
 class CompanysController < ApplicationController
+  before_action :set_company, only: %i[show]
   def index
   end
 
@@ -17,6 +18,10 @@ class CompanysController < ApplicationController
   end
 
   def show
+  end
+
+  def set_company
+    @company = Company.find(params[:id])
   end
 
   private
