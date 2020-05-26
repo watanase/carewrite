@@ -4,3 +4,6 @@
 = link_to 'login', new_post_writer_session_path
 %div 企業ページ
 = link_to 'home', companys_path
+- if post_writer_signed_in?
+  %div loguin now
+  = link_to "logout", destroy_post_writer_session_path, method: :delete
