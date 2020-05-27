@@ -18,6 +18,7 @@ class CompanysController < ApplicationController
   end
 
   def show
+    @user = User.new
   end
 
   def set_company
