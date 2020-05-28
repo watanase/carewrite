@@ -1,5 +1,6 @@
 %div= link_to "企業を作成", new_company_path
 - if logged_in?
+  -# %div= link_to "企業ページ", company_path(@curret_company)
   %div= link_to "企業からログアウト", logout_path, method: :delete
 - else
   %div= link_to "企業にログイン", login_path

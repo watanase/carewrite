@@ -2,4 +2,5 @@
   %span.home
     = link_to "Carewrite", root_path
   %span.company
+  - if post_writer_signed_in?
     = link_to "Company", company_path(current_company)

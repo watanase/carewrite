@@ -7,7 +7,7 @@ class DeviseCreatePostReaders < ActiveRecord::Migration[5.2]
       t.string :name,               null: false, index: true
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      t.references :company, foreign_key: true
+
 
       ## Recoverable
       t.string   :reset_password_token
