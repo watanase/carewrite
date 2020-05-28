@@ -1,0 +1,2 @@
+class PostReadersController < ApplicationController
+end

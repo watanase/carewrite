@@ -4,8 +4,10 @@ class DeviseCreatePostReaders < ActiveRecord::Migration[5.2]
   def change
     create_table :post_readers do |t|
       ## Database authenticatable
+      t.string :name,               null: false, index: true
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.references :company, foreign_key: true
 
       ## Recoverable
       t.string   :reset_password_token
