@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
+  devise_for :writers
   root "posts#index"
 
-  devise_for :post_readers
-  devise_for :post_writers
   resources :companys do
-    resources :post_readers
+    resources :users
   end
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  get    '/login_company',   to: 'sessions#new_company'
+  post   '/login_company',   to: 'sessions#create_company'
+  delete '/logout_company',  to: 'sessions#destroy_company'
+
+  get    '/login_user',   to: 'sessions#new_user'
+  post   '/login_user',   to: 'sessions#create_user'
+  delete '/logout_user',  to: 'sessions#destroy_user'
 end

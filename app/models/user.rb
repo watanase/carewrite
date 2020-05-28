@@ -1,6 +1,6 @@
-class Company < ApplicationRecord
+class User < ApplicationRecord
   has_secure_password
-  has_many :users
+  belongs_to :company
 
   validates :name, presence: true
 end

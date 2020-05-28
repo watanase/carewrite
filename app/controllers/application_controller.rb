@@ -4,8 +4,14 @@ class ApplicationController < ActionController::Base
 
   private
   def logged_in_company
-    unless logged_in? && current_company?(@company)
-      redirect_to login_path
+    unless logged_in_company? && current_company?(@company)
+      redirect_to login_company_path
+    end
+  end
+
+  def logged_in_user
+    unless logged_in_user? && current_user?(@user)
+      redirect_to login_user_path
     end
   end
 

@@ -12,7 +12,8 @@ class CompanysController < ApplicationController
     # binding.pry
     @company = Company.new(company_params)
     if @company.save
-      redirect_to companys_path
+      log_in_company @company
+      redirect_to company_path(@company)
     else
       render :new
     end
