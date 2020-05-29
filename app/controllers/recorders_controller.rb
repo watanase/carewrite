@@ -1,0 +1,2 @@
+class RecordersController < ApplicationController
+end

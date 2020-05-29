@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show]
-  before_action :user_show_permit, only: %i[show]
+  before_action :move_to_index, only: %i[show]
   def index
   end
 

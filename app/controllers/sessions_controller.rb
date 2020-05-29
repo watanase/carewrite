@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:company_id] = @company.id
       redirect_to company_path(@company)
     else
-      redirect_to :root
+      render :new_company
     end
   end
 
