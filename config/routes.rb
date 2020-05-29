@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   post   '/login_company',   to: 'sessions#create_company'
   delete '/logout_company',  to: 'sessions#destroy_company'
 
-
+  get    '/login_recoder',   to: 'sessions#new_recoder'
+  post   '/login_recoder',   to: 'sessions#create_recoder'
+  delete '/logout_recoder',  to: 'sessions#destroy_recoder'
 
   get    '/login_user',   to: 'sessions#new_user'
   post   '/login_user',   to: 'sessions#create_user'

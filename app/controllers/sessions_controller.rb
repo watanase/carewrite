@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  ## companyメソッド
   def new_company
   end
 
@@ -16,7 +17,25 @@ class SessionsController < ApplicationController
     log_out_company if logged_in_company?
     redirect_to root_path
   end
+  ##recoderメソッド
+  def new_recoder
+  end
 
+  def create_recoder
+    @recoder = Recoder.find_by(name: params[:name])
+    if @recoder && @recoder.authenticate(params[:password])
+      session[:recoder_id] = @recoder.id
+      redirect_to recoder_path(@recoder)
+    else
+      render :new_recoder
+    end
+  end
+
+  def destroy_recoder
+    log_out_recoder if logged_in_recoder?
+    redirect_to root_path
+  end
+  ##userメソッド
   def new_user
   end
 
