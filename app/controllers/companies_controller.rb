@@ -1,9 +1,6 @@
-class CompanysController < ApplicationController
+class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show]
   before_action :logged_in_company, only: %i[show]
-  def index
-  end
-
   def new
     @company = Company.new
   end
@@ -28,6 +25,6 @@ class CompanysController < ApplicationController
 
   private
   def company_params
-    params.permit(:name, :password, :password_confirmation)
+    params.require(:company).permit(:name, :password, :password_confirmation)
   end
 end

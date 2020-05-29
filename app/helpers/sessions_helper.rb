@@ -24,29 +24,29 @@ module SessionsHelper
     @current_company = nil
   end
 
-  ## recoderメソッド
+  ## recorderメソッド
   # 渡されたuserでログインする
-  def log_in_recoder(recoder)
+  def log_in_recorder(recorder)
     session[:user_id] = user.id
   end
-  # 現在ログイン中のrecoderを返す
-  def current_recoder
-    if session[:recoder_id]
-      @current_recoder ||= Recoder.find_by(id: session[:recoder_id])
+  # 現在ログイン中のrecorderを返す
+  def current_recorder
+    if session[:recorder_id]
+      @current_recorder ||= Recorder.find_by(id: session[:recorder_id])
     end
   end
-  #受け取ったrecoderがログイン中のrecoderと一致すればtrueを返す
-  def current_recoder?(recoder)
-    recoder == current_recoder
+  #受け取ったrecorderがログイン中のrecorderと一致すればtrueを返す
+  def current_recorder?(recorder)
+    recorder == current_recorder
   end
-  # recoderがログインしていればtrue、その他ならfalseを返す
-  def logged_in_recoder?
-    !current_recoder.nil?
+  # recorderがログインしていればtrue、その他ならfalseを返す
+  def logged_in_recorder?
+    !current_recorder.nil?
   end
-  # 現在のrecoderをログアウトする
-  def log_out_recoder
-    session.delete(:recoder_id)
-    @current_recoder = nil
+  # 現在のrecorderをログアウトする
+  def log_out_recorder
+    session.delete(:recorder_id)
+    @current_recorder = nil
   end
 
   ## userメソッド

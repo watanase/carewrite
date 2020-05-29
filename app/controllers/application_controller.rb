@@ -9,10 +9,10 @@ class ApplicationController < ActionController::Base
       redirect_to login_company_path
     end
   end
-  # ログイン済みrecoderかどうか確認
-  def logged_in_recoder
-    unless logged_in_recoder? && current_recoder?(@recoder)
-      redirect_to login_recoder_path
+  # ログイン済みrecorderかどうか確認
+  def logged_in_recorder
+    unless logged_in_recorder? && current_recorder?(@recorder)
+      redirect_to login_recorder_path
     end
   end
   # ログイン済みuserかどうか確認

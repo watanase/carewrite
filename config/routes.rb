@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root "posts#index"
-  resources :companys
-  resources :resources
-  resources :users
+  resources :companies, only:[:index, :new, :create, :show]
+  resources :recorders, only:[:new, :create, :destroy]
+  resources :users, only:[:new, :create, :show]
 
 
 
@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   post   '/login_company',   to: 'sessions#create_company'
   delete '/logout_company',  to: 'sessions#destroy_company'
 
-  get    '/login_recoder',   to: 'sessions#new_recoder'
-  post   '/login_recoder',   to: 'sessions#create_recoder'
-  delete '/logout_recoder',  to: 'sessions#destroy_recoder'
+  get    '/login_recorder',   to: 'sessions#new_recorder'
+  post   '/login_recorder',   to: 'sessions#create_recorder'
+  delete '/logout_recorder',  to: 'sessions#destroy_recorder'
 
   get    '/login_user',   to: 'sessions#new_user'
   post   '/login_user',   to: 'sessions#create_user'
