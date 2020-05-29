@@ -1,6 +1,5 @@
-%div family
--# = link_to "login", new_post_reader_session_path
-%div business
--# = link_to 'login', new_post_writer_session_path
-%div 企業ページ
-= link_to 'home', companys_path
+- if logged_in_user?
+  %div= link_to "家族としての利用を終了する", logout_user_path, method: :delete
+- else
+  %div= link_to "家族として利用する", login_user_path
+%div= link_to '企業をして利用する', companys_path

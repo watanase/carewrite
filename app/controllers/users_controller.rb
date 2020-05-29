@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show]
-  before_action :logged_in_user, only: %i[show]
+  before_action :user_show_permit, only: %i[show]
   def index
   end
 
@@ -12,8 +12,7 @@ class UsersController < ApplicationController
     # binding.pry
     @user = User.new(user_params)
     if @user.save
-      log_in_user @user
-      redirect_to company_user_path(current_company, @user)
+      redirect_to user_path(@user)
     else
       render :new
     end

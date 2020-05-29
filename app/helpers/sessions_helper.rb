@@ -1,4 +1,5 @@
 module SessionsHelper
+  # companyメソッド
   def log_in_company(company)
     session[:company_id] = company.id
   end
@@ -22,6 +23,7 @@ module SessionsHelper
     @current_company = nil
   end
 
+  # userメソッド
   def log_in_user(user)
     session[:user_id] = user.id
   end
@@ -43,5 +45,10 @@ module SessionsHelper
   def log_out_user
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  def user_show_permit
+    # binding.pry
+    !current_user.nil? || current_company.id == @user.companies_id
   end
 end
