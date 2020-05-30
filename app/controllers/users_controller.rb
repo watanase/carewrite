@@ -24,6 +24,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation).merge(companies_id: current_company.id)
+    params.require(:user).permit(:name, :password, :password_confirmation).merge(company_id: current_company.id)
   end
 end

@@ -5,3 +5,8 @@
   = link_to "logout", logout_recorder_path, method: :delete
 - else
   = link_to "記録者としてログイン", login_recorder_path
+%div= link_to "グループを作成", new_group_path
+%div
+  - @company.groups.each do |group|
+    = link_to group_path(group) do
+      = group.name
