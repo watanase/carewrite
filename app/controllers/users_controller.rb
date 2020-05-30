@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @company = Company.find(params[:id])
+    # @company = Company.find(params[:id])
   end
 
   def set_user

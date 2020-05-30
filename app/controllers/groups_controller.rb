@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  # before_action :set_group only:[:show, :edit]
   def new
     @group = Group.new
   end
@@ -12,8 +13,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
-    @group =  Group.find(params[:id])
   end
 
   def update
@@ -26,6 +29,11 @@ class GroupsController < ApplicationController
   end
 
   private
+
+  # def set_group
+  #   @group =  Company.groups.find(params[:id])
+  # end
+
   def group_params
     params.require(:group).permit(:name, user_ids: []).merge(company_id: current_company.id)
   end
