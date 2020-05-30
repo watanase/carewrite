@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @company = Company.find_by(id: current_company.id)
   end
 
   def set_user

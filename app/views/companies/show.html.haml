@@ -8,5 +8,6 @@
 %div= link_to "グループを作成", new_group_path
 %div
   - @company.groups.each do |group|
-    = link_to group_path(group) do
-      = group.name
+    %div
+      = link_to group_path(group) do
+        = group.name
