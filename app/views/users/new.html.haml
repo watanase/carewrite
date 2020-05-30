@@ -2,9 +2,9 @@
 = form_with(model: @user, local: true) do |f|
   = f.label :name
   = f.text_field :name
+  = f.collection_select :group_id, @company.groups, :id, :name, prompt: "未選択"
   = f.label :password
   = f.password_field :password
   = f.label :password_confirmation
   = f.password_field :password_confirmation
-  = f.collection_select :origin_id, Group.all, :id, :name, prompt: "未選択"
   = f.submit

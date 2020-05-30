@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :move_to_index, only: %i[show]
   def new
     @user = User.new
+    @company = Company.find_by(id: current_company.id)
+
   end
 
   def create
@@ -16,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @company = Company.find_by(id: current_company.id)
+    @company = Company.find(params[:id])
   end
 
   def set_user
@@ -25,6 +27,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation).merge(company_id: current_company.id)
+    params.require(:user).permit(:name, :password, :password_confirmation, :group_id).merge(company_id: current_company.id)
   end
 end
