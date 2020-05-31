@@ -1,8 +1,7 @@
 class GroupsController < ApplicationController
-  # before_action :set_group only:[:show, :edit]
-  def new
-    @group = Group.new
-  end
+  before_action :set_group, only:[:show, :edit]
+  before_action :set_company, only: %i[show]
+  before_action :logged_in_company, only: %i[show]
 
   def create
     @group = Group.new(group_params)
@@ -14,6 +13,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    # @group = Group.new
   end
 
   def edit
@@ -29,12 +29,15 @@ class GroupsController < ApplicationController
   end
 
   private
+  def set_group
+    @group = Group.find(params[:id])
+  end
 
-  # def set_group
-  #   @group =  Company.groups.find(params[:id])
-  # end
+  def set_company
+    @company = Company.find(current_company.id)
+  end
 
   def group_params
-    params.require(:group).permit(:name, user_ids: []).merge(company_id: current_company.id)
+    params.require(:group).permit(:name).merge(company_id: current_company.id)
   end
 end
