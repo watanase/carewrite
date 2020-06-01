@@ -1,3 +1,5 @@
 = @user.name
 - if logged_in_user?
   now login
+- if logged_in_recorder?
+  = link_to '記録を書く', new_post_path

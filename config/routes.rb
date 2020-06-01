@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :recorders, only:[:new, :create, :destroy]
   resources :users, only:[:new, :create, :show]
+  resources :posts, except: :index
 
 
   get    '/login_company',   to: 'sessions#new_company'

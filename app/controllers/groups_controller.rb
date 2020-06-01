@@ -13,7 +13,8 @@ class GroupsController < ApplicationController
   end
 
   def show
-    # @group = Group.new
+    @company_group = @group
+    @group = Group.new
   end
 
   def edit
