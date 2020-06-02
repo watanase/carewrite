@@ -11,8 +11,9 @@
   = f.submit "グループを作成"
 
 %div= link_to "企業からログアウト", logout_company_path, method: :delete
-%div
-  - @company.groups.each do |group|
-    %div
-      = link_to company_group_path(@company, group) do
-        = group.name
+- if @company.groups
+  %div
+    - @company.groups.each do |group|
+      %div
+        = link_to company_group_path(@company, group) do
+          = group.name

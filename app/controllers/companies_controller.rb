@@ -1,7 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show]
   before_action :logged_in_company, only: %i[show]
-  before_action :set_group, only: %i[show]
   def new
     @company = Company.new
   end
@@ -24,10 +23,6 @@ class CompaniesController < ApplicationController
   private
   def set_company
     @company = Company.find(params[:id])
-  end
-
-  def set_group
-    @group =  Group.find(params[:id])
   end
 
   def company_params

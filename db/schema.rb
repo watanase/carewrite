@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_140147) do
+ActiveRecord::Schema.define(version: 2020_06_02_055550) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "password_digest", null: false
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "hurigana"
+    t.integer "phone"
+    t.integer "zipcode"
+    t.string "street_address"
+    t.string "relationship"
+    t.text "information"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,8 +55,16 @@ ActiveRecord::Schema.define(version: 2020_05_30_140147) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
+    t.string "hurigana"
     t.string "password_digest", null: false
     t.bigint "company_id"
+    t.integer "gender"
+    t.date "birthday"
+    t.integer "zipcode"
+    t.string "street_address"
+    t.string "image"
+    t.integer "care_required"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "group_id"
