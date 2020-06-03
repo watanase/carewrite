@@ -22,13 +22,15 @@ ActiveRecord::Schema.define(version: 2020_06_02_055550) do
   create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "hurigana"
-    t.integer "phone"
+    t.string "phone"
     t.integer "zipcode"
     t.string "street_address"
     t.string "relationship"
     t.text "information"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_families_on_user_id"
   end
 
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -72,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_055550) do
     t.index ["group_id"], name: "index_users_on_group_id"
   end
 
+  add_foreign_key "families", "users"
   add_foreign_key "groups", "companies"
   add_foreign_key "recorders", "companies"
   add_foreign_key "users", "companies"

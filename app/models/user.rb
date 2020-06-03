@@ -4,6 +4,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :families
   belongs_to :company
   belongs_to :user
+
   validates :name, presence: true
 
   enum gender:  { '性別を選択': 0, '男性': 1, '女性': 2 }
