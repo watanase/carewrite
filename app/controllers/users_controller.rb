@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :move_to_index, only: %i[new create show]
+  before_action :company_check, only: %i[new create]
   before_action :set_user, only: %i[show]
   before_action :select_company, only: %i[new create]
+  before_action :move_to_index, only: %i[show]
 
   def new
     @user = User.new
@@ -46,5 +47,9 @@ class UsersController < ApplicationController
       :group_id,
       families_attributes: %i[name hurigana phone zipcode street_address relationship information]
     ).merge(company_id: current_company.id)
+  end
+
+  def company_check
+    redirect_to login_company_path unless logged_in_company?
   end
 end
