@@ -1,3 +1,5 @@
+= @company_group.name
+の利用者一覧
 - @company_group.users.each do |user|
   = link_to user_path(user) do
     %div= user.name

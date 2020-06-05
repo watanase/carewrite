@@ -1,9 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :families, dependent: :destroy
-  accepts_nested_attributes_for :families
   belongs_to :company
-  belongs_to :user
+  belongs_to :group
 
   validates :name, presence: true
 

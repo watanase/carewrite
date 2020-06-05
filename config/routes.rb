@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     resources :groups, only:[:create, :show]
   end
   resources :recorders, only:[:new, :create, :destroy]
-  resources :users, only:[:new, :create, :show]
+  resources :users do
+    resources :families, only:[:create]
+  end
   resources :posts, except: :index
 
 

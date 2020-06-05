@@ -1,17 +1,16 @@
 class UsersController < ApplicationController
-  before_action :company_check, only: %i[new create]
-  before_action :set_user, only: %i[show]
-  before_action :select_company, only: %i[new create]
+  before_action :company_check, only: %i[new create edit update]
+  before_action :set_user, only: %i[show edit update]
+  before_action :select_company, only: %i[new create edit update]
   before_action :move_to_index, only: %i[show]
 
   def new
     @user = User.new
-    @user.families.new
   end
 
   def create
     # binding.pry
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     if @user.save
       redirect_to user_path(@user)
     else
@@ -20,6 +19,19 @@ class UsersController < ApplicationController
   end
 
   def show
+    @family = Family.new
+    @families = @user.families.all
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update(user_paramsｚ)
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   private
@@ -45,7 +57,6 @@ class UsersController < ApplicationController
       :password,
       :password_confirmation,
       :group_id,
-      families_attributes: %i[name hurigana phone zipcode street_address relationship information]
     ).merge(company_id: current_company.id)
   end
 

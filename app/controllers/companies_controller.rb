@@ -18,6 +18,7 @@ class CompaniesController < ApplicationController
 
   def show
     @group = Group.new
+    @users = User.all
   end
 
   private
