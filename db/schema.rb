@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_02_055550) do
+ActiveRecord::Schema.define(version: 2020_06_05_184253) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "password_digest", null: false
@@ -42,8 +42,13 @@ ActiveRecord::Schema.define(version: 2020_06_02_055550) do
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "focus"
+    t.text "content"
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "recorders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -76,6 +81,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_055550) do
 
   add_foreign_key "families", "users"
   add_foreign_key "groups", "companies"
+  add_foreign_key "posts", "users"
   add_foreign_key "recorders", "companies"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "groups"
