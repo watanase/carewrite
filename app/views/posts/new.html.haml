@@ -1,8 +1,3 @@
-= form_with(model: @post, local: true) do |f|
-  = f.label :date
-  = f.date_field :date
-  = f.label :focus
-  = f.text_field :focus
-  = f.label :content
-  = f.text_field :content
-  = f.submit
+%div 記録を書く
+= form_with model:[@user, @post], local: true do |f|
+  = render partial: 'form', locals: { f: f}

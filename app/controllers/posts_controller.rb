@@ -1,4 +1,10 @@
 class PostsController < ApplicationController
+  before_action :select_user
+
+  def index
+    @posts = Post.all
+  end
+
   def new
     @post = Post.new
   end
@@ -17,11 +23,14 @@ class PostsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    if @post.update(post_params)
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -29,14 +38,14 @@ class PostsController < ApplicationController
   end
 
   private
-  # def select_user
-  #   @user =
-  # end
+  def select_user
+    @user = User.find(params[:user_id])
+  end
 
   def post_params
     params.require(:post
-    ).permit(:focus, :content, :date
-    ).merge(user_id: ugser.id)
+    ).permit(:focus, :content, :datetime,
+    ).merge(user_id: params[:user_id], recorder_id: current_recorder.id)
   end
 
 

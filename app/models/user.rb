@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :families, dependent: :destroy
-  has_many :posts
+  has_many :posts, dependent: :destroy
   belongs_to :company
   belongs_to :group
 

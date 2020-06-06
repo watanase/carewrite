@@ -1,8 +1,9 @@
 - if logged_in_company?
   %div
     = link_to '登録情報を編集する', edit_user_path(@user)
+= link_to '記録を見る', user_posts_path(@user)
 - if logged_in_recorder?
-  = link_to '記録を書く', new_post_path
+  = link_to '記録を書く', new_user_post_path(@user)
 %h3 入居者情報
 %div= @user.hurigana
 %div= @user.name

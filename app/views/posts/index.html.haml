@@ -1,8 +1,7 @@
-- if logged_in_user?
-  %div
-    = link_to user_path(current_user) do
-      = current_user.name
-  %div= link_to "家族としての利用を終了する", logout_user_path, method: :delete
-- else
-  %div= link_to "家族として利用する", login_user_path
-%div= link_to '企業をして利用する', companies_path
+%div
+  - @posts.each do |p|
+    .user_post
+      = l p.datetime, format: :short
+      = p.focus
+      = simple_format(p.content)
+      = link_to '編集', edit_user_post_path(@user, p)

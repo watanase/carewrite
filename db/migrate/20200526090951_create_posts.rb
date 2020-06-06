@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     create_table :posts do |t|
       t.string  :focus
       t.text    :content
-      t.date    :date
+      t.datetime :datetime, default: -> { 'CURRENT_TIMESTAMP' }
 
       t.timestamps
     end
