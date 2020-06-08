@@ -17,13 +17,16 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @group = Group.new
+    @users = User.all
+    @recorder = Recorder.find(params[:id])
   end
 
+  private
   def set_company
     @company = Company.find(params[:id])
   end
 
-  private
   def company_params
     params.require(:company).permit(:name, :password, :password_confirmation)
   end

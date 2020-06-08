@@ -1,0 +1,9 @@
+= form_with(model: @recorder, local: true) do |f|
+  = f.label :name
+  = f.text_field :name, required: ""
+  - if action_name == 'new'
+    = f.label :password
+    = f.password_field :password
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+  = f.submit

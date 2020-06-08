@@ -1,6 +1,10 @@
-= form_with url: login_user_path, local: true do |f|
-  = f.label :name
-  = f.text_field :name
-  = f.label :password
-  = f.password_field :password
-  = f.submit
+.wrapper
+  .container
+    .login_form
+      = form_with url: login_user_path, local: true do |f|
+        .field
+          = f.text_field :name, placeholder: '利用者様のお名前'
+        .field
+          = f.password_field :password, placeholder: 'パスワード'
+        .field
+          = f.submit

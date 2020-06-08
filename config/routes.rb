@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  root "posts#index"
-  resources :companies, only:[:index, :new, :create, :show]
+  root "users#index"
+
+  resources :companies, only:[:index, :new, :create, :show] do
+    resources :groups, only:[:create, :show]
+  end
+
   resources :recorders, only:[:new, :create, :destroy]
-  resources :users, only:[:new, :create, :show]
-
-
+  resources :users do
+    resources :families, only:[:create]
+    resources :posts
+  end
 
   get    '/login_company',   to: 'sessions#new_company'
   post   '/login_company',   to: 'sessions#create_company'

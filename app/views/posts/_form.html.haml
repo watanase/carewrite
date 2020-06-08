@@ -1,0 +1,9 @@
+%div
+= form_with model:[@user, @post], local: true do |f|
+  = f.label :datetime
+  = f.datetime_field :datetime
+  = f.label :focus
+  = f.text_field :focus
+  = f.label :content
+  = f.text_field :content
+  = f.submit

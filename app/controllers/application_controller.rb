@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   # ログイン済みuserまたはuserに紐づくcompanyにログインしているかどうか確認
   def move_to_index
     if logged_in_company?
-      redirect_to login_user_path unless current_company.id == @user.companies_id
+      redirect_to login_user_path unless current_company.id == @user.company_id
     else logged_in_user
     end
   end
