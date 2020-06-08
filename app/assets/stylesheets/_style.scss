@@ -1,0 +1,14 @@
+.wrapper{
+  .content{
+    display: flex;
+    .user-side, .company-side{
+      width: 50vw;
+      text-align: center;
+    }
+  }
+  // ログインページ
+  .login_form{
+    text-align: center;
+    padding: 10px;
+  }
+}

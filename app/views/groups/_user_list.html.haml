@@ -1,5 +1,4 @@
 = @company_group.name
 の利用者一覧
-- @company_group.users.each do |user|
-  = link_to user_path(user) do
-    %div= user.name
+- @company_group.users.each do |u|
+  %div= link_to "#{u.name}", user_path(u)

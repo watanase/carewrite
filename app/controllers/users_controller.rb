@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :company_check, only: %i[new create edit update]
+  before_action :set_user, only: %i[show edit update]
   before_action :select_company, only: %i[new create edit update]
   before_action :move_to_index, only: %i[show]
 

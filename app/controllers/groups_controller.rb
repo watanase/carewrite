@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
   def show
     @company_group = @group
     @group = Group.new
+    @recorder = Recorder.find(params[:id])
   end
 
   def edit
