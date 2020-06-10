@@ -19,7 +19,6 @@ class CompaniesController < ApplicationController
   def show
     @group = Group.new
     @users = User.all
-    @recorder = Recorder.find(params[:id])
   end
 
   private
