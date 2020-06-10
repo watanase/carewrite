@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'ログインとログアウト' do
+RSpec.feature 'user/ログインとログアウト' do
   background do
     User.create!(name: 'abe', password: '00000000')
   end
