@@ -1,7 +1,7 @@
 = render 'login'
-  = form_with url: login_recorder_path, local: true do |f|
-    = f.label :name
-    = f.text_field :name
-    = f.label :password
-    = f.password_field :password
-    = f.submit
+= form_with url: login_recorder_path, local: true do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :password
+  = f.password_field :password
+  = f.submit

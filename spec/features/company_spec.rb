@@ -2,19 +2,19 @@ require 'rails_helper'
 
 RSpec.feature 'ログインとログアウト' do
   background do
-    User.create!(name: 'abe', password: '00000000')
+    Company.create!(name: 'abc', password: '00000000')
   end
   scenario 'ログインする' do
     # ログインページを開く
-    visit login_user_path
+    visit login_company_path
     # ログインフォームにnameとパスワードを入力する
-    fill_in 'name', with: 'abe'
+    fill_in 'name', with: 'abc'
     fill_in 'password', with: '00000000'
     # ログインボタンをクリックする
-    click_on 'ログイン'
+    click_on '企業にログイン'
     # ログインに成功したことを検証する
-    expect(page).to have_content '家族としてログイン中'
-    # userへのログインでは'記録を書く'へのリンクが表示されないことを検証する
-    expect(page).not_to have_content '記録を書く'
+    expect(page).to have_content '企業からログアウト'
+  end
+
   end
 end

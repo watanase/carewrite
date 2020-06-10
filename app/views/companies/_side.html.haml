@@ -2,7 +2,7 @@
 %div= link_to "利用者を登録", new_user_path
 %div= link_to "記録者を登録", new_recorder_path
 - if logged_in_recorder?
-  = link_to "#{@recorder.name}からログアウトする", logout_recorder_path, method: :delete
+  = link_to "記録を終了する", logout_recorder_path, method: :delete
 - else
   = link_to "記録者としてログイン", login_recorder_path
 = form_with(model: [@company, @group], local: true) do |f|
