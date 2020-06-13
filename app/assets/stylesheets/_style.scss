@@ -10,5 +10,14 @@
   .login_form{
     text-align: center;
     padding: 10px;
+    .field{
+      margin: 20px;
+      .input_area{
+        padding: 5px 10px;
+      }
+      .login_btn{
+        padding: 5px 10px;
+      }
+    }
   }
 }

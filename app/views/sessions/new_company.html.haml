@@ -1,7 +1,10 @@
-= render 'login'
-= form_with url: login_company_path, local: true do |f|
-  = f.label :name
-  = f.text_field :name
-  = f.label :password
-  = f.password_field :password
-  = f.submit '企業にログイン'
+.wrapper
+  .container
+    .login_form
+      = form_with url: login_company_path, local: true do |f|
+        .field
+          = f.text_field :name, placeholder: '企業の名前', class: 'input_area'
+        .field
+          = f.password_field :password, placeholder: 'パスワード', class: 'input_area'
+        .field
+          = f.submit '企業にログイン', class: 'login_btn'
