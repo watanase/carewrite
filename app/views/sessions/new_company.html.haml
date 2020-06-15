@@ -3,10 +3,12 @@
     .content
       %h1 ログイン
       .login-form
-        = form_with url: login_company_path, local: true do |f|
+        = form_with model: @company, local: true do |f|
           .field
-            = f.text_field :name, placeholder: '企業の名前', class: 'input_area'
+            = f.label '企業名'
+            = f.text_field :name, placeholder: '企業の名前を入力してください', class: 'input-area'
           .field
-            = f.password_field :password, placeholder: 'パスワード', class: 'input_area'
+            = f.label 'パスワード'
+            = f.password_field :password, placeholder: 'パスワードを入力してください', class: 'input-area'
           .field
-            = f.submit '企業にログイン', class: 'login_btn'
+            = f.submit '企業にログイン', class: 'login-btn'
