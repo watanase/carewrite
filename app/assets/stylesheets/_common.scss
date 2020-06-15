@@ -4,9 +4,18 @@ body{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  .header{
-    height: 50px;
-    background-color: palegoldenrod;
+  header{
+    background-color: aliceblue;
+    padding: 10px;
+    display: flex;
+    .header-btn{
+      color: black;
+      font-size: 20px;
+      margin-left: 10px;
+    }
+    .blue{
+      color: royalblue;
+    }
   }
   a{
     text-decoration: none;

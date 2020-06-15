@@ -1,22 +1,47 @@
 .wrapper{
-  .content{
-    display: flex;
-    .user-side, .company-side{
-      width: 50vw;
-      text-align: center;
-    }
-  }
-  // ログインページ
-  .login_form{
-    text-align: center;
-    padding: 10px;
-    .field{
-      margin: 20px;
-      .input_area{
-        padding: 5px 10px;
+  .container{
+    .content{
+      h1{
+        text-align: center;
+        margin: 30px;
+        font-size: 30px;
+        color: $blue;
       }
-      .login_btn{
-        padding: 5px 10px;
+      .main{
+        display: flex;
+        line-height: 5;
+        justify-content: space-evenly;
+        .user-side, .company-side{
+          font-size: 20px;
+          .main-btn{
+            background-color: $blue;
+            padding: 20px;
+            border-radius: 5px;
+            color: $white;
+          }
+          .main-btn:hover{
+            opacity: 0.8;
+          }
+        }
+      }
+      // ログインページ
+      .login-form{
+        text-align: center;
+        min-height: 300px;
+        padding: 12px;
+        margin-bottom: 20px;
+        background-color: #f7f7f7;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        .field{
+          margin: 20px;
+          .input_area{
+            padding: 5px 10px;
+          }
+          .login_btn{
+            padding: 5px 10px;
+          }
+        }
       }
     }
   }

@@ -1,10 +1,11 @@
 .wrapper
   .container
-    .login_form
-      = form_with url: login_recorder_path, local: true do |f|
-        .field
-          = f.text_field :name, placeholder: '記録者の名前', class: 'input_area'
-        .field
-          = f.password_field :password, placeholder: 'パスワード', class: 'input_area'
-        .field
-          = f.submit '記録者としてログイン', class: 'login_btn'
+    .content
+      .login-form
+        = form_with url: login_recorder_path, local: true do |f|
+          .field
+            = f.text_field :name, placeholder: '記録者の名前', class: 'input_area'
+          .field
+            = f.password_field :password, placeholder: 'パスワード', class: 'input_area'
+          .field
+            = f.submit '記録者としてログイン', class: 'login_btn'

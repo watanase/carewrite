@@ -1,10 +1,12 @@
 .wrapper
   .container
-    .login_form
-      = form_with url: login_company_path, local: true do |f|
-        .field
-          = f.text_field :name, placeholder: '企業の名前', class: 'input_area'
-        .field
-          = f.password_field :password, placeholder: 'パスワード', class: 'input_area'
-        .field
-          = f.submit '企業にログイン', class: 'login_btn'
+    .content
+      %h1 ログイン
+      .login-form
+        = form_with url: login_company_path, local: true do |f|
+          .field
+            = f.text_field :name, placeholder: '企業の名前', class: 'input_area'
+          .field
+            = f.password_field :password, placeholder: 'パスワード', class: 'input_area'
+          .field
+            = f.submit '企業にログイン', class: 'login_btn'
