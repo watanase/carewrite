@@ -1,6 +1,6 @@
 = @company.name
 %div= link_to "利用者を登録", new_user_path
-%div= link_to "記録者を登録", new_recorder_path
+%div= link_to "記録者を登録", new_company_recorder_path(@company)
 - if logged_in_recorder?
   = link_to "記録を終了する", logout_recorder_path, method: :delete
 - else

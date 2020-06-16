@@ -2,7 +2,7 @@
   .container
     .content
       %h1 ログイン
-      .login-form
+      .form
         = form_with model: @recorder, local: true do |f|
           .field
             = f.label '記録者名'
@@ -11,4 +11,4 @@
             = f.label 'パスワード'
             = f.password_field :password, placeholder: 'パスワードを入力してください', class: 'input-area'
           .field
-            = f.submit '記録者としてログイン', class: 'login-btn'
+            = f.submit '記録者としてログインする', class: 'login-btn'

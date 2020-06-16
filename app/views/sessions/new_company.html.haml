@@ -2,7 +2,7 @@
   .container
     .content
       %h1 ログイン
-      .login-form
+      .form
         = form_with model: @company, local: true do |f|
           .field
             = f.label '企業名'
@@ -11,4 +11,4 @@
             = f.label 'パスワード'
             = f.password_field :password, placeholder: 'パスワードを入力してください', class: 'input-area'
           .field
-            = f.submit '企業にログイン', class: 'login-btn'
+            = f.submit '企業にログインする', class: 'login-btn'

@@ -9,7 +9,6 @@
       }
       .main{
         display: flex;
-        line-height: 5;
         justify-content: space-evenly;
         .user-side, .company-side{
           font-size: 20px;
@@ -18,6 +17,9 @@
             padding: 20px;
             border-radius: 5px;
             color: $white;
+            min-width: 250px;
+            display: inline-block;
+            text-align: center;
           }
           .main-btn:hover{
             opacity: 0.8;
@@ -25,7 +27,7 @@
         }
       }
       // ログインページ
-      .login-form{
+      .form{
         text-align: center;
         min-height: 300px;
         width: max-content;

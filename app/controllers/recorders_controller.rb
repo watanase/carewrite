@@ -1,6 +1,7 @@
 class RecordersController < ApplicationController
   def new
     @recorder = Recorder.new
+    @company = Company.find(current_company.id)
   end
 
   def create

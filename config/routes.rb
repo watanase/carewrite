@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   resources :companies, only:[:index, :new, :create, :show] do
     resources :groups, only:[:create, :show]
+    resources :recorders, only:[:new, :create, :destroy]
   end
 
-  resources :recorders, only:[:new, :create, :destroy]
   resources :users do
     resources :families, only:[:create]
     resources :posts
