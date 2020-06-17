@@ -24,6 +24,15 @@ ja:
         image: 画像
       user:
         name: 利用者名
+        hurigana: フリガナ
+        group_id: グループ
+        image: 写真
+        gender: 性別
+        birthday: 誕生日
+        zipcode: 郵便番号
+        street_address: 住所
+        care_required: 介護度
+        status: 入居状況
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
