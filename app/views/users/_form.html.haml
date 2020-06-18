@@ -1,7 +1,7 @@
 = form_with(model: @user, local: true) do |f|
   = render "shared/error_messages", model: f.object
   .field.user-field
-    = f.label :name
+    = f.label '利用者名(※必須)'
     = f.text_field :name, placeholder: '利用者名を入力してください', required: "", class: 'input-area user-input'
   .field.user-field
     = f.label :hurigana
@@ -9,9 +9,13 @@
   .field.user-field
     = f.label :group_id
     = f.collection_select :group_id, @company.groups, :id, :name, prompt: "未選択", class: 'input-area select-input'
-  .field.user-field.uplorder
+  .field.user-field
     = f.label :image
-    = f.file_field :image, class: 'uplord-btn'
+    = f.label :image do
+      .select-image
+        %div 写真を選択
+        = f.file_field :image, class: 'image-btn', onchange: "uv.style.display='inline-block'; uv.value = this.value"
+        = f.text_field :image, id: 'uv', class: 'image-text'
   .field.user-field
     = f.label :gender
     = f.select :gender, User.genders.keys.to_a, {}, class: 'input-area select-input'
@@ -32,10 +36,10 @@
     = f.select :status, User.statuses.keys.to_a, {}, class: 'input-area select-input'
   - if action_name == 'new'
     .field.user-field
-      = f.label :password
+      = f.label 'パスワード(※必須)'
       = f.password_field :password, required: "", placeholder: 'パスワードを設定してください', class: 'input-area user-input'
     .field.user-field
-      = f.label :password_confirmation
+      = f.label '確認用パスワード(※必須)'
       = f.password_field :password_confirmation, required: "", class: 'input-area user-input'
   .field.user-field
-    = f.submit class: 'login-btn'
+    = f.submit class: 'submit-btn'
