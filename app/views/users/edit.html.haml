@@ -1,1 +1,10 @@
-= render partial: 'form'
+.wrapper
+  .container
+    .content
+      .company-home
+        .left
+          = render 'companies/side'
+        .right
+          %h1 利用者の情報を編集
+          .form
+            = render 'form'

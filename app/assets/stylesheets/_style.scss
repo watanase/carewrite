@@ -39,7 +39,7 @@
         form{
           display: block;
           margin: 20px 70px;
-          min-width: 250px;
+          min-width: 230px;
           .field{
             margin-bottom: 10px;
             label{
@@ -75,7 +75,7 @@
           .user-field{
             display: flex;
             justify-content: space-between;
-            min-width: 50vw;
+            min-width: 35vw;
             .user-input{
               max-width: 60%;
             }
@@ -120,7 +120,44 @@
           }
         }
       }
+      // 企業詳細ページ
+      .company-home{
+        display: flex;
+        .left{
+          width: 260px;
+          background-color: whitesmoke;
+          min-height: 100vh;
+          .channel.active {
+            background: $blue;
+            a{
+              color: $white;
+            }
+          }
+          .company-name{
+            font-size: 25px;
+            padding: 14px 22px;
+            border-bottom: solid 1px gainsboro;
+          }
+          .company-list{
+            a{
+              color: black;
+              font-size: 17px;
+              display: inline-block;
+              padding: 10px;
+              width: 100%;
+            }
+            .field:hover{
 
+            }
+            .input-area{
+              display: block;
+            }
+          }
+        }
+        .right{
+          width: calc(100% - 260px);
+        }
+      }
     }
   }
 }

@@ -1,6 +1,10 @@
 .wrapper
   .container
     .content
-      %h1 利用者を登録
-      .form
-        = render 'form'
+      .company-home
+        .left
+          = render 'companies/side'
+        .right
+          %h1 利用者を登録
+          .form
+            = render 'form'

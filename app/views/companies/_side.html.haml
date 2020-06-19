@@ -1,18 +1,23 @@
-= @company.name
-%div= link_to "利用者を登録", new_user_path
-%div= link_to "記録者を登録", new_company_recorder_path(@company)
-- if logged_in_recorder?
-  = link_to "記録を終了する", logout_recorder_path, method: :delete
-- else
-  = link_to "記録者としてログイン", login_recorder_path
-= form_with(model: [@company, @group], local: true) do |f|
-  = f.label :name
-  = f.text_field :name, placeholder: 'グループ名を入力'
-  = f.submit "グループを作成"
-
-%div= link_to "企業からログアウト", logout_company_path, method: :delete
-- if @company.groups
-  %div
-    - @company.groups.each do |g|
+.company-name
+  = @company.name
+.company-list
+  .field
+    = sidebar_link_item "利用者を登録", new_user_path
+  .field
+    = sidebar_link_item "記録者を登録", new_company_recorder_path(@company)
+  .field
+    = sidebar_link_item "グループを作成", new_company_group_path(@company)
+    - if @company.groups
       %div
-        = link_to "#{g.name}", company_group_path(@company, g)
+        - @company.groups.each do |g|
+          .group-list
+            = sidebar_link_item "#{g.name}", company_group_path(@company, g)
+            - @group.users.each do |u|
+              = u.name
+  .field
+    - if logged_in_recorder?
+      = link_to "記録を終了する", logout_recorder_path, method: :delete
+    - else
+      = sidebar_link_item "記録者としてログイン", login_recorder_path
+  .field
+    = link_to "企業からログアウト", logout_company_path, method: :delete

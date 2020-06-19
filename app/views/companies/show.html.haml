@@ -8,4 +8,7 @@
           利用者一覧
           - @users.each do |u|
             %div
-              = link_to "#{u.name}", user_path(u)
+              = link_to  user_path(u) do
+                = u.name
+                - if u.group
+                  = u.group.name

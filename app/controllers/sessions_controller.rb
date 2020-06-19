@@ -19,10 +19,11 @@ class SessionsController < ApplicationController
   end
   ##recorderメソッド
   def new_recorder
+    @company = Company.find_by(params[:id])
+    @group = Group.new
   end
 
   def create_recorder
-    # binding.pry
     @recorder = Recorder.find_by(name: params[:name])
     if @recorder && @recorder.authenticate(params[:password])
       session[:recorder_id] = @recorder.id
