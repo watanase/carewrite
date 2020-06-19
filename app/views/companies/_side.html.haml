@@ -7,13 +7,15 @@
     = sidebar_link_item "記録者を登録", new_company_recorder_path(@company)
   .field
     = sidebar_link_item "グループを作成", new_company_group_path(@company)
+  .field
     - if @company.groups
       %div
         - @company.groups.each do |g|
           .group-list
             = sidebar_link_item "#{g.name}", company_group_path(@company, g)
-            - @group.users.each do |u|
-              = u.name
+            - g.users.each do |u|
+              .user-list
+                = u.name
   .field
     - if logged_in_recorder?
       = link_to "記録を終了する", logout_recorder_path, method: :delete

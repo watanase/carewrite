@@ -18,7 +18,6 @@ class CompaniesController < ApplicationController
 
   def show
     @users = User.where(company_id: current_company.id)
-    @group = Group.find(params[:id])
   end
 
   private
