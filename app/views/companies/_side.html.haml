@@ -9,13 +9,14 @@
     = sidebar_link_item "グループを作成", new_company_group_path(@company)
   .field
     - if @company.groups
-      %div
-        - @company.groups.each do |g|
-          .group-list
-            = sidebar_link_item "#{g.name}", company_group_path(@company, g)
+      - @company.groups.each_with_index do |g, i|
+        .group-list
+          %label{for: "Panel#{i}"}= g.name
+          %input.on-off{id: "Panel#{i}", type: "checkbox"}
+          .user-list
             - g.users.each do |u|
-              .user-list
-                = u.name
+              .user-name
+                = link_to "#{u.name}", user_path(u)
   .field
     - if logged_in_recorder?
       = link_to "記録を終了する", logout_recorder_path, method: :delete

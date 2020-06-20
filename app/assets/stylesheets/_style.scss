@@ -30,7 +30,7 @@
       .form{
         text-align: center;
         min-height: 300px;
-        width: max-content;
+        width: min-content;
         margin: 0 auto;
         padding: 12px;
         background-color: #f7f7f7;
@@ -139,17 +139,35 @@
             border-bottom: solid 1px gainsboro;
           }
           .company-list{
-            a{
-              color: black;
-              font-size: 17px;
-              display: inline-block;
-              padding: 10px;
-              width: 100%;
+            .field{
+              a, label{
+                color: black;
+                font-size: 17px;
+                display: inline-block;
+                padding: 10px;
+                width: 100%;
+              }
+              .group-list{
+                input[type="checkbox"].on-off{
+                  display: none;
+                }
+                input[type="checkbox"].on-off + .user-list{
+                  height: 0;
+                  overflow: hidden;
+                }
+                input[type="checkbox"].on-off:checked + .user-list{
+                  height: auto;
+                  .user-name{
+                    padding: 10px 30px;
+                    height: 20px;
+                  }
+                }
+              }
+              .group-list.blue{
+                background-color: $blue;
+              }
             }
             .field:hover{
-            }
-            .input-area{
-              display: block;
             }
           }
         }
