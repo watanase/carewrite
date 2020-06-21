@@ -21,6 +21,7 @@ module SessionsHelper
   # 現在のcompanyをログアウトする
   def log_out_company
     session.delete(:company_id)
+    session.delete(:recorder_id)
     @current_company = nil
   end
 

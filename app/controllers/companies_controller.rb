@@ -7,7 +7,7 @@ class CompaniesController < ApplicationController
 
   def create
     # binding.pry
-    @company = Company.new(company_params)
+    @company = Company.create(company_params)
     if @company.save
       log_in_company @company
       redirect_to company_path(@company)
@@ -17,8 +17,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @group = Group.new
-    @users = User.all
+    @users = User.where(company_id: current_company.id).order(params[:sort])
   end
 
   private

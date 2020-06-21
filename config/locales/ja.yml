@@ -9,12 +9,12 @@ ja:
   activerecord:
     attributes:
       company:
-        name: 名前
+        name: 企業名
         password: パスワード
         password_confirmation: パスワード（確認用）
         encrypted_password: 暗号化パスワード
       recorder:
-        name: 名前
+        name: 記録者名
         password: パスワード
         password_confirmation: パスワード（確認用）
         encrypted_password: 暗号化パスワード
@@ -22,8 +22,20 @@ ja:
         name: 名前
         content: 記録
         image: 画像
+      group:
+        name: グループ名
       user:
-        name: 名前
+        name: 利用者名
+        hurigana: フリガナ
+        group_id: グループ
+        image: 写真
+        gender: 性別
+        birthday: 生年月日
+        zipcode: 郵便番号
+        street_address: 住所
+        care_required: 介護度
+        status: 入居状況
+        occupancy: 入居日
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -46,8 +58,6 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-      group:
-        name: 名前
     models:
       user: ユーザ
     errors:
@@ -57,6 +67,8 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
   date:
+    formats:
+      default: "%JF"
     abbr_day_names:
     - 日
     - 月

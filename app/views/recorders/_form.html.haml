@@ -1,9 +1,13 @@
-= form_with(model: @recorder, local: true) do |f|
-  = f.label :name
-  = f.text_field :name, required: ""
+= form_with(model: [@company, @recorder], local: true) do |f|
+  .field
+    = f.label :name
+    = f.text_field :name, placeholder: '記録者の名前を入力してください', required: "", class: 'input-area'
   - if action_name == 'new'
-    = f.label :password
-    = f.password_field :password
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
-  = f.submit
+    .field
+      = f.label :password
+      = f.password_field :password, placeholder: 'パスワードを設定してください', required: "", class: 'input-area'
+    .field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: 'input-area'
+  .field.submit
+    = f.submit '記録者を登録', class: 'submit-btn'

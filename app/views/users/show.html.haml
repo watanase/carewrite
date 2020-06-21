@@ -1,66 +1,76 @@
-- if logged_in_company?
-  %div
-    = link_to '登録情報を編集する', edit_user_path(@user)
-= link_to '記録を見る', user_posts_path(@user)
-- if logged_in_recorder?
-  = link_to '記録を書く', new_user_post_path(@user)
-%h3 入居者情報
-%div= @user.hurigana
-%div= @user.name
-%div= @user.image
-%div= @user.gender
-%div= @user.birthday
-%div= @user.zipcode
-%div= @user.street_address
-%div= @user.care_required
-%div= @user.status
-%div
-  連絡先
-  - if @families
-    -@families.each_with_index do |f, i|
-      %h4 連絡先 #{i+1}
-      %div
-        = f.hurigana
-      %div
-        = f.name
-      %div
-        = f.phone
-      %div
-        = f.zipcode
-      %div
-        = f.street_address
-      %div
-        = f.relationship
-      %div
-        = f.information
-- if logged_in_company?
-  %h5
-    連絡先を追加する
-  %div
-  = form_with model:[@user, @family], local: true do |f|
-    .form
-      = f.label :name
-      = f.text_field :name
-    .form
-      = f.label :hurigana
-      = f.text_field :hurigana
-    .form
-      = f.label :phone
-      = f.text_field :phone
-    .form
-      = f.label :zipcode
-      = f.text_field :zipcode, onkeyup: "AjaxZip3.zip2addr(this,'','addr10','addr10')"
-    .form
-      = f.label :street_address
-      = f.text_field :street_address, name: "addr10"
-    .form
-      = f.label :relationship
-      = f.text_field :relationship
-    .form
-      = f.label :information
-      = f.text_field :information
-    .form
-      = f.submit
-- if logged_in_user?
-  家族としてログイン中
+.wrapper
+  .container
+    .content
+      .company-home
+        .left
+          = render 'companies/side'
+        .right
+          - if logged_in_company?
+            %div
+              = link_to '登録情報を編集する', edit_user_path(@user)
+          = link_to '記録を見る', user_posts_path(@user)
+          - if logged_in_recorder?
+            = link_to '記録を書く', new_user_post_path(@user)
+          .user-page
+            %h1 入居者情報
+            .user-hurigana
+              = @user.hurigana
+            .user-name
+              = @user.name
+            %div= @user.image
+            %div= @user.gender
+            %div= "#{@user.birthday.year}""#{wareki(@user.birthday)}"
+            %div= @user.zipcode
+            %div= @user.street_address
+            %div= @user.care_required
+            %div= @user.status
+            %div
+              連絡先
+              - if @families
+                -@families.each_with_index do |f, i|
+                  %h4 連絡先 #{i+1}
+                  %div
+                    = f.hurigana
+                  %div
+                    = f.name
+                  %div
+                    = f.phone
+                  %div
+                    = f.zipcode
+                  %div
+                    = f.street_address
+                  %div
+                    = f.relationship
+                  %div
+                    = f.information
+          - if logged_in_company?
+            %h5
+              連絡先を追加する
+            %div
+            = form_with model:[@user, @family], local: true do |f|
+              .form
+                = f.label :name
+                = f.text_field :name
+              .form
+                = f.label :hurigana
+                = f.text_field :hurigana
+              .form
+                = f.label :phone
+                = f.text_field :phone
+              .form
+                = f.label :zipcode
+                = f.text_field :zipcode, onkeyup: "AjaxZip3.zip2addr(this,'','addr10','addr10')"
+              .form
+                = f.label :street_address
+                = f.text_field :street_address, name: "addr10"
+              .form
+                = f.label :relationship
+                = f.text_field :relationship
+              .form
+                = f.label :information
+                = f.text_field :information
+              .form
+                = f.submit
+          - if logged_in_user?
+            家族としてログイン中
 

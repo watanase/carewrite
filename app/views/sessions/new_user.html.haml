@@ -1,10 +1,14 @@
 .wrapper
   .container
-    .login_form
-      = form_with url: login_user_path, local: true do |f|
-        .field
-          = f.text_field :name, placeholder: '利用者様のお名前'
-        .field
-          = f.password_field :password, placeholder: 'パスワード'
-        .field
-          = f.submit 'ログイン'
+    .content
+      %h1 ログイン
+      .form
+        = form_with model: @user, local: true do |f|
+          .field
+            = f.label 'お名前'
+            = f.text_field :name, placeholder: '利用者の名前を入力してください', class: 'input-area'
+          .field
+            = f.label 'パスワード'
+            = f.password_field :password, placeholder: 'パスワードを入力してください', class: 'input-area'
+          .field.submit
+            = f.submit 'ログインする', class: 'submit-btn'

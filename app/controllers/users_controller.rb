@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
   before_action :company_check, only: %i[new create edit update]
   before_action :set_user, only: %i[show edit update]
-  before_action :select_company, only: %i[new create edit update]
+  before_action :select_company, only: %i[new create edit update show]
   before_action :move_to_index, only: %i[show]
 
   def new
     @user = User.new
+    @group = Group.new
+    @users = User.where(company_id: current_company.id)
   end
 
   def create
     # binding.pry
-    @user = User.new(user_params)
+    @user = User.create(user_params)
     if @user.save
       redirect_to user_path(@user)
     else
@@ -24,6 +26,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @users = User.where(company_id: current_company.id)
   end
 
   def update
@@ -54,6 +57,7 @@ class UsersController < ApplicationController
       :image,
       :care_required,
       :status,
+      :occupancy,
       :password,
       :password_confirmation,
       :group_id,

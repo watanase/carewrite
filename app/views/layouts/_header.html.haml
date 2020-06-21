@@ -1,6 +1,6 @@
-.header
-  %span.home
-    = link_to "Carewrite", root_path
-  %span.company
+%header
+  .home
+    = link_to "Carewrite", root_path, class: 'header-btn blue'
+  .company
   - if logged_in_company?
-    = link_to "Company", company_path(current_company)
+    = link_to "Company", company_path(current_company), class: 'header-btn'

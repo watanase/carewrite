@@ -1,3 +1,10 @@
-%div 記録者登録
-= render partial: 'form'
-
+.wrapper
+  .container
+    .content
+      .company-home
+        .left
+          = render 'companies/side'
+        .right
+          %h1 記録者を登録
+          .form
+            = render 'form'

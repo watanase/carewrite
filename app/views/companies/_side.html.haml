@@ -1,18 +1,25 @@
-= @company.name
-%div= link_to "利用者を登録", new_user_path
-%div= link_to "記録者を登録", new_recorder_path
-- if logged_in_recorder?
-  = link_to "記録を終了する", logout_recorder_path, method: :delete
-- else
-  = link_to "記録者としてログイン", login_recorder_path
-= form_with(model: [@company, @group], local: true) do |f|
-  = f.label :name
-  = f.text_field :name, placeholder: 'グループ名を入力'
-  = f.submit "グループを作成"
-
-%div= link_to "企業からログアウト", logout_company_path, method: :delete
-- if @company.groups
-  %div
-    - @company.groups.each do |g|
-      %div
-        = link_to "#{g.name}", company_group_path(@company, g)
+.company-name
+  = @company.name
+.company-list
+  .field
+    = sidebar_link_item "利用者を登録", new_user_path
+  .field
+    = sidebar_link_item "記録者を登録", new_company_recorder_path(@company)
+  .field
+    = sidebar_link_item "グループを作成", new_company_group_path(@company)
+  - if @company.groups
+    - @company.groups.each_with_index do |g, i|
+      .field.group-list
+        %label{for: "Panel#{i}"}= g.name
+        %input.on-off{id: "Panel#{i}", type: "checkbox"}
+        .user-list
+          - g.users.each do |u|
+            .user-name
+              = sidebar_link_item "#{u.name}", user_path(u)
+  .field
+    - if logged_in_recorder?
+      = link_to "記録を終了する", logout_recorder_path, method: :delete
+    - else
+      = sidebar_link_item "記録者としてログイン", login_recorder_path
+  .field
+    = link_to "企業からログアウト", logout_company_path, method: :delete

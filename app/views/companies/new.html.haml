@@ -1,9 +1,6 @@
-%div 企業を登録
-= form_with(model: @company, local: true) do |f|
-  = f.label :name
-  = f.text_field :name, required: ""
-  = f.label :password
-  = f.password_field :password, required: ""
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation, required: ""
-  = f.submit
+.wrapper
+  .container
+    .content
+      %h1 企業を登録
+      .form
+        = render 'form'

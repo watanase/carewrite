@@ -1,7 +1,18 @@
-= render 'login'
-= form_with url: login_recorder_path, local: true do |f|
-  = f.label :name
-  = f.text_field :name
-  = f.label :password
-  = f.password_field :password
-  = f.submit '記録者としてログイン'
+.wrapper
+  .container
+    .content
+      .company-home
+        .left
+          = render 'companies/side'
+        .right
+          %h1 ログイン
+          .form
+            = form_with model: @recorder, local: true do |f|
+              .field
+                = f.label '記録者名'
+                = f.text_field :name, placeholder: '記録者の名前を入力してください', class: 'input-area'
+              .field
+                = f.label 'パスワード'
+                = f.password_field :password, placeholder: 'パスワードを入力してください', class: 'input-area'
+              .field.submit
+                = f.submit '記録者としてログインする', class: 'submit-btn'
