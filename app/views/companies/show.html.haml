@@ -5,10 +5,29 @@
         .left
           = render 'side'
         .right
-          利用者一覧
-          - @users.each do |u|
-            %div
-              = link_to  user_path(u) do
-                = u.name
-                - if u.group
-                  = u.group.name
+          %h1 利用者一覧
+          .user-list
+            %table
+              %thead
+                %tr
+                  - def sortTh(a,contName)
+                    - if request.fullpath.include?('name desc')
+                      - link_to a, sort: contName
+                    - else
+                      - link_to a, sort: "#{contName} name desc"
+                  %th グループ
+                  %th= sortTh('名前', 'name').to_s
+                  %th 生年月日
+                  %th 性別
+                  %th 介護度
+                  %th 入居日
+              %tbody
+                - @users.each do |u|
+                  %tr
+                    - if u.group
+                      %td= u.group.name
+                    %td= link_to "#{u.name}",  user_path(u)
+                    %td= "#{u.birthday.year}年""#{wareki(u.birthday)}"
+                    %td= u.gender
+                    %td= u.care_required
+                    %td= "#{u.occupancy.year}年""#{wareki(u.occupancy)}"

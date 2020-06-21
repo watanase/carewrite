@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string          :image
       t.integer         :care_required
       t.integer         :status
+      t.date            :occupancy
 
       t.timestamps
     end

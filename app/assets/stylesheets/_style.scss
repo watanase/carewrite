@@ -29,8 +29,8 @@
       // ログイン、登録ページ
       .form{
         text-align: center;
-        min-height: 300px;
-        width: min-content;
+        min-height: 230px;
+        width: 650px;
         margin: 0 auto;
         padding: 12px;
         background-color: #f7f7f7;
@@ -50,7 +50,7 @@
             select, .input-area{
               padding: 3px 0;
               text-align: center;
-              width: 100%;
+              width: 60%;
               height: 36px;
               font-size: 15px;
               border: 1px solid #ccc;
@@ -76,8 +76,12 @@
             display: flex;
             justify-content: space-between;
             min-width: 35vw;
+            align-items: baseline;
             .user-input{
-              max-width: 60%;
+              max-width: 230px;
+            }
+            .address-area{
+              max-width: 330px;
             }
             .select-input{
               max-width: 30%;
@@ -86,6 +90,19 @@
             select{
               width: 18%;
               padding-left: 6px;
+            }
+            .date-area{
+              width: 300px;
+              text-align: right;
+              select{
+                margin: 0 5px;
+              }
+              #user_birthday_1i, #user_occupancy_1i{
+                width: 75px;
+              }
+              #user_birthday_2i, #user_birthday_3i, #user_occupancy_2i, #user_occupancy_3i{
+                width: 55px;
+              }
             }
             .select-image{
               position: relative;
@@ -139,40 +156,66 @@
             border-bottom: solid 1px gainsboro;
           }
           .company-list{
-            .field{
-              a, label{
-                color: black;
-                font-size: 17px;
-                display: inline-block;
-                padding: 10px;
-                width: 100%;
+            a, label{
+              color: black;
+              font-size: 17px;
+              display: inline-block;
+              padding: 10px;
+              width: 100%;
+            }
+            .group-list{
+              padding-left: 40px;
+              input[type="checkbox"].on-off{
+                display: none;
               }
-              .group-list{
-                input[type="checkbox"].on-off{
-                  display: none;
-                }
-                input[type="checkbox"].on-off + .user-list{
-                  height: 0;
-                  overflow: hidden;
-                }
-                input[type="checkbox"].on-off:checked + .user-list{
-                  height: auto;
-                  .user-name{
-                    padding: 10px 30px;
-                    height: 20px;
-                  }
-                }
+              input[type="checkbox"].on-off + .user-list{
+                height: 0;
+                overflow: hidden;
               }
-              .group-list.blue{
-                background-color: $blue;
+              input[type="checkbox"].on-off:checked + .user-list{
+                height: auto;
+                .user-name{
+                  padding-left: 30px;
+                }
+                .user-name:hover{
+                  background-color: lightcyan;
+                }
               }
             }
             .field:hover{
+              background-color: lightblue;
             }
           }
         }
         .right{
           width: calc(100% - 260px);
+          .user-page{
+            padding: 20px;
+            h1{
+              text-align: center;
+              margin: 30px;
+              font-size: 30px;
+              color: $blue;
+
+            }
+            .user-hurigana{
+              font-size: 16px;
+            }
+            .user-name{
+              font-size: 20px;
+            }
+          }
+          .user-list{
+            width: 75%;
+            margin: 0 auto;
+            table{
+              th, td{
+                border: 1px solid #a0c8cf;
+                padding: .75rem;
+                text-align: center;
+              }
+            }
+          }
         }
       }
     }

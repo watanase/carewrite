@@ -57,6 +57,7 @@ class UsersController < ApplicationController
       :image,
       :care_required,
       :status,
+      :occupancy,
       :password,
       :password_confirmation,
       :group_id,

@@ -30,11 +30,12 @@ ja:
         group_id: グループ
         image: 写真
         gender: 性別
-        birthday: 誕生日
+        birthday: 生年月日
         zipcode: 郵便番号
         street_address: 住所
         care_required: 介護度
         status: 入居状況
+        occupancy: 入居日
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -66,6 +67,8 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
   date:
+    formats:
+      default: "%JF"
     abbr_day_names:
     - 日
     - 月

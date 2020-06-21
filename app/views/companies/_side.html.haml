@@ -7,16 +7,15 @@
     = sidebar_link_item "記録者を登録", new_company_recorder_path(@company)
   .field
     = sidebar_link_item "グループを作成", new_company_group_path(@company)
-  .field
-    - if @company.groups
-      - @company.groups.each_with_index do |g, i|
-        .group-list
-          %label{for: "Panel#{i}"}= g.name
-          %input.on-off{id: "Panel#{i}", type: "checkbox"}
-          .user-list
-            - g.users.each do |u|
-              .user-name
-                = link_to "#{u.name}", user_path(u)
+  - if @company.groups
+    - @company.groups.each_with_index do |g, i|
+      .field.group-list
+        %label{for: "Panel#{i}"}= g.name
+        %input.on-off{id: "Panel#{i}", type: "checkbox"}
+        .user-list
+          - g.users.each do |u|
+            .user-name
+              = sidebar_link_item "#{u.name}", user_path(u)
   .field
     - if logged_in_recorder?
       = link_to "記録を終了する", logout_recorder_path, method: :delete

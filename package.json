@@ -1,5 +1,7 @@
 {
   "name": "carewrite",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "wareki": "^1.0.0"
+  }
 }

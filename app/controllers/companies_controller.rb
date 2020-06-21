@@ -17,7 +17,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @users = User.where(company_id: current_company.id)
+    @users = User.where(company_id: current_company.id).order(params[:sort])
   end
 
   private
