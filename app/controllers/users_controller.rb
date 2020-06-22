@@ -43,7 +43,9 @@ class UsersController < ApplicationController
   end
 
   def select_company
-    @company = Company.find_by(id: current_company.id)
+    if logged_in_company?
+      @company = Company.find_by(id: current_company.id)
+    end
   end
 
   def user_params

@@ -3,6 +3,7 @@
     .content
       .company-home
         .left
+        -if logged_in_company?
           = render 'companies/side'
         .right
           - if logged_in_company?
@@ -43,34 +44,38 @@
                     = f.relationship
                   %div
                     = f.information
-          - if logged_in_company?
-            %h5
-              連絡先を追加する
-            %div
-            = form_with model:[@user, @family], local: true do |f|
-              .form
-                = f.label :name
-                = f.text_field :name
-              .form
-                = f.label :hurigana
-                = f.text_field :hurigana
-              .form
-                = f.label :phone
-                = f.text_field :phone
-              .form
-                = f.label :zipcode
-                = f.text_field :zipcode, onkeyup: "AjaxZip3.zip2addr(this,'','addr10','addr10')"
-              .form
-                = f.label :street_address
-                = f.text_field :street_address, name: "addr10"
-              .form
-                = f.label :relationship
-                = f.text_field :relationship
-              .form
-                = f.label :information
-                = f.text_field :information
-              .form
-                = f.submit
+            .contact
+              - if logged_in_company?
+                %label.contact-plus{for: 'contact'} 連絡先を追加する ➕
+                %input.open{id: 'contact', type: 'checkbox'}
+                .contact-form
+                  %h1 連絡先を入力
+                  .form
+                    = form_with model:[@user, @family], local: true do |f|
+                      .field.user-field
+                        = f.label :name
+                        = f.text_field :name, placeholder: '連絡者名を入力してください', class: 'input-area user-input'
+                      .field.user-field
+                        = f.label :hurigana
+                        = f.text_field :hurigana, placeholder: 'フリガナを入力してください', class: 'input-area user-input'
+                      .field.user-field
+                        = f.label :phone
+                        = f.text_field :phone, placeholder: '電話番号を入力してください', class: 'input-area user-input'
+                      .field.user-field
+                        = f.label :zipcode
+                        = f.text_field :zipcode, placeholder: '郵便番号を入力してください', onkeyup: "AjaxZip3.zip2addr(this,'','addr10','addr10')", class: 'input-area user-input'
+                      .field.user-field
+                        = f.label :street_address
+                        = f.text_field :street_address, placeholder: '住所を入力してください', name: "addr10", class: 'input-area user-input'
+                      .field.user-field
+                        = f.label :relationship
+                        = f.text_field :relationship, placeholder: '続柄を入力してください', class: 'input-area user-input'
+                      .field.user-field
+                        = f.label :information
+                        = f.text_field :information, placeholder: 'その他の情報を入力', class: 'input-area user-input'
+                      .field.user-field
+                        = f.submit class: 'submit-btn'
+
           - if logged_in_user?
             家族としてログイン中
 

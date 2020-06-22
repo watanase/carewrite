@@ -10,17 +10,13 @@
             %table
               %thead
                 %tr
-                  - def sortTh(a,contName)
-                    - if request.fullpath.include?('name desc')
-                      - link_to a, sort: contName
-                    - else
-                      - link_to a, sort: "#{contName} name desc"
-                  %th グループ
-                  %th= sortTh('名前', 'name').to_s
-                  %th 生年月日
-                  %th 性別
-                  %th 介護度
-                  %th 入居日
+                  %th= sort_link(@q, :group_id, 'グループ')
+                  %th= sort_link(@q, :hurigana, '名前')
+                  %th= sort_link(@q, :birthday, '生年月日')
+                  %th= sort_link(@q, :birthday, '年齢')
+                  %th= sort_link(@q, :gender, '性別')
+                  %th= sort_link(@q, :care_required, '介護度')
+                  %th= sort_link(@q, :occupancy, '入居日')
               %tbody
                 - @users.each do |u|
                   %tr
@@ -28,6 +24,7 @@
                       %td= u.group.name
                     %td= link_to "#{u.name}",  user_path(u)
                     %td= "#{u.birthday.year}年""#{wareki(u.birthday)}"
+                    %td= u.calcAge(u.birthday)
                     %td= u.gender
                     %td= u.care_required
                     %td= "#{u.occupancy.year}年""#{wareki(u.occupancy)}"
