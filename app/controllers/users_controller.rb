@@ -60,6 +60,7 @@ class UsersController < ApplicationController
       :care_required,
       :status,
       :occupancy,
+      :room_number,
       :password,
       :password_confirmation,
       :group_id,

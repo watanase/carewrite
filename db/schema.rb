@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_184253) do
     t.integer "care_required"
     t.integer "status"
     t.date "occupancy"
+    t.integer "room_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "group_id"

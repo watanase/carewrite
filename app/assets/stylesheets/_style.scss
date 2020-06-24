@@ -162,24 +162,36 @@
               display: inline-block;
               padding: 10px;
               width: 100%;
+              transition: all 0.5s;
             }
             .group-list{
               padding-left: 40px;
-              input[type="checkbox"].on-off{
+              label:before{
+                content: '\f054';
+                font-family: 'Font Awesome 5 Free';
+                padding-right: 8px;
+                font-weight: 900;
+                color: $blue;
+              }
+              .on-off{
                 display: none;
               }
-              input[type="checkbox"].on-off + .user-list{
+              .user-list{
                 height: 0;
                 overflow: hidden;
               }
-              input[type="checkbox"].on-off:checked + .user-list{
+              .on-off:checked + label + .user-list{
                 height: auto;
                 .user-name{
                   padding-left: 30px;
                 }
                 .user-name:hover{
-                  background-color: lightcyan;
+                  background-color: lightblue;
                 }
+              }
+              .on-off:checked + label:before{
+                content: '\f078';
+                color: $blue;
               }
             }
             .field:hover{

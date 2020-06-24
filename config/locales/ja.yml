@@ -36,6 +36,7 @@ ja:
         care_required: 介護度
         status: 入居状況
         occupancy: 入居日
+        room_number: 部屋番号
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻

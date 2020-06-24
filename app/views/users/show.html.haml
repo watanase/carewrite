@@ -3,8 +3,8 @@
     .content
       .company-home
         .left
-        -if logged_in_company?
-          = render 'companies/side'
+          -if logged_in_company?
+            = render 'companies/side'
         .right
           - if logged_in_company?
             %div
