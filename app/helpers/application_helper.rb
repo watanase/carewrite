@@ -8,7 +8,7 @@ module ApplicationHelper
                 'T' => '大正',
                 'S' => '昭和',
                 'H' => '平成')
-    sprintf(" (%s%d年) %d月 %d日", gengou, year.to_i, mon.to_i, day.to_i)
+    sprintf(" ( %s%d年 ) %d月 %d日", gengou, year.to_i, mon.to_i, day.to_i)
   end
 
   def sidebar_link_item(name, path)

@@ -6,48 +6,94 @@
           -if logged_in_company?
             = render 'companies/side'
         .right
-          - if logged_in_company?
-            %div
-              = link_to '登録情報を編集する', edit_user_path(@user)
           = link_to '記録を見る', user_posts_path(@user)
+          - if logged_in_company?
+            = link_to '登録情報を編集する', edit_user_path(@user)
+            - unless @user.status == '退去済み'
+              = link_to '退去済みに移動する', move_out_user_path(@user)
           - if logged_in_recorder?
             = link_to '記録を書く', new_user_post_path(@user)
           .user-page
             %h1 入居者情報
-            .user-hurigana
-              = @user.hurigana
-            .user-name
-              = @user.name
-            %div= @user.image
-            %div= @user.gender
-            %div= "#{@user.birthday.year}""#{wareki(@user.birthday)}"
-            %div= @user.zipcode
-            %div= @user.street_address
-            %div= @user.care_required
-            %div= @user.status
-            %div
-              連絡先
+            .user-field
+              %h2 利用者
+              %table
+                %tr
+                  %th 氏名
+                  %td
+                    .user-hurigana
+                      = @user.hurigana
+                    .user-name
+                      = @user.name
+                %tr
+                  %th 生年月日
+                  %td
+                    = "#{@user.birthday.year}""#{wareki(@user.birthday)}"" / #{@user.calcAge(@user.birthday)}歳"
+                %tr
+                  %th 性別
+                  %td
+                    = @user.gender
+                %tr
+                  %th 部屋番号
+                  %td
+                    = @user.room_number
+                %tr
+                  %th 住所
+                  %td
+                    .user-zipcode
+                      = @user.zipcode
+                    .user-address
+                      = @user.street_address
+                %tr
+                  %th 介護度
+                  %td
+                    = @user.care_required
+                %tr
+                  %th 入居状況
+                  %td
+                    = @user.status
+                %tr
+                  %th 入居日
+                  %td
+                    = @user.occupancy
+            .contact-field
+              %h2 連絡先
               - if @families
                 -@families.each_with_index do |f, i|
-                  %h4 連絡先 #{i+1}
-                  %div
-                    = f.hurigana
-                  %div
-                    = f.name
-                  %div
-                    = f.phone
-                  %div
-                    = f.zipcode
-                  %div
-                    = f.street_address
-                  %div
-                    = f.relationship
-                  %div
-                    = f.information
-            .contact
+                  %h3=  "連絡先 #{i+1}"
+                  %table
+                    %tr
+                      %th 氏名
+                      %td
+                        .user-hurigana
+                          = f.hurigana
+                        .user-name
+                          = f.name
+                    %tr
+                      %th 電話番号
+                      %td
+                        = f.phone
+                    %tr
+                      %th 住所
+                      %td
+                        .user-zipcode
+                          = f.zipcode
+                        .user-address
+                          = f.street_address
+                    %tr
+                      %th 利用者との関係
+                      %td
+                        = f.relationship
+                    %tr
+                      %th その他
+                      %td
+                        = f.information
+            .open-close
               - if logged_in_company?
-                %label.contact-plus{for: 'contact'} 連絡先を追加する ➕
-                %input.open{id: 'contact', type: 'checkbox'}
+                %label.div-plus{for: 'div'}
+                  連絡先を追加する
+                  %i.fas.fa-plus
+                %input.open{id: 'div', type: 'checkbox'}
                 .contact-form
                   %h1 連絡先を入力
                   .form
@@ -63,10 +109,10 @@
                         = f.text_field :phone, placeholder: '電話番号を入力してください', class: 'input-area user-input'
                       .field.user-field
                         = f.label :zipcode
-                        = f.text_field :zipcode, placeholder: '郵便番号を入力してください', onkeyup: "AjaxZip3.zip2addr(this,'','addr10','addr10')", class: 'input-area user-input'
+                        = f.text_field :zipcode, placeholder: '-を入れずに入力してください', class: 'input-area user-input'
                       .field.user-field
                         = f.label :street_address
-                        = f.text_field :street_address, placeholder: '住所を入力してください', name: "addr10", class: 'input-area user-input'
+                        = f.text_field :street_address, placeholder: '住所を入力してください', class: 'input-area user-input'
                       .field.user-field
                         = f.label :relationship
                         = f.text_field :relationship, placeholder: '続柄を入力してください', class: 'input-area user-input'
@@ -75,7 +121,5 @@
                         = f.text_field :information, placeholder: 'その他の情報を入力', class: 'input-area user-input'
                       .field.user-field
                         = f.submit class: 'submit-btn'
-
           - if logged_in_user?
             家族としてログイン中
-

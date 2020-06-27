@@ -208,10 +208,20 @@
               margin: 30px;
               font-size: 30px;
               color: $blue;
-
             }
-            .contact{
-              .contact-plus{
+            h2{
+              margin: 30px;
+              font-size: 25px;
+              color: $blue;
+            }
+            h3{
+              margin: 30px;
+              font-size: 18px;
+              color: $blue;
+            }
+            .open-close{
+              margin: 20px;
+              .div-plus{
                 display: inline-block;
                 padding: 10px;
                 background-color: $blue;
@@ -219,15 +229,43 @@
                 border-radius: 3px;
                 cursor: pointer;
               }
-              input[type="checkbox"].open{
+              .open{
                 display: none;
               }
-              input[type="checkbox"].open + div{
+              .open + div{
                 height: 0;
                 overflow: hidden;
               }
-              input[type="checkbox"].open:checked + div{
+              .open:checked + div{
                 height: auto;
+              }
+            }
+            .move-out{
+              margin: 30px 20px 0;
+            }
+            table{
+              margin-left: 50px;
+              tr{
+                border-width: 1px 0;
+                border-style: solid;
+                th, td{
+                  height: 57px;
+                  padding-left: 20px;
+
+                }
+                th{
+                  width: 150px;
+                  background-color: whitesmoke;
+                }
+                td{
+                  width: 500px;
+                  .user-name, .user-address{
+                    font-size: 18px;
+                  }
+                  .user-hurigana, .user-zipcode{
+                    font-size: 12px;
+                  }
+                }
               }
             }
           }
@@ -235,6 +273,7 @@
             width: 80%;
             margin: 0 auto;
             table{
+              margin: 0 auto;
               th, td{
                 border: 1px solid #a0c8cf;
                 padding: 8px;

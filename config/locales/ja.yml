@@ -65,7 +65,7 @@ ja:
         phone: 電話番号
         zipcode: 郵便番号
         street_address: 住所
-        relationship: 続柄
+        relationship: 利用者との関係
         information: その他の情報
     models:
       user: ユーザ

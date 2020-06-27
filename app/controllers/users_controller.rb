@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :company_check, only: %i[new create edit update]
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[show edit update move_out]
   before_action :select_company, only: %i[new create edit update show]
   before_action :move_to_index, only: %i[show]
 
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # binding.pry
     @family = Family.new
     @families = @user.families.all
   end
@@ -35,6 +36,11 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def move_out
+    @user.update_attributes(status: 2, group_id: nil)
+    redirect_to user_path(@user)
   end
 
   private
