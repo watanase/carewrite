@@ -3,11 +3,15 @@ class PostsController < ApplicationController
   before_action :set_post, only:[:edit, :update]
 
   def index
+    @company = Company.find(current_company.id)
+    @group = Group.new
     @posts = Post.all
   end
 
   def new
+    @company = Company.find(current_company.id)
     @post = Post.new
+    @group = Group.new
   end
 
   def create

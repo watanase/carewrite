@@ -2,6 +2,9 @@
   .field
     = f.label :name
     = f.text_field :name, placeholder: '記録者の名前を入力してください', required: "", class: 'input-area'
+  .field
+    = f.label :login_id
+    = f.text_field :login_id, placeholder: 'ログイン用のIDを設定してください', required: '', class: 'input-area'
   - if action_name == 'new'
     .field
       = f.label :password

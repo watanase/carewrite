@@ -18,6 +18,6 @@ class RecordersController < ApplicationController
 
   private
   def recorder_params
-    params.require(:recorder).permit(:name, :password, :password_confirmation).merge(company_id: current_company.id)
+    params.require(:recorder).permit(:name, :login_id, :password, :password_confirmation).merge(company_id: current_company.id)
   end
 end

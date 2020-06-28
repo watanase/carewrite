@@ -1,2 +1,10 @@
-%div 記録を書く
-= render partial: 'form'
+.wrapper
+  .container
+    .content
+      .company-home
+        .left
+          = render 'companies/side'
+        .right
+          %h1 記録者を書く
+          .form
+            = render 'form'

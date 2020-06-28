@@ -10,6 +10,9 @@ body{
     border-bottom: 1px solid gainsboro;
     padding: 10px;
     display: flex;
+    position: fixed;
+    min-width: 100vw;
+    background-color: $white;
     .header-btn{
       color: black;
       font-size: 20px;

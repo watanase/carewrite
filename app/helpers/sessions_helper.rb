@@ -26,9 +26,9 @@ module SessionsHelper
   end
 
   ## recorderメソッド
-  # 渡されたuserでログインする
+  # 渡されたrecorderでログインする
   def log_in_recorder(recorder)
-    session[:user_id] = user.id
+    session[:recorder_id] = recorder.id
   end
   # 現在ログイン中のrecorderを返す
   def current_recorder

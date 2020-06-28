@@ -15,11 +15,13 @@ ja:
         encrypted_password: 暗号化パスワード
       recorder:
         name: 記録者名
+        login_id: ログインID
         password: パスワード
         password_confirmation: パスワード（確認用）
         encrypted_password: 暗号化パスワード
       post:
-        name: 名前
+        datetime: 日付
+        focus: 焦点
         content: 記録
         image: 画像
       group:
@@ -36,7 +38,7 @@ ja:
         care_required: 介護度
         status: 入居状況
         occupancy: 入居日
-        room_number: 部屋番号
+        room_number: 居室番号
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻

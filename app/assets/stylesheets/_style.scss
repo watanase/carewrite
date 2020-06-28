@@ -1,4 +1,5 @@
 .wrapper{
+  padding-top: 50px;
   .container{
     .content{
       h1{
@@ -203,12 +204,12 @@
           width: calc(100% - 260px);
           .user-page{
             padding: 20px;
-            h1{
-              text-align: center;
-              margin: 30px;
-              font-size: 30px;
-              color: $blue;
-            }
+            // h1{
+            //   text-align: center;
+            //   margin: 30px;
+            //   font-size: 30px;
+            //   color: $blue;
+            // }
             h2{
               margin: 30px;
               font-size: 25px;
@@ -218,6 +219,24 @@
               margin: 30px;
               font-size: 18px;
               color: $blue;
+            }
+            .user-info{
+              display: flex;
+              .info-right{
+                .link-btn{
+                  margin: 40px;
+                  display: block;
+                  color: $white;
+                  background-color: $blue;
+                  padding: 7px 14px;
+                  border: 1px solid lavender;
+                  border-radius: 4px;
+                  // box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 0 1px rgba(0,0,0,0.15);
+                }
+                .link-btn:hover{
+                  opacity: 0.8;
+                }
+              }
             }
             .open-close{
               margin: 20px;
@@ -243,27 +262,28 @@
             .move-out{
               margin: 30px 20px 0;
             }
-            table{
-              margin-left: 50px;
-              tr{
-                border-width: 1px 0;
-                border-style: solid;
-                th, td{
-                  height: 57px;
-                  padding-left: 20px;
-
-                }
-                th{
-                  width: 150px;
-                  background-color: whitesmoke;
-                }
-                td{
-                  width: 500px;
-                  .user-name, .user-address{
-                    font-size: 18px;
+            .info-left{
+              table{
+                margin-left: 50px;
+                tr{
+                  border-width: 1px 0;
+                  border-style: solid;
+                  th, td{
+                    height: 57px;
+                    padding-left: 20px;
                   }
-                  .user-hurigana, .user-zipcode{
-                    font-size: 12px;
+                  th{
+                    width: 150px;
+                    background-color: whitesmoke;
+                  }
+                  td{
+                    width: 500px;
+                    .user-name, .user-address{
+                      font-size: 18px;
+                    }
+                    .user-hurigana, .user-zipcode{
+                      font-size: 12px;
+                    }
                   }
                 }
               }
