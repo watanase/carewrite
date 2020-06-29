@@ -21,7 +21,7 @@ ja:
         encrypted_password: 暗号化パスワード
       post:
         datetime: 日付
-        focus: 焦点
+        focus: フォーカス
         content: 記録
         image: 画像
       group:

@@ -1,11 +1,12 @@
 = form_with(model: [@company, @recorder], local: true) do |f|
+  = render "shared/error_messages", model: f.object
   .field
     = f.label :name
     = f.text_field :name, placeholder: '記録者の名前を入力してください', required: "", class: 'input-area'
   .field
     = f.label :login_id
     = f.text_field :login_id, placeholder: 'ログイン用のIDを設定してください', required: '', class: 'input-area'
-  - if action_name == 'new'
+  - if ["new", 'create'].include? action_name
     .field
       = f.label :password
       = f.password_field :password, placeholder: 'パスワードを設定してください', required: "", class: 'input-area'

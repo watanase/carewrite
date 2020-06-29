@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     if @post.save
-      redirect_to user_path(@user)
+      redirect_to user_posts_path(@user)
     else
       rednder :new
     end
@@ -27,11 +27,13 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @company = Company.find(current_company.id)
+    @group = Group.new
   end
 
   def update
     if @post.update(post_params)
-      redirect_to @user
+      redirect_to user_posts_path(@user)
     else
       render :edit
     end

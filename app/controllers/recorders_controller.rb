@@ -12,6 +12,7 @@ class RecordersController < ApplicationController
     if @recorder.save
       redirect_to company_path(current_company)
     else
+      @company = Company.find(current_company.id)
       render :new
     end
   end

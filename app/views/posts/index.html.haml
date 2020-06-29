@@ -5,12 +5,26 @@
         .left
           = render 'companies/side'
         .right
+          %h2 利用者名
+          = link_to "#{@user.name}", user_path(@user)
+          - if logged_in_recorder?
+            = link_to '記録を書く', new_user_post_path(@user), class: 'link-btn'
           %h1 記録一覧
-          .form
-            - @posts.each do |p|
-              .user_post
-                = l p.datetime, format: :short
-                = p.focus
-                = simple_format(p.content)
-                = p.recorder_id
-                = link_to '編集', edit_user_post_path(@user, p)
+          .user-page
+            .user-list
+              %table
+                %thead
+                  %tr
+                    %th 日付
+                    %th フォーカス
+                    %th 内容
+                    %th 記録者
+                    %th
+                %tbody
+                  - @posts.each do |p|
+                    %tr
+                      %td= l p.datetime, format: :short
+                      %td= p.focus
+                      %td= simple_format(p.content)
+                      %td= p.recorder.name
+                      %td= link_to '編集', edit_user_post_path(@user, p)

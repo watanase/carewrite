@@ -8,6 +8,11 @@
         font-size: 30px;
         color: $blue;
       }
+      h2{
+        margin: 30px;
+        font-size: 25px;
+        color: $blue;
+      }
       .main{
         display: flex;
         justify-content: space-evenly;
@@ -204,17 +209,6 @@
           width: calc(100% - 260px);
           .user-page{
             padding: 20px;
-            // h1{
-            //   text-align: center;
-            //   margin: 30px;
-            //   font-size: 30px;
-            //   color: $blue;
-            // }
-            h2{
-              margin: 30px;
-              font-size: 25px;
-              color: $blue;
-            }
             h3{
               margin: 30px;
               font-size: 18px;
@@ -294,11 +288,24 @@
             margin: 0 auto;
             table{
               margin: 0 auto;
+              th{
+                background-color: whitesmoke;
+              }
               th, td{
                 border: 1px solid #a0c8cf;
                 padding: 8px;
                 text-align: center;
+                word-break: keep-all;
+                p{
+                  text-align: left;
+                  word-break: break-all;
+                }
               }
+            }
+          }
+          .post-index{
+            .post-list{
+              display: flex;
             }
           }
         }
