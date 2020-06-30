@@ -7,7 +7,9 @@ class PostsController < ApplicationController
     @company = Company.find(current_company.id)
     @group = Group.new
     @posts = Post.all
-
+    @archives = Post.group("YEAR(datetime)", "MONTH(datetime)").count
+    @archives = @user.divide_monthly
+    # binding.pry
   end
 
   def new

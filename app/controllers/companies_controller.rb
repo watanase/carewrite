@@ -20,7 +20,6 @@ class CompaniesController < ApplicationController
     @q = User.where(company_id: current_company.id, status: [0, 1]).ransack(params[:q])
     @users = @q.result(distinct: true)
     @move_out_users = User.where(company_id: current_company.id, status: [2])
-    binding.pry
   end
 
   private

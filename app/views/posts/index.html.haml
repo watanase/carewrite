@@ -6,12 +6,13 @@
           = render 'companies/side'
         .right
           .nav-bar
-            -# = @arcib
-            -# - @archives.each do |yyyymm, count|
-            -#   = ymconv(yyyymm, count.to_s)
             %h2 利用者名
             .user-name
               = link_to "#{@user.name}", user_path(@user), class: 'link-btn'
+              -# - @archives.each do |a|
+              -#   = archive(a)
+              = @archives.each do |yyyymm, count|
+                = ymconv(yyyymm, count.to_s)
           - if logged_in_recorder?
             .post-write
               = link_to '記録を書く', new_user_post_path(@user), class: 'link-btn write'
