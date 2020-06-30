@@ -2,10 +2,12 @@ class PostsController < ApplicationController
   before_action :select_user
   before_action :set_post, only:[:edit, :update]
 
+
   def index
     @company = Company.find(current_company.id)
     @group = Group.new
     @posts = Post.all
+
   end
 
   def new
@@ -40,7 +42,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-
   end
 
   private
@@ -58,7 +59,4 @@ class PostsController < ApplicationController
     ).permit(:focus, :content, :datetime,
     ).merge(user_id: params[:user_id], recorder_id: current_recorder.id)
   end
-
-
-
 end

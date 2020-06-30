@@ -5,10 +5,16 @@
         .left
           = render 'companies/side'
         .right
-          %h2 利用者名
-          = link_to "#{@user.name}", user_path(@user)
+          .nav-bar
+            -# = @arcib
+            -# - @archives.each do |yyyymm, count|
+            -#   = ymconv(yyyymm, count.to_s)
+            %h2 利用者名
+            .user-name
+              = link_to "#{@user.name}", user_path(@user), class: 'link-btn'
           - if logged_in_recorder?
-            = link_to '記録を書く', new_user_post_path(@user), class: 'link-btn'
+            .post-write
+              = link_to '記録を書く', new_user_post_path(@user), class: 'link-btn write'
           %h1 記録一覧
           .user-page
             .user-list
