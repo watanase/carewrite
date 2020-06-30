@@ -16,9 +16,7 @@ class User < ApplicationRecord
     (Date.today.strftime('%Y%m%d').to_i - birthday.strftime('%Y%m%d').to_i) / 10000
   end
 
-  def divide_monthly
-    return self.posts.group("strftime('%Y%m', posts.created_at)")
-                                 .order(Arel.sql("strftime('%Y%m', posts.created_at) desc"))
-                                 .count
-end
+  def devide_monthly
+    self.posts.group_by {|post| post.datetime.strftime('%Y%m')}.map {|k, v| [k, v.size]}.sort.reverse
+  end
 end

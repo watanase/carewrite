@@ -7,8 +7,7 @@ class PostsController < ApplicationController
     @company = Company.find(current_company.id)
     @group = Group.new
     @posts = Post.all
-    @archives = Post.group("YEAR(datetime)", "MONTH(datetime)").count
-    @archives = @user.divide_monthly
+    @archives = @user.devide_monthly
     # binding.pry
   end
 
@@ -27,9 +26,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def edit
     @company = Company.find(current_company.id)
     @group = Group.new
@@ -44,6 +40,12 @@ class PostsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def archives
+    @yyyymm = params[:yyyymm]
+    @posts = @user.posts.group_by {|post| post.created_at.strftime('%Y%m')[@yyyymm] \
+        .sort_by! {|post| post[:datetime]}}.reverse
   end
 
   private

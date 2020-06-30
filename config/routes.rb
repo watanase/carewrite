@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :families, only:[:create]
-    resources :posts
+    resources :posts, except:[:show]
     member do
       get :move_out
     end
