@@ -8,7 +8,6 @@ class PostsController < ApplicationController
     @group = Group.new
     @posts = Post.all
     @archives = @user.devide_monthly
-    # binding.pry
   end
 
   def new
@@ -42,11 +41,6 @@ class PostsController < ApplicationController
   def destroy
   end
 
-  def archives
-    @yyyymm = params[:yyyymm]
-    @posts = @user.posts.group_by {|post| post.created_at.strftime('%Y%m')[@yyyymm] \
-        .sort_by! {|post| post[:datetime]}}.reverse
-  end
 
   private
 

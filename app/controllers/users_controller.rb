@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :company_check, only: %i[new create edit update]
-  before_action :set_user, only: %i[show edit update move_out]
+  before_action :set_user, only: %i[show edit update move_out, archives]
   before_action :select_company, only: %i[new create edit update show]
   before_action :move_to_index, only: %i[show]
 
@@ -41,6 +41,16 @@ class UsersController < ApplicationController
   def move_out
     @user.update_attributes(status: 2, group_id: nil)
     redirect_to user_path(@user)
+  end
+
+
+  def archives
+    @company = Company.find(current_company.id)
+    @group = Group.new
+    @archives = @user.devide_monthly
+    @yyyymm = params[:yyyymm]
+    @posts = @user.posts.group_by {|post| post.datetime.strftime('%Y%m')[@yyyymm] \
+      .sort_by! {|post| post[:datetime]}}.reverse
   end
 
   private
