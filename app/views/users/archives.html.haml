@@ -9,6 +9,8 @@
             %h2 利用者名
             .user-name
               = link_to "#{@user.name}", user_path(@user), class: 'link-btn'
+              - @archives.each do |yyyymm, count|
+                = link_to "#{ymconv(yyyymm, count.to_s)}", user_archive_path(@user, yyyymm)
           - if logged_in_recorder?
             .post-write
               = link_to '記録を書く', new_user_post_path(@user), class: 'link-btn write'
@@ -18,7 +20,7 @@
               %table
                 %thead
                   %tr
-                    %th 日付
+                    %th.date 日付
                     %th フォーカス
                     %th 内容
                     %th 記録者

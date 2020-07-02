@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
   ##recorderメソッド
   def new_recorder
-    @company = Company.find_by(params[:id])
+    @company = current_company
     @group = Group.new
   end
 

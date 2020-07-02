@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     @company = Company.find(current_company.id)
     @group = Group.new
-    @posts = Post.all
+    @posts = Post.where(user_id: @user).order(datetime: 'asc')
     @archives = @user.devide_monthly
   end
 

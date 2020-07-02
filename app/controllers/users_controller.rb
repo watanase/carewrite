@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :company_check, only: %i[new create edit update]
   before_action :set_user, only: %i[show edit update move_out, archives]
-  before_action :select_company, only: %i[new create edit update show]
+  before_action :select_company, only: %i[new create edit update show archives]
   before_action :move_to_index, only: %i[show]
 
   def new
@@ -45,12 +45,12 @@ class UsersController < ApplicationController
 
 
   def archives
-    @company = Company.find(current_company.id)
+    # @company = Company.find(current_company.id)
     @group = Group.new
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
-    @posts = @user.posts.group_by {|post| post.datetime.strftime('%Y%m')[@yyyymm] \
-      .sort_by! {|post| post[:datetime]}}.reverse
+    @archives = @user.devide_monthly
+    @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]]
   end
 
   private

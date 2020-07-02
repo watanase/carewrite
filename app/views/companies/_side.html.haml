@@ -1,5 +1,5 @@
 .company-name
-  = link_to "#{@company.name}", company_path(current_company), class: 'header-btn'
+  = link_to "#{current_company.name}", company_path(current_company), class: 'header-btn'
 .company-list
   .field
     = sidebar_link_item "利用者を登録", new_user_path
