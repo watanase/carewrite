@@ -45,11 +45,9 @@ class UsersController < ApplicationController
 
 
   def archives
-    # @company = Company.find(current_company.id)
     @group = Group.new
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
-    @archives = @user.devide_monthly
     @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]]
   end
 

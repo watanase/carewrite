@@ -4,7 +4,7 @@
     .content{
       h1{
         text-align: center;
-        margin: 30px;
+        margin:  10px 30px;
         font-size: 30px;
         color: $blue;
       }
@@ -225,7 +225,7 @@
           .user-page{
             padding: 20px;
             h3{
-              margin: 30px;
+              margin: 20px;
               font-size: 18px;
               color: $blue;
             }
@@ -243,6 +243,18 @@
                 }
                 .link-btn:hover{
                   opacity: 0.8;
+                }
+              }
+            }
+            .user-main{
+              display: flex;
+              .archives-list{
+                margin: 0 auto;
+                .archive-link{
+                  padding: 3px;
+                  a{
+                    font-size: 17px;
+                  }
                 }
               }
             }
@@ -298,7 +310,6 @@
             }
           }
           .user-list{
-            width: 80%;
             margin: 0 auto;
             table{
               margin: 0 auto;
@@ -318,6 +329,15 @@
               .date{
                 width: 120px;
               }
+              .content{
+                width: 500px;
+              }
+              .edit{
+                width: 50px;
+              }
+            }
+            .table-list{
+              width: 900px;
             }
           }
           .post-index{

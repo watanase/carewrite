@@ -4,9 +4,8 @@ class PostsController < ApplicationController
 
 
   def index
-    @company = Company.find(current_company.id)
     @group = Group.new
-    @posts = Post.where(user_id: @user).order(datetime: 'asc')
+    @posts = Post.where(user_id: @user)
     @archives = @user.devide_monthly
   end
 

@@ -126,8 +126,5 @@
                     - unless @user.status == '退去済み'
                       .move_user
                         = link_to '退去済みに移動する', move_out_user_path(@user), class: 'link-btn'
-                .write-recorde
-                  - if logged_in_recorder?
-                    = link_to '記録を書く', new_user_post_path(@user), class: 'link-btn'
               - if logged_in_user?
                 家族としてログイン中

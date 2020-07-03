@@ -4,11 +4,11 @@
   .field
     = sidebar_link_item "利用者を登録", new_user_path
   .field
-    = sidebar_link_item "記録者を登録", new_company_recorder_path(@company)
+    = sidebar_link_item "記録者を登録", new_company_recorder_path(current_company)
   .field
-    = sidebar_link_item "グループを作成", new_company_group_path(@company)
-  - if @company.groups
-    - @company.groups.each_with_index do |g, i|
+    = sidebar_link_item "グループを作成", new_company_group_path(current_company)
+  - if current_company.groups
+    - current_company.groups.each_with_index do |g, i|
       .group-list
         %input.on-off{id: "Panel#{i}", type: "checkbox"}
         %label.field{for: "Panel#{i}"}= g.name
