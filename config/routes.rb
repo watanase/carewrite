@@ -8,8 +8,14 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :families, only:[:create]
-    resources :posts
+    resources :posts, except:[:show]
+    member do
+      get :move_out
+    end
   end
+
+  get  '/users/:id/posts/:yyyymm', to: 'users#archives', as: :user_archive
+
 
   get    '/login_company',   to: 'sessions#new_company'
   post   '/login_company',   to: 'sessions#create_company'

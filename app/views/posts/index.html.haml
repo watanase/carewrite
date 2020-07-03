@@ -1,7 +1,1 @@
-%div
-  - @posts.each do |p|
-    .user_post
-      = l p.datetime, format: :short
-      = p.focus
-      = simple_format(p.content)
-      = link_to '編集', edit_user_post_path(@user, p)
+= render 'postlist'

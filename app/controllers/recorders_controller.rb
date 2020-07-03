@@ -12,12 +12,13 @@ class RecordersController < ApplicationController
     if @recorder.save
       redirect_to company_path(current_company)
     else
+      @company = Company.find(current_company.id)
       render :new
     end
   end
 
   private
   def recorder_params
-    params.require(:recorder).permit(:name, :password, :password_confirmation).merge(company_id: current_company.id)
+    params.require(:recorder).permit(:name, :login_id, :password, :password_confirmation).merge(company_id: current_company.id)
   end
 end

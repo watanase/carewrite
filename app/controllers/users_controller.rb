@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :company_check, only: %i[new create edit update]
-  before_action :set_user, only: %i[show edit update]
-  before_action :select_company, only: %i[new create edit update show]
+  before_action :set_user, only: %i[show edit update move_out, archives]
+  before_action :select_company, only: %i[new create edit update show archives]
   before_action :move_to_index, only: %i[show]
 
   def new
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # binding.pry
     @family = Family.new
     @families = @user.families.all
   end
@@ -37,13 +38,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def move_out
+    @user.update_attributes(status: 2, group_id: nil)
+    redirect_to user_path(@user)
+  end
+
+
+  def archives
+    @group = Group.new
+    @archives = @user.devide_monthly
+    @yyyymm = params[:yyyymm]
+    @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]]
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
   end
 
   def select_company
-    @company = Company.find_by(id: current_company.id)
+    if logged_in_company?
+      @company = Company.find_by(id: current_company.id)
+    end
   end
 
   def user_params
@@ -58,6 +74,7 @@ class UsersController < ApplicationController
       :care_required,
       :status,
       :occupancy,
+      :room_number,
       :password,
       :password_confirmation,
       :group_id,

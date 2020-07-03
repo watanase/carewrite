@@ -10,6 +10,9 @@
     = f.label :group_id
     = f.collection_select :group_id, @company.groups, :id, :name, prompt: "未選択", class: 'input-area select-input'
   .field.user-field
+    = f.label :room_number
+    = f.number_field :room_number, placeholder: '半角で入力してください', pattern: "^[0-9A-Za-z]+$", class: 'input-area user-input'
+  .field.user-field
     = f.label :image
     = f.label :image do
       .select-image
@@ -25,10 +28,10 @@
       = raw sprintf(f.date_select(:birthday, use_month_numbers: true,start_year: 1900, end_year: (Time.now.year - 50), default: Date.new(1900, 1, 1), date_separator: '%s'), '年 ', '月 ') + '日'
   .field.user-field
     = f.label :zipcode
-    = f.text_field :zipcode, placeholder: '郵便番号を入力してください', onkeyup: "AjaxZip3.zip2addr(this,'','addr11','addr11')", class: 'input-area user-input'
+    = f.text_field :zipcode, placeholder: '-を入れずに入力してください', class: 'input-area user-input'
   .field.user-field
     = f.label :street_address
-    = f.text_field :street_address, placeholder: '住所を入力してください', name: "addr11", class: 'input-area user-input, address-area'
+    = f.text_field :street_address, placeholder: '住所を入力してください', class: 'input-area user-input, address-area'
   .field.user-field
     = f.label :care_required
     = f.select :care_required, User.care_requireds.keys.to_a, {}, class: 'input-area select-input'
@@ -38,7 +41,7 @@
   .field.user-field
     = f.label :occupancy
     .date-area
-      = raw sprintf(f.date_select(:occupancy, use_month_numbers: true,start_year: 2020, end_year: (Time.now.year), default: Date.new(2020, 6, 1), date_separator: '%s'), '年 ', '月 ') + '日'
+      = raw sprintf(f.date_select(:occupancy, use_month_numbers: true,start_year: 1990, end_year: (Time.now.year), default: Date.new(1990, 1, 1), date_separator: '%s'), '年 ', '月 ') + '日'
   - if ["new", 'create'].include? action_name
     .field.user-field
       = f.label 'パスワード(※必須)'

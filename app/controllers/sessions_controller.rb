@@ -19,12 +19,12 @@ class SessionsController < ApplicationController
   end
   ##recorderメソッド
   def new_recorder
-    @company = Company.find_by(params[:id])
+    @company = current_company
     @group = Group.new
   end
 
   def create_recorder
-    @recorder = Recorder.find_by(name: params[:name])
+    @recorder = Recorder.find_by(login_id: params[:login_id])
     if @recorder && @recorder.authenticate(params[:password])
       session[:recorder_id] = @recorder.id
       redirect_to company_path(current_company)

@@ -17,7 +17,9 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @users = User.where(company_id: current_company.id).order(params[:sort])
+    @q = User.where(company_id: current_company.id, status: [0, 1]).ransack(params[:q])
+    @users = @q.result(distinct: true)
+    @move_out_users = User.where(company_id: current_company.id, status: [2])
   end
 
   private

@@ -13,6 +13,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer         :care_required
       t.integer         :status
       t.date            :occupancy
+      t.integer         :room_number
 
       t.timestamps
     end

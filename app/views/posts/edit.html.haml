@@ -1,2 +1,10 @@
-%div 記事を編集
-= render partial: 'form'
+.wrapper
+  .container
+    .content
+      .company-home
+        .left
+          = render 'companies/side'
+        .right
+          %h1 記録を編集
+          .form
+            = render 'form'
