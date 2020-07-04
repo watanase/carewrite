@@ -29,9 +29,10 @@
   .company-home{
     display: flex;
     .left{
-      width: 260px;
+      width: 230px;
       background-color: whitesmoke;
       min-height: 100vh;
+      padding-left: 16px;
       .channel.active {
         background: $blue;
         a{
@@ -53,7 +54,7 @@
           transition: all 0.5s;
         }
         .group-list{
-          padding-left: 40px;
+          padding-left: 20px;
           label:before{
             content: '\f054';
             font-family: 'Font Awesome 5 Free';
@@ -88,7 +89,7 @@
       }
     }
     .right{
-      width: calc(100% - 260px);
+      width: calc(100% - 230px);
       .nav-bar{
         display: flex;
         .user-name{
@@ -216,6 +217,9 @@
           }
           .edit{
             width: 50px;
+          }
+          .recorder{
+            width: 80px;
           }
         }
         .table-list{

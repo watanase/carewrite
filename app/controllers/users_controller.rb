@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    # binding.pry
     @user = User.create(user_params)
     if @user.save
       redirect_to user_path(@user)
@@ -21,7 +20,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # binding.pry
     @family = Family.new
     @families = @user.families.all
   end
@@ -42,11 +40,6 @@ class UsersController < ApplicationController
     @user.update_attributes(status: 2, group_id: nil)
     redirect_to user_path(@user)
   end
-
-  def family_see
-    @families = @user.families.all
-  end
-
 
   def archives
     @group = Group.new

@@ -5,9 +5,6 @@
       = link_to "#{@user.name}", user_path(@user), class: 'link-btn'
     - else
       = link_to "#{@user.name}", family_see_user_path(@user), class: 'link-btn'
-- if logged_in_recorder?
-  .post-write
-    = link_to '記録を書く', new_user_post_path(@user), class: 'link-btn write'
 - if ["archives"].include? action_name
   %h1= "#{ymconvn(@yyyymm)}の記録一覧"
 - else
@@ -18,15 +15,17 @@
       %table.table-list
         %thead
           %tr
+            %th 年
             %th.date 日付
             %th.date フォーカス
             %th.content 内容
-            %th.date 記録者
+            %th.recorder 記録者
             - if logged_in_recorder?
               %th.edit
         %tbody
           - @posts.each do |p|
             %tr
+              %td= l p.datetime, format: :year
               %td= l p.datetime, format: :short
               %td= p.focus
               %td= simple_format(p.content)

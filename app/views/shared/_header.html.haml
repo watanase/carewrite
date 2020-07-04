@@ -2,8 +2,32 @@
   .campany-name
     - if logged_in_company?
       = link_to "#{current_company.name}", company_path(current_company), class: 'header-btn'
-  .write-recorde
-    - if logged_in_recorder?
-      - if controller.controller_name == "users" || controller.controller_name == "posts"
-        - if ["show", 'index'].include? action_name
-          = link_to '記録を書く', new_user_post_path(@user), class: 'link-btn'
+  .header-menu
+    - unless ['new','index', 'new_recorder'].include? action_name
+      .watch-record
+        - if ['show', 'index', 'edit', 'archives'].include? action_name
+          = link_to user_posts_path(@user), class: 'menu-btn' do
+            %i.fas.fa-book
+            記録を見る
+        - else
+          = link_to family_see_user_posts_path(@user), class: 'menu-btn' do
+            %i.fas.fa-book
+            記録を見る
+      .write-record
+        - if logged_in_recorder?
+          - if controller.controller_name == "users" || controller.controller_name == "posts"
+            - if ["show", 'index'].include? action_name
+              = link_to new_user_post_path(@user), class: 'menu-btn' do
+                %i.far.fa-edit
+                記録を書く
+      .info
+        - if logged_in_company?
+          .edit-info
+            = link_to edit_user_path(@user), class: 'menu-btn' do
+              %i.far.fa-address-book
+              登録情報の編集
+          - unless @user.status == '退去済み'
+            .move_user
+              = link_to move_out_user_path(@user), class: 'menu-btn' do
+                %i.fas.fa-cog
+                利用者を退去済みに移動
