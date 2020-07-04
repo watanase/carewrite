@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :company_check, only: %i[new create edit update]
-  before_action :set_user, only: %i[show edit update move_out archives family_see]
+  before_action :set_user, only: %i[show edit update move_out archives family_see family_archives]
   before_action :select_company, only: %i[new create edit update show archives]
   before_action :move_to_index, only: %i[show family]
 
@@ -56,7 +56,6 @@ class UsersController < ApplicationController
   end
 
   def family_archives
-    @user = User.find(params[:id])
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
     @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]]

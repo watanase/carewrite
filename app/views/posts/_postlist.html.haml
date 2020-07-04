@@ -1,7 +1,7 @@
 .nav-bar
   %h2 利用者名
   .user-name
-    - if ['show'].include? action_name
+    - if ['index', 'archives'].include? action_name
       = link_to "#{@user.name}", user_path(@user), class: 'link-btn'
     - else
       = link_to "#{@user.name}", family_see_user_path(@user), class: 'link-btn'
@@ -37,8 +37,7 @@
       %h3 月別記録
       - @archives.each do |yyyymm, count|
         .archive-link
-          - if controller.controller_name == "posts"
-            - if ['archives'].include? action_name
-              = link_to "#{ymconv(yyyymm, count.to_s)}", user_archive_path(@user, yyyymm)
-            - else
-              = link_to "#{ymconv(yyyymm, count.to_s)}", user_family_archive_path(@user, yyyymm)
+          - if ['index', 'archives'].include? action_name
+            = link_to "#{ymconv(yyyymm, count.to_s)}", user_archive_path(@user, yyyymm)
+          - else
+            = link_to "#{ymconv(yyyymm, count.to_s)}", user_family_archive_path(@user, yyyymm)

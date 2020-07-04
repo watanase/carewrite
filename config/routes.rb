@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   get  '/users/:id/posts/:yyyymm', to: 'users#archives', as: :user_archive
-  get  '/users/:id/posts/:yyyymm', to: 'users#family_archive', as: :user_family_archive
+  get  '/users/:id/family/:yyyymm', to: 'users#family_archives', as: :user_family_archive
 
   get    '/login_company',   to: 'sessions#new_company'
   post   '/login_company',   to: 'sessions#create_company'
