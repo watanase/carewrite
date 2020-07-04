@@ -1,1 +1,8 @@
-= render 'posts/postlist'
+= render 'shared/header'
+.container
+  .company-home
+    .left
+      -if logged_in_company?
+        = render 'companies/side'
+    .right
+      = render 'posts/postlist'

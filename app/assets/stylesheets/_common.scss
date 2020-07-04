@@ -6,16 +6,17 @@ body{
   width: 100vw;
   padding: 0;
   margin: 0;
-  header{
+  header, .company-header{
     border-bottom: 1px solid gainsboro;
     padding: 10px;
     display: flex;
     position: fixed;
     min-width: 100vw;
     background-color: $white;
+    height: 60px;
     .header-btn{
       color: black;
-      font-size: 20px;
+      font-size: 25px;
       margin-left: 10px;
     }
     .blue{
@@ -25,5 +26,16 @@ body{
   a{
     text-decoration: none;
     color: black;
+  }
+  h1{
+    text-align: center;
+    margin: 30px;
+    font-size: 30px;
+    color: $blue;
+  }
+  h2{
+    margin: 30px;
+    font-size: 25px;
+    color: $blue;
   }
 }

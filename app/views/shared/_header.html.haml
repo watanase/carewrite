@@ -1,0 +1,9 @@
+.company-header
+  .campany-name
+    - if logged_in_company?
+      = link_to "#{current_company.name}", company_path(current_company), class: 'header-btn'
+  .write-recorde
+    - if logged_in_recorder?
+      - if controller.controller_name == "users" || controller.controller_name == "posts"
+        - if ["show", 'index'].include? action_name
+          = link_to '記録を書く', new_user_post_path(@user), class: 'link-btn'

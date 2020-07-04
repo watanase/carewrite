@@ -1,18 +1,17 @@
-.wrapper
-  .container
-    .content
-      .company-home
-        .left
-          = render 'companies/side'
-        .right
-          %h1 ログイン
-          .form
-            = form_with model: @recorder, local: true do |f|
-              .field
-                = f.label :login_id, 'ログインID'
-                = f.text_field :login_id, placeholder: 'ログインIDを入力してください', class: 'input-area'
-              .field
-                = f.label 'パスワード'
-                = f.password_field :password, placeholder: 'パスワードを入力してください', class: 'input-area'
-              .field.submit
-                = f.submit '記録者としてログインする', class: 'submit-btn'
+= render 'shared/header'
+.container
+  .company-home
+    .left
+      = render 'companies/side'
+    .right
+      %h1 ログイン
+      .form
+        = form_with model: @recorder, local: true do |f|
+          .field
+            = f.label :login_id, 'ログインID'
+            = f.text_field :login_id, placeholder: 'ログインIDを入力してください', class: 'input-area'
+          .field
+            = f.label 'パスワード'
+            = f.password_field :password, placeholder: 'パスワードを入力してください', class: 'input-area'
+          .field.submit
+            = f.submit '記録者としてログインする', class: 'submit-btn'

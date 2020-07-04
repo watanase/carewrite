@@ -1,10 +1,9 @@
-.wrapper
-  .container
-    .content
-      .company-home
-        .left
-          = render 'companies/side'
-        .right
-          %h1 記録を編集
-          .form
-            = render 'form'
+= render 'shared/header'
+.container
+  .company-home
+    .left
+      = render 'companies/side'
+    .right
+      %h1 記録を編集
+      .form
+        = render 'form'

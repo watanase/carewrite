@@ -40,6 +40,10 @@ class PostsController < ApplicationController
   def destroy
   end
 
+  def family_see
+    @posts = Post.where(user_id: @user)
+    @archives = @user.devide_monthly
+  end
 
   private
 
