@@ -48,6 +48,6 @@
       = f.password_field :password, required: "", placeholder: 'パスワードを設定してください', class: 'input-area user-input'
     .field.user-field
       = f.label '確認用パスワード(※必須)'
-      = f.password_field :password_confirmation, required: "", class: 'input-area user-input'
+      = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', required: "", class: 'input-area user-input'
   .field.user-field
     = f.submit class: 'submit-btn'

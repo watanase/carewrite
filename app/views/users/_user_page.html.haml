@@ -1,111 +1,109 @@
 .user-page
   %h1 入居者情報
   .user-info
-    .info-left
-      .user-field
-        %h2 利用者
-        %table
-          %tr
-            %th 氏名
-            %td
-              .user-hurigana
-                = @user.hurigana
-              .user-name
-                = @user.name
-          %tr
-            %th 生年月日
-            %td
-              = "#{@user.birthday.year}""#{wareki(@user.birthday)}"" / #{@user.calcAge(@user.birthday)}歳"
-          %tr
-            %th 性別
-            %td
-              = @user.gender
-          %tr
-            %th 居室番号
-            %td
-              = @user.room_number
-          %tr
-            %th 住所
-            %td
-              .user-zipcode
-                = @user.zipcode
-              .user-address
-                = @user.street_address
-          %tr
-            %th 介護度
-            %td
-              = @user.care_required
-          %tr
-            %th 入居状況
-            %td
-              = @user.status
-          %tr
-            %th 入居日
-            %td
-              = @user.occupancy
-      .contact-field
-        %h2 連絡先
-        - if @families
-          -@families.each_with_index do |f, i|
-            %h3=  "連絡先 #{i+1}"
-            %table
-              %tr
-                %th 氏名
-                %td
-                  .user-hurigana
-                    = f.hurigana
-                  .user-name
-                    = f.name
-              %tr
-                %th 電話番号
-                %td
-                  = f.phone
-              %tr
-                %th 住所
-                %td
-                  .user-zipcode
-                    = f.zipcode
-                  .user-address
-                    = f.street_address
-              %tr
-                %th 利用者との関係
-                %td
-                  = f.relationship
-              %tr
-                %th その他
-                %td
-                  = f.information
-      .open-close
-        - if logged_in_company?
-          %label.div-plus{for: 'div'}
-            連絡先を追加する
-            %i.fas.fa-plus
-          %input.open{id: 'div', type: 'checkbox'}
-          .contact-form
-            %h1 連絡先を入力
-            .form
-              = form_with model:[@user, @family], local: true do |f|
-                .field.user-field
-                  = f.label :name
-                  = f.text_field :name, placeholder: '連絡者名を入力してください', class: 'input-area user-input'
-                .field.user-field
-                  = f.label :hurigana
-                  = f.text_field :hurigana, placeholder: 'フリガナを入力してください', class: 'input-area user-input'
-                .field.user-field
-                  = f.label :phone
-                  = f.text_field :phone, placeholder: '電話番号を入力してください', class: 'input-area user-input'
-                .field.user-field
-                  = f.label :zipcode
-                  = f.text_field :zipcode, placeholder: '-を入れずに入力してください', class: 'input-area user-input'
-                .field.user-field
-                  = f.label :street_address
-                  = f.text_field :street_address, placeholder: '住所を入力してください', class: 'input-area user-input'
-                .field.user-field
-                  = f.label :relationship
-                  = f.text_field :relationship, placeholder: '続柄を入力してください', class: 'input-area user-input'
-                .field.user-field
-                  = f.label :information
-                  = f.text_field :information, placeholder: 'その他の情報を入力', class: 'input-area user-input'
-                .field.user-field
-                  = f.submit class: 'submit-btn'
-    .info-right
+    .user-field
+      %h2 利用者
+      %table
+        %tr
+          %th 氏名
+          %td
+            .user-hurigana
+              = @user.hurigana
+            .user-name
+              = @user.name
+        %tr
+          %th 生年月日
+          %td
+            = "#{@user.birthday.year}""#{wareki(@user.birthday)}"" / #{@user.calcAge(@user.birthday)}歳"
+        %tr
+          %th 性別
+          %td
+            = @user.gender
+        %tr
+          %th 居室番号
+          %td
+            = @user.room_number
+        %tr
+          %th 住所
+          %td
+            .user-zipcode
+              = @user.zipcode
+            .user-address
+              = @user.street_address
+        %tr
+          %th 介護度
+          %td
+            = @user.care_required
+        %tr
+          %th 入居状況
+          %td
+            = @user.status
+        %tr
+          %th 入居日
+          %td
+            = @user.occupancy
+    .contact-field
+      %h2 連絡先
+      - if @families
+        -@families.each_with_index do |f, i|
+          %h3=  "連絡先 #{i+1}"
+          %table
+            %tr
+              %th 氏名
+              %td
+                .user-hurigana
+                  = f.hurigana
+                .user-name
+                  = f.name
+            %tr
+              %th 電話番号
+              %td
+                = f.phone
+            %tr
+              %th 住所
+              %td
+                .user-zipcode
+                  = f.zipcode
+                .user-address
+                  = f.street_address
+            %tr
+              %th 利用者との関係
+              %td
+                = f.relationship
+            %tr
+              %th その他
+              %td
+                = f.information
+    .open-close
+      - if logged_in_company?
+        %label.div-plus{for: 'div'}
+          連絡先を追加する
+          %i.fas.fa-plus
+        %input.open{id: 'div', type: 'checkbox'}
+        .contact-form
+          %h1 連絡先を入力
+          .form
+            = form_with model:[@user, @family], local: true do |f|
+              .field.user-field
+                = f.label :name
+                = f.text_field :name, placeholder: '連絡者名を入力してください', class: 'input-area user-input'
+              .field.user-field
+                = f.label :hurigana
+                = f.text_field :hurigana, placeholder: 'フリガナを入力してください', class: 'input-area user-input'
+              .field.user-field
+                = f.label :phone
+                = f.text_field :phone, placeholder: '電話番号を入力してください', class: 'input-area user-input'
+              .field.user-field
+                = f.label :zipcode
+                = f.text_field :zipcode, placeholder: '-を入れずに入力してください', class: 'input-area user-input'
+              .field.user-field
+                = f.label :street_address
+                = f.text_field :street_address, placeholder: '住所を入力してください', class: 'input-area user-input'
+              .field.user-field
+                = f.label :relationship
+                = f.text_field :relationship, placeholder: '関係を入力してください', class: 'input-area user-input'
+              .field.user-field
+                = f.label :information
+                = f.text_field :information, placeholder: 'その他の情報を入力', class: 'input-area user-input'
+              .field.user-field
+                = f.submit class: 'submit-btn'

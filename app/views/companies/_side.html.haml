@@ -14,10 +14,13 @@
           - g.users.each do |u|
             .user-name
               = sidebar_link_item "#{u.name}", user_path(u)
-  .field
-    - if logged_in_recorder?
-      = link_to "記録を終了する", logout_recorder_path, method: :delete
-    - else
-      = sidebar_link_item "記録者としてログイン", login_recorder_path
-  .field
-    = link_to "企業からログアウト", logout_company_path, method: :delete
+  .ctr
+    .field
+      -# = link_to '記録者を管理',
+    .field
+      - if logged_in_recorder?
+        = link_to "記録を終了する", logout_recorder_path, method: :delete
+      - else
+        = sidebar_link_item "記録者としてログイン", login_recorder_path
+    .field
+      = link_to "企業からログアウト", logout_company_path, method: :delete

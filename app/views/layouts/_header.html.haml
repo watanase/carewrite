@@ -1,3 +1,12 @@
 %header
   .home
     = link_to "Carewrite", root_path, class: 'header-btn blue'
+  - if logged_in_user?
+    .header-menu
+      = link_to family_see_user_path(current_user), class: 'menu-btn' do
+        %i.far.fa-user
+        = current_user.name
+      - if @path.is('users#family_see')
+        = link_to family_see_user_posts_path(@user), class: 'menu-btn' do
+          %i.fas.fa-book
+          記録を見る

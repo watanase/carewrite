@@ -32,7 +32,7 @@
       width: 230px;
       background-color: whitesmoke;
       min-height: 100vh;
-      padding-left: 16px;
+      position: fixed;
       .channel.active {
         background: $blue;
         a{
@@ -45,6 +45,7 @@
         border-bottom: solid 1px gainsboro;
       }
       .company-list{
+
         a, label{
           color: black;
           font-size: 17px;
@@ -86,10 +87,14 @@
         .field:hover{
           background-color: lightblue;
         }
+        .ctr{
+          margin-top: 100px;
+        }
       }
     }
     .right{
-      width: calc(100% - 230px);
+      width: 100vw;
+      padding-left: 230px;
       .nav-bar{
         display: flex;
         .user-name{
@@ -112,26 +117,10 @@
           font-size: 18px;
           color: $blue;
         }
-        .user-info{
-          display: flex;
-          .info-right{
-            .link-btn{
-              margin: 40px;
-              display: block;
-              color: $white;
-              background-color: $blue;
-              padding: 7px 14px;
-              border: 1px solid lavender;
-              border-radius: 4px;
-            }
-            .link-btn:hover{
-              opacity: 0.8;
-            }
-          }
-        }
         .user-main{
           display: flex;
           .archives-list{
+            min-width: 150px;
             margin: 0 auto;
             .archive-link{
               padding: 3px;
@@ -140,16 +129,51 @@
               }
             }
           }
+          .user-list{
+            margin: 0 auto;
+            table{
+              margin: 0 auto;
+              th{
+                background-color: whitesmoke;
+              }
+              th, td{
+                border: 1px solid #a0c8cf;
+                padding: 8px;
+                text-align: center;
+                word-break: keep-all;
+                p{
+                  text-align: left;
+                  word-break: break-all;
+                }
+              }
+              .date{
+                min-width: 120px;
+              }
+              .content{
+                min-width: 500px;
+              }
+              .edit{
+                width: 50px;
+              }
+              .recorder{
+                width: 80px;
+              }
+            }
+            .table-list{
+              width: 900px;
+            }
+          }
         }
         .open-close{
           margin: 20px;
           .div-plus{
             display: inline-block;
             padding: 10px;
-            background-color: $blue;
-            color: $white;
+            color: $blue;
             border-radius: 3px;
+            border: 1px solid $blue;
             cursor: pointer;
+            margin: 20px 20px 30px;
           }
           .open{
             display: none;
@@ -165,65 +189,29 @@
         .move-out{
           margin: 30px 20px 0;
         }
-        .info-left{
-          table{
-            margin-left: 50px;
-            tr{
-              border-width: 1px 0;
-              border-style: solid;
-              th, td{
-                height: 57px;
-                padding-left: 20px;
-              }
-              th{
-                width: 150px;
-                background-color: whitesmoke;
-              }
-              td{
-                width: 500px;
-                .user-name, .user-address{
-                  font-size: 18px;
-                }
-                .user-hurigana, .user-zipcode{
-                  font-size: 12px;
-                }
-              }
-            }
-          }
-        }
-      }
-      .user-list{
-        margin: 0 auto;
         table{
           margin: 0 auto;
-          th{
-            background-color: whitesmoke;
-          }
-          th, td{
-            border: 1px solid #a0c8cf;
-            padding: 8px;
-            text-align: center;
-            word-break: keep-all;
-            p{
-              text-align: left;
-              word-break: break-all;
+          tr{
+            border-width: 1px 0;
+            border-style: solid;
+            th, td{
+              height: 57px;
+              padding-left: 20px;
+            }
+            th{
+              width: 150px;
+              background-color: whitesmoke;
+            }
+            td{
+              width: 500px;
+              .user-name, .user-address{
+                font-size: 18px;
+              }
+              .user-hurigana, .user-zipcode{
+                font-size: 12px;
+              }
             }
           }
-          .date{
-            width: 120px;
-          }
-          .content{
-            width: 500px;
-          }
-          .edit{
-            width: 50px;
-          }
-          .recorder{
-            width: 80px;
-          }
-        }
-        .table-list{
-          width: 900px;
         }
       }
       .post-index{
