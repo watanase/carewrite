@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :companies, only:[:index, :new, :create, :show] do
     resources :groups, only:[:new, :create, :show]
-    resources :recorders, only:[:new, :create, :destroy]
+    resources :recorders, only:[:index, :new, :create, :destroy]
   end
 
   resources :users do

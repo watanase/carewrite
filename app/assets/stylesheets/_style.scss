@@ -129,39 +129,46 @@
               }
             }
           }
-          .user-list{
+        }
+        .user-list{
+          margin: 0 auto;
+          .user-table{
+          width: 900px;
+          margin: 0 auto;
+          }
+          table{
             margin: 0 auto;
-            table{
-              margin: 0 auto;
-              th{
-                background-color: whitesmoke;
-              }
-              th, td{
-                border: 1px solid #a0c8cf;
-                padding: 8px;
-                text-align: center;
-                word-break: keep-all;
-                p{
-                  text-align: left;
-                  word-break: break-all;
-                }
-              }
-              .date{
-                min-width: 120px;
-              }
-              .content{
-                min-width: 500px;
-              }
-              .edit{
-                width: 50px;
-              }
-              .recorder{
-                width: 80px;
+            th{
+              background-color: whitesmoke;
+            }
+            th, td{
+              border: 1px solid #a0c8cf;
+              padding: 8px;
+              text-align: center;
+              word-break: keep-all;
+              p{
+                text-align: left;
+                word-break: break-all;
               }
             }
-            .table-list{
-              width: 900px;
+            .date{
+              min-width: 120px;
             }
+            .content{
+              min-width: 500px;
+            }
+            .edit{
+              width: 50px;
+            }
+            .recorder{
+              width: 80px;
+            }
+            .birth{
+              min-width: 250px;
+            }
+          }
+          .table-list{
+            width: 900px;
           }
         }
         .open-close{

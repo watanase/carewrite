@@ -1,0 +1,9 @@
+= render 'shared/header'
+.container
+  .company-home
+    .left
+      -if logged_in_company?
+        = render 'companies/side'
+    .right
+      - @recorders.each do |r|
+        = r.name

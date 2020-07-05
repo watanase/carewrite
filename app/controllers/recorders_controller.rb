@@ -1,4 +1,9 @@
 class RecordersController < ApplicationController
+
+  def index
+    @recorders = Recorder.where(company_id: current_company.id)
+  end
+
   def new
     @recorder = Recorder.new
     @company = Company.find(current_company.id)
