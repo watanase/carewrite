@@ -11,7 +11,7 @@
             %table
               %thead
                 %tr
-                  %th.date= sort_link(@q, :room_number, '部屋番号')
+                  %th.recorder= sort_link(@q, :room_number, '部屋番号')
                   %th= sort_link(@q, :hurigana, '名前')
                   %th.birth= sort_link(@q, :birthday, '生年月日')
                   %th.edit= sort_link(@q, :birthday, '年齢')
@@ -28,24 +28,25 @@
                     %td= u.gender
                     %td= u.care_required
                     %td= "#{u.occupancy.year}年""#{wareki(u.occupancy)}"
-          .open-close.move-out.user-table
+          .open-close
             %label.div-plus{for: 'div'}
               退去者情報
               %i.fas.fa-bars
-            %input.open{id: 'div', type: 'checkbox'}
-            .user-list
-              %h1 退去者一覧
-              %table
-                %thead
-                  %tr
-                    %th 名前
-                    %th.birth 生年月日
-                    %th 性別
-                    %th.birth 入居日
-                %tbody
-                  - @move_out_users.each do |u|
+            .move-out
+              %input.open{id: 'div', type: 'checkbox'}
+              .move_out-list
+                %h1 退去者一覧
+                %table
+                  %thead
                     %tr
-                      %td= link_to "#{u.name}",  user_path(u)
-                      %td= "#{u.birthday.year}年""#{wareki(u.birthday)}"
-                      %td= u.gender
-                      %td= "#{u.occupancy.year}年""#{wareki(u.occupancy)}"
+                      %th 名前
+                      %th.birth 生年月日
+                      %th 性別
+                      %th.birth 入居日
+                  %tbody
+                    - @move_out_users.each do |u|
+                      %tr
+                        %td= link_to "#{u.name}",  user_path(u)
+                        %td= "#{u.birthday.year}年""#{wareki(u.birthday)}"
+                        %td= u.gender
+                        %td= "#{u.occupancy.year}年""#{wareki(u.occupancy)}"

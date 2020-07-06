@@ -136,8 +136,11 @@
           width: 900px;
           margin: 0 auto;
           }
-          table{
+          .recorder-table{
+            width: 400px;
             margin: 0 auto;
+          }
+          table{
             th{
               background-color: whitesmoke;
             }
@@ -164,7 +167,7 @@
               width: 80px;
             }
             .birth{
-              min-width: 250px;
+              min-width: 260px;
             }
           }
           .table-list{
@@ -194,7 +197,8 @@
           }
         }
         .move-out{
-          margin: 30px 20px 0;
+          margin: 0 auto;
+          width: 680px;
         }
         table{
           margin: 0 auto;

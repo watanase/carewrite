@@ -13,13 +13,6 @@
     = f.label :room_number
     = f.number_field :room_number, placeholder: '半角で入力してください', pattern: "^[0-9A-Za-z]+$", class: 'input-area user-input'
   .field.user-field
-    = f.label :image
-    = f.label :image do
-      .select-image
-        %div 写真を選択
-        = f.file_field :image, class: 'image-btn', onchange: "uv.style.display='inline-block'; uv.value = this.value"
-        = f.text_field :image, id: 'uv', class: 'image-text'
-  .field.user-field
     = f.label :gender
     = f.select :gender, User.genders.keys.to_a, {}, class: 'input-area select-input'
   .field.user-field

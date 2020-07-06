@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2020_06_05_184253) do
     t.date "birthday"
     t.integer "zipcode"
     t.string "street_address"
-    t.string "image"
     t.integer "care_required"
     t.integer "status"
     t.date "occupancy"

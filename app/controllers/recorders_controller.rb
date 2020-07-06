@@ -22,6 +22,12 @@ class RecordersController < ApplicationController
     end
   end
 
+  def destroy
+    @recorder = Recorder.find(params[:id])
+    @recorder.destroy
+    redirect_to company_recorders_path(current_company)
+  end
+
   private
   def recorder_params
     params.require(:recorder).permit(:name, :login_id, :password, :password_confirmation).merge(company_id: current_company.id)
