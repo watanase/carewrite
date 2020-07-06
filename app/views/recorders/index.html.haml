@@ -5,5 +5,19 @@
       -if logged_in_company?
         = render 'companies/side'
     .right
-      - @recorders.each do |r|
-        = r.name
+      %h1 記録者一覧
+      .user-page
+        .user-list
+          .user-table
+            %table
+              %thead
+                %tr
+                  %th 氏名
+                  %th ログインID
+                  %th
+              %tbody
+                - @recorders.each do |r|
+                  %tr
+                    %td= r.name
+                    %td= r.login_id
+                    %td= link_to '削除',  company_recorder_path(current_company, r), method: :delete
