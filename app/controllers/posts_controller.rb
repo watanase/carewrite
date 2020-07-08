@@ -38,6 +38,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post.destroy
   end
 
   def family_see
@@ -57,7 +58,7 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post
-    ).permit(:focus, :content, :datetime,
+    ).permit(:focus, :content, :datetime, :name
     ).merge(user_id: params[:user_id], recorder_id: current_recorder.id)
   end
 end

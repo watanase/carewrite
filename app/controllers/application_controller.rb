@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :request_path
   include SessionsHelper
 
+  # アクション別にビュー表示
   def request_path
     @path = controller_path + '#' + action_name
     def @path.is(*str)

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "users#index"
 
   resources :companies, only:[:index, :new, :create, :show] do
-    resources :groups, only:[:new, :create, :show]
+    resources :groups, only:[:index, :new, :create, :show, :edit]
     resources :recorders, only:[:index, :new, :create, :destroy]
   end
 

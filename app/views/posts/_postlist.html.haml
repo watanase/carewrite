@@ -29,7 +29,11 @@
               %td= l p.datetime, format: :short
               %td= p.focus
               %td= simple_format(p.content)
-              %td= p.recorder.name
+              %td
+                - if p.name?
+                  = p.name
+                - else
+                  = p.recorder.name
               - if logged_in_recorder?
                 %td= link_to '編集', edit_user_post_path(@user, p)
     .archives-list

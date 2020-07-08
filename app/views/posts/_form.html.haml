@@ -9,7 +9,7 @@
     = f.label :content
     = f.text_area :content, placeholder: '記録内容を入力してください', required: "", class: 'input-area input-field'
   .field
-    = f.label '記録者'
-    -# = f.text_field :
+    = f.label :name
+    = f.text_field :name, placeholder: '記録者が異なる場合に入力してください', class: 'input-area'
   .field
     = f.submit class: 'submit-btn'

@@ -16,6 +16,8 @@
               = sidebar_link_item "#{u.name}", user_path(u)
   .ctr
     .field
+      = link_to 'グループを管理', company_groups_path(current_company)
+    .field
       = link_to '記録者を管理', company_recorders_path(current_company)
     .field
       - if logged_in_recorder?

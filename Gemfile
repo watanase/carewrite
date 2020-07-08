@@ -69,6 +69,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'haml-rails'
+gem 'jquery-rails'
 gem "font-awesome-sass"
 gem 'ransack'
 gem 'wareki'

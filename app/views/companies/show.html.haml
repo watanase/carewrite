@@ -3,6 +3,7 @@
   .company-home
     .left
       = render 'side'
+    .center
     .right
       %h1 利用者一覧
       .user-page
@@ -43,6 +44,7 @@
                       %th.birth 生年月日
                       %th 性別
                       %th.birth 入居日
+                      %th
                   %tbody
                     - @move_out_users.each do |u|
                       %tr
@@ -50,3 +52,4 @@
                         %td= "#{u.birthday.year}年""#{wareki(u.birthday)}"
                         %td= u.gender
                         %td= "#{u.occupancy.year}年""#{wareki(u.occupancy)}"
+                        %td= link_to '削除',  user_path(u), method: :delete, data: {confirm: "「#{u.name}」を削除しますか?", cancel: "キャンセル", commit: "削除" }

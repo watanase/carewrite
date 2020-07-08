@@ -24,6 +24,7 @@ ja:
         focus: フォーカス
         content: 記録
         image: 画像
+        name: 記録者
       group:
         name: グループ名
       user:

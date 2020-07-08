@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string  :focus
       t.text    :content
       t.datetime :datetime, default: -> { 'CURRENT_TIMESTAMP' }
-      t.string  :recorder
+      t.string  :name
 
       t.timestamps
     end
