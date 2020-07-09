@@ -4,9 +4,12 @@
     = f.datetime_field :datetime, class: 'input-area'
   .field
     = f.label :focus
-    = f.text_field :focus, required: "", class: 'input-area'
+    = f.text_field :focus, placeholder: 'フォーカス内容を入力してください', required: "", class: 'input-area'
   .field
     = f.label :content
-    = f.text_field :content, required: "", class: 'input-area'
+    = f.text_area :content, placeholder: '記録内容を入力してください', required: "", class: 'input-area input-field'
+  .field
+    = f.label :name
+    = f.text_field :name, placeholder: '記録者が異なる場合に入力してください', class: 'input-area'
   .field
     = f.submit class: 'submit-btn'

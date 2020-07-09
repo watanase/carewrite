@@ -1,0 +1,24 @@
+= render 'shared/header'
+.container
+  .company-home
+    .left
+      -if logged_in_company?
+        = render 'companies/side'
+    .center
+    .right
+      %h1 記録者一覧
+      .user-page
+        .user-list
+          .recorder-table
+            %table
+              %thead
+                %tr
+                  %th.recorder グループ名
+                  %th
+                  %th
+              %tbody
+                - @groups.each do |g|
+                  %tr
+                    %td= g.name
+                    %td= link_to '編集', edit_company_group_path(current_company, g)
+                    %td= link_to '削除',  company_recorder_path(current_company, g), method: :delete, data: {confirm: "「#{r.name}」を削除しますか?", cancel: "キャンセル", commit: "削除" }

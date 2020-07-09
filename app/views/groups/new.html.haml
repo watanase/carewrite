@@ -1,10 +1,10 @@
-.wrapper
-  .container
-    .content
-      .company-home
-        .left
-          = render 'companies/side'
-        .right
-          %h1 グループを作成
-          .form
-            = render 'form'
+= render 'shared/header'
+.container
+  .company-home
+    .left
+      = render 'companies/side'
+    .center
+    .right
+      %h1 グループを作成
+      .form
+        = render 'form'

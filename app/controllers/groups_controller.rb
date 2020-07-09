@@ -3,6 +3,10 @@ class GroupsController < ApplicationController
   before_action :set_company, only: %i[create show]
   before_action :logged_in_company, only: %i[show]
 
+  def index
+    @groups = Group.where(company_id: current_company.id)
+  end
+
   def new
     @group = Group.new
     @recorder = Recorder.new
@@ -31,6 +35,11 @@ class GroupsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @group.destroy
+    redirect_to company_recorder_path(current_company)
   end
 
   private

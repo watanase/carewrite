@@ -6,7 +6,6 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    # binding.pry
     @company = Company.create(company_params)
     if @company.save
       log_in_company @company

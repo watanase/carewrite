@@ -1,14 +1,12 @@
 = render "layouts/header"
 .wrapper
-  .container
-    .content
-      %h1 企業ページ
-      .main
-        .company-side
-          = link_to "企業を作成", new_company_path, class: 'main-btn'
-        .company-side
-          - if logged_in_company?
-            %div= link_to "企業ページ", company_path(current_company), class: 'main-btn'
-            %div= link_to "企業からログアウト", logout_company_path, class: 'main-btn', method: :delete
-          - else
-            %div= link_to "企業にログイン", login_company_path, class: 'main-btn'
+  %h1 企業ページ
+  .main
+    .company-side
+      = link_to "企業を作成", new_company_path, class: 'main-btn'
+    .company-side
+      - if logged_in_company?
+        %div= link_to "企業ページ", company_path(current_company), class: 'main-btn'
+        %div= link_to "企業からログアウト", logout_company_path, class: 'main-btn', method: :delete
+      - else
+        %div= link_to "企業にログイン", login_company_path, class: 'main-btn'

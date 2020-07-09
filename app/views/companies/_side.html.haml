@@ -1,5 +1,3 @@
-.company-name
-  = link_to "#{current_company.name}", company_path(current_company), class: 'header-btn'
 .company-list
   .field
     = sidebar_link_item "利用者を登録", new_user_path
@@ -16,10 +14,15 @@
           - g.users.each do |u|
             .user-name
               = sidebar_link_item "#{u.name}", user_path(u)
-  .field
-    - if logged_in_recorder?
-      = link_to "記録を終了する", logout_recorder_path, method: :delete
-    - else
-      = sidebar_link_item "記録者としてログイン", login_recorder_path
-  .field
-    = link_to "企業からログアウト", logout_company_path, method: :delete
+  .ctr
+    .field
+      = link_to 'グループを管理', company_groups_path(current_company)
+    .field
+      = link_to '記録者を管理', company_recorders_path(current_company)
+    .field
+      - if logged_in_recorder?
+        = link_to "記録を終了する", logout_recorder_path, method: :delete
+      - else
+        = sidebar_link_item "記録者としてログイン", login_recorder_path
+    .field
+      = link_to "企業からログアウト", logout_company_path, method: :delete

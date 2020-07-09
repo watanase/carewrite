@@ -1,15 +1,13 @@
 = render "layouts/header"
 .wrapper
-  .container
-    .content
-      %h1 ログイン
-      .form
-        = form_with model: @company, local: true do |f|
-          .field
-            = f.label '企業名'
-            = f.text_field :name, placeholder: '企業の名前を入力してください', class: 'input-area'
-          .field
-            = f.label 'パスワード'
-            = f.password_field :password, placeholder: 'パスワードを入力してください', class: 'input-area'
-          .field.submit
-            = f.submit '企業にログインする', class: 'submit-btn'
+  %h1 ログイン
+  .form
+    = form_with model: @company, local: true do |f|
+      .field
+        = f.label '企業名'
+        = f.text_field :name, placeholder: '企業の名前を入力してください', class: 'input-area'
+      .field
+        = f.label 'パスワード'
+        = f.password_field :password, placeholder: 'パスワードを入力してください', class: 'input-area'
+      .field.submit
+        = f.submit '企業にログインする', class: 'submit-btn'

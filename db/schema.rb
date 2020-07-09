@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_184253) do
     t.string "focus"
     t.text "content"
     t.datetime "datetime", default: -> { "CURRENT_TIMESTAMP" }
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -72,11 +73,11 @@ ActiveRecord::Schema.define(version: 2020_06_05_184253) do
     t.date "birthday"
     t.integer "zipcode"
     t.string "street_address"
-    t.string "image"
     t.integer "care_required"
     t.integer "status"
     t.date "occupancy"
     t.integer "room_number"
+    t.string "login_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "group_id"

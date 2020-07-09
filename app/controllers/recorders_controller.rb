@@ -1,4 +1,9 @@
 class RecordersController < ApplicationController
+
+  def index
+    @recorders = Recorder.where(company_id: current_company.id)
+  end
+
   def new
     @recorder = Recorder.new
     @company = Company.find(current_company.id)
@@ -15,6 +20,12 @@ class RecordersController < ApplicationController
       @company = Company.find(current_company.id)
       render :new
     end
+  end
+
+  def destroy
+    @recorder = Recorder.find(params[:id])
+    @recorder.destroy
+    redirect_to company_recorders_path(current_company)
   end
 
   private

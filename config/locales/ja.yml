@@ -24,6 +24,7 @@ ja:
         focus: フォーカス
         content: 記録
         image: 画像
+        name: 記録者
       group:
         name: グループ名
       user:
@@ -39,6 +40,7 @@ ja:
         status: 入居状況
         occupancy: 入居日
         room_number: 居室番号
+        login_id: ログインID
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -276,4 +278,5 @@ ja:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+      year: "%Y"
     pm: 午後

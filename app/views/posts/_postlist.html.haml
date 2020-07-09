@@ -1,43 +1,46 @@
-.wrapper
-  .container
-    .content
-      .company-home
-        .left
-          -if logged_in_company?
-            = render 'companies/side'
-        .right
-          .nav-bar
-            %h2 利用者名
-            .user-name
-              = link_to "#{@user.name}", user_path(@user), class: 'link-btn'
-          - if logged_in_recorder?
-            .post-write
-              = link_to '記録を書く', new_user_post_path(@user), class: 'link-btn write'
-          - if ["archives"].include? action_name
-            %h1= "#{ymconvn(@yyyymm)}の記録一覧"
+.nav-bar
+  %h2 利用者名
+  .user-name
+    - if ['index', 'archives'].include? action_name
+      = link_to "#{@user.name}", user_path(@user), class: 'link-btn'
+    - else
+      = link_to "#{@user.name}", family_see_user_path(@user), class: 'link-btn'
+- if ["archives"].include? action_name
+  %h1= "#{ymconvn(@yyyymm)}の記録一覧"
+- else
+  %h1 記録一覧
+.user-page
+  .user-main
+    .user-list
+      %table.table-list
+        %thead
+          %tr
+            %th 年
+            %th.date 日時
+            %th.date フォーカス
+            %th.content 内容
+            %th.recorder 記録者
+            - if logged_in_recorder?
+              %th.edit
+        %tbody
+          - @posts.each do |p|
+            %tr
+              %td= l p.datetime, format: :year
+              %td= l p.datetime, format: :short
+              %td= p.focus
+              %td= simple_format(p.content)
+              %td
+                - if p.name?
+                  = p.name
+                - else
+                  = p.recorder.name
+              - if logged_in_recorder?
+                %td= link_to '編集', edit_user_post_path(@user, p)
+    .archives-list
+      %h3 月別記録
+      - @archives.each do |yyyymm, count|
+        .archive-link
+          - if ['index', 'archives'].include? action_name
+            = link_to "#{ymconv(yyyymm, count.to_s)}", user_archive_path(@user, yyyymm)
           - else
-            %h1 記録一覧
-          .user-page
-            .user-main
-              .user-list
-                %table.table-list
-                  %thead
-                    %tr
-                      %th.date 日付
-                      %th.date フォーカス
-                      %th.content 内容
-                      %th.date 記録者
-                      %th.edit
-                  %tbody
-                    - @posts.each do |p|
-                      %tr
-                        %td= l p.datetime, format: :short
-                        %td= p.focus
-                        %td= simple_format(p.content)
-                        %td= p.recorder.name
-                        %td= link_to '編集', edit_user_post_path(@user, p)
-              .archives-list
-                %h3 月別記録
-                - @archives.each do |yyyymm, count|
-                  .archive-link
-                    = link_to "#{ymconv(yyyymm, count.to_s)}", user_archive_path(@user, yyyymm)
+            = link_to "#{ymconv(yyyymm, count.to_s)}", user_family_archive_path(@user, yyyymm)

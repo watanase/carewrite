@@ -2,20 +2,24 @@ Rails.application.routes.draw do
   root "users#index"
 
   resources :companies, only:[:index, :new, :create, :show] do
-    resources :groups, only:[:new, :create, :show]
-    resources :recorders, only:[:new, :create, :destroy]
+    resources :groups, only:[:index, :new, :create, :show, :edit]
+    resources :recorders, only:[:index, :new, :create, :destroy]
   end
 
   resources :users do
     resources :families, only:[:create]
-    resources :posts, except:[:show]
+    resources :posts, except:[:show] do
+      collection do
+        get :family_see
+      end
+    end
     member do
-      get :move_out
+      get :move_out, :family_see
     end
   end
 
   get  '/users/:id/posts/:yyyymm', to: 'users#archives', as: :user_archive
-
+  get  '/users/:id/family/:yyyymm', to: 'users#family_archives', as: :user_family_archive
 
   get    '/login_company',   to: 'sessions#new_company'
   post   '/login_company',   to: 'sessions#create_company'

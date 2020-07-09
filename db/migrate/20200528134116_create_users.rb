@@ -9,11 +9,11 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.date            :birthday
       t.integer         :zipcode
       t.string          :street_address
-      t.string          :image
       t.integer         :care_required
       t.integer         :status
       t.date            :occupancy
       t.integer         :room_number
+      t.string          :login_id,  null:false, unique:true
 
       t.timestamps
     end

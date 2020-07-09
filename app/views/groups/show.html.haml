@@ -1,8 +1,7 @@
-.wrapper
-  .container
-    .content
-      .company-home
-        .left
-          = render 'companies/side'
-        .right
-          = render 'user_list'
+= render 'shared/header'
+.container
+  .company-home
+    .left
+      = render 'companies/side'
+    .right
+      = render 'user_list'

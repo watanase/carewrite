@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :company_check, only: %i[new create edit update]
-  before_action :set_user, only: %i[show edit update move_out, archives]
+  before_action :set_user, only: %i[show edit update move_out archives family_see family_archives destroy]
   before_action :select_company, only: %i[new create edit update show archives]
-  before_action :move_to_index, only: %i[show]
+  before_action :move_to_index, only: %i[show family]
 
   def new
     @user = User.new
@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    # binding.pry
     @user = User.create(user_params)
     if @user.save
       redirect_to user_path(@user)
@@ -21,7 +20,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # binding.pry
     @family = Family.new
     @families = @user.families.all
   end
@@ -43,12 +41,22 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
-
   def archives
     @group = Group.new
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
     @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]]
+  end
+
+  def family_archives
+    @archives = @user.devide_monthly
+    @yyyymm = params[:yyyymm]
+    @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]]
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to company_path(current_company)
   end
 
   private
@@ -75,6 +83,7 @@ class UsersController < ApplicationController
       :status,
       :occupancy,
       :room_number,
+      :login_id,
       :password,
       :password_confirmation,
       :group_id,

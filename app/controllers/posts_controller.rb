@@ -38,8 +38,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post.destroy
   end
 
+  def family_see
+    @posts = Post.where(user_id: @user)
+    @archives = @user.devide_monthly
+  end
 
   private
 
@@ -53,7 +58,7 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post
-    ).permit(:focus, :content, :datetime,
+    ).permit(:focus, :content, :datetime, :name
     ).merge(user_id: params[:user_id], recorder_id: current_recorder.id)
   end
 end

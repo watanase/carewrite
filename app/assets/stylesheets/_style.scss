@@ -1,350 +1,237 @@
 .wrapper{
-  padding-top: 50px;
-  .container{
-    .content{
-      h1{
+  padding-top: 100px;
+  .main{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 100px;
+    .user-side, .company-side{
+      font-size: 20px;
+      div{
+        margin-bottom: 50px;
+      }
+      .main-btn{
+        background-color: $blue;
+        padding: 20px;
+        border-radius: 5px;
+        color: $white;
+        min-width: 250px;
+        display: inline-block;
         text-align: center;
-        margin:  10px 30px;
-        font-size: 30px;
-        color: $blue;
       }
-      h2{
-        margin: 30px;
-        font-size: 25px;
-        color: $blue;
+      .main-btn:hover{
+        opacity: 0.8;
       }
-      .main{
-        display: flex;
-        justify-content: space-evenly;
-        .user-side, .company-side{
-          font-size: 20px;
-          .main-btn{
-            background-color: $blue;
-            padding: 20px;
-            border-radius: 5px;
-            color: $white;
-            min-width: 250px;
-            display: inline-block;
-            text-align: center;
-          }
-          .main-btn:hover{
-            opacity: 0.8;
-          }
+    }
+  }
+}
+.container{
+  padding-top: 60px;
+  .company-home{
+    display: flex;
+    .left{
+      width: 230px;
+      background-color: whitesmoke;
+      min-height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 60px;
+      .channel.active {
+        background: $blue;
+        a{
+          color: $white;
         }
       }
-      // ログイン、登録ページ
-      .form{
-        text-align: center;
-        min-height: 230px;
-        width: 650px;
-        margin: 0 auto;
-        padding: 12px;
-        background-color: #f7f7f7;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-        form{
-          display: block;
-          margin: 20px 70px;
-          min-width: 230px;
-          .field{
-            margin-bottom: 10px;
-            label{
-              display: block;
-              line-height: 3;
-              margin-bottom: 15px;
+      .company-name{
+        font-size: 25px;
+        padding: 14px 22px;
+        border-bottom: solid 1px gainsboro;
+      }
+      .company-list{
+
+        a, label{
+          color: black;
+          font-size: 17px;
+          display: inline-block;
+          padding: 10px;
+          width: 100%;
+          transition: all 0.5s;
+        }
+        .group-list{
+          padding-left: 20px;
+          label:before{
+            content: '\f054';
+            font-family: 'Font Awesome 5 Free';
+            padding-right: 8px;
+            font-weight: 900;
+            color: $blue;
+          }
+          .on-off{
+            display: none;
+          }
+          .user-list{
+            height: 0;
+            overflow: hidden;
+          }
+          .on-off:checked + label + .user-list{
+            height: auto;
+            .user-name{
+              padding-left: 30px;
             }
-            select, .input-area{
-              padding: 3px 0;
-              text-align: center;
-              width: 60%;
-              height: 36px;
-              font-size: 15px;
-              border: 1px solid #ccc;
-              border-radius: 3px;
-              box-shadow: inset 0 1px 1px rgba(0,0,0,0.08);
-            }
-            .submit-btn{
-              margin: 0 auto;
-              color: $white;
-              list-style: none;
-              background-color: $blue;
-              touch-action: manipulation;
-              padding: 7px 14px;
-              border: 1px solid lavender;
-              border-radius: 4px;
-              box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 0 1px rgba(0,0,0,0.15);
-            }
-            .submit-btn:hover{
-              opacity: 0.8;
+            .user-name:hover{
+              background-color: lightblue;
             }
           }
-          .user-field{
-            display: flex;
-            justify-content: space-between;
-            min-width: 35vw;
-            align-items: baseline;
-            .user-input{
-              max-width: 230px;
-            }
-            .address-area{
-              max-width: 330px;
-            }
-            .select-input{
-              max-width: 30%;
-              padding-left: 10px;
-            }
-            select{
-              width: 18%;
-              padding-left: 6px;
-            }
-            .date-area{
-              width: 300px;
-              text-align: right;
-              select{
-                margin: 0 5px;
+          .on-off:checked + label:before{
+            content: '\f078';
+            color: $blue;
+          }
+        }
+        .field:hover{
+          background-color: lightblue;
+        }
+        .ctr{
+          margin-top: 100px;
+        }
+      }
+    }
+    .center{
+      padding-left: 230px;
+    }
+    .right{
+      width: 100vw;
+      .nav-bar{
+        display: flex;
+        .user-name{
+          margin-top: 35px;
+          font-size: 20px;
+        }
+      }
+      .write{
+        margin: 40px;
+        color: $white;
+        background-color: $blue;
+        padding: 10px 14px;
+        border: 1px solid lavender;
+        border-radius: 4px;
+      }
+      .user-page{
+        padding: 20px;
+        h3{
+          margin: 20px;
+          font-size: 18px;
+          color: $blue;
+        }
+        .user-main{
+          display: flex;
+          .archives-list{
+            min-width: 150px;
+            margin: 0 auto;
+            .archive-link{
+              padding: 3px;
+              a{
+                font-size: 17px;
               }
-              #user_birthday_1i, #user_occupancy_1i{
-                width: 75px;
-              }
-              #user_birthday_2i, #user_birthday_3i, #user_occupancy_2i, #user_occupancy_3i{
-                width: 55px;
+            }
+          }
+        }
+        .user-list{
+          margin: 0 auto;
+          .user-table{
+          width: 900px;
+          margin: 0 auto;
+          }
+          .recorder-table{
+            width: 400px;
+            margin: 0 auto;
+          }
+          table{
+            th{
+              background-color: whitesmoke;
+            }
+            th, td{
+              border: 1px solid #a0c8cf;
+              padding: 8px;
+              text-align: center;
+              word-break: keep-all;
+              p{
+                text-align: left;
+                word-break: break-all;
               }
             }
-            .select-image{
-              position: relative;
-              line-height: 2.4;
-              display:inline-block;
-              background-color: $white;
-              overflow:hidden;
-              border: 1px solid #ccc;
-              border-radius: 3px;
-              box-shadow: inset 0 1px 1px rgba(0,0,0,0.08);
-              width:150px;
-              cursor:pointer;
-              .image-btn{
-                position: absolute;
-                top: 0;
-                right: 0;
-                cursor:pointer;
-                opacity:0;
-                width: 100%;
-                height: 100%;
+            .date{
+              min-width: 120px;
+            }
+            .content{
+              min-width: 500px;
+            }
+            .edit{
+              width: 50px;
+            }
+            .recorder{
+              width: 80px;
+            }
+            .birth{
+              min-width: 260px;
+            }
+          }
+          .table-list{
+            width: 900px;
+          }
+        }
+        .open-close{
+          margin: 20px;
+          .div-plus{
+            display: inline-block;
+            padding: 10px;
+            color: $blue;
+            border-radius: 3px;
+            border: 1px solid $blue;
+            cursor: pointer;
+            margin: 20px 20px 30px;
+          }
+          .open{
+            display: none;
+          }
+          .open + div{
+            height: 0;
+            overflow: hidden;
+          }
+          .open:checked + div{
+            height: auto;
+          }
+        }
+        .move-out{
+          margin: 0 auto;
+          width: 770px;
+        }
+        table{
+          margin: 0 auto;
+          tr{
+            border-width: 1px 0;
+            border-style: solid;
+            th, td{
+              height: 57px;
+              padding-left: 20px;
+            }
+            th{
+              width: 150px;
+              background-color: whitesmoke;
+            }
+            td{
+              width: 500px;
+              .user-name, .user-address{
+                font-size: 18px;
               }
-              .image-text{
-                display: none;
-                border: none;
-                padding: 3px;
+              .user-hurigana, .user-zipcode{
                 font-size: 12px;
               }
             }
           }
-          .submit{
-            margin-top: 30px;
-          }
         }
       }
-      // 企業詳細ページ
-      .company-home{
-        display: flex;
-        .left{
-          width: 260px;
-          background-color: whitesmoke;
-          min-height: 100vh;
-          .channel.active {
-            background: $blue;
-            a{
-              color: $white;
-            }
-          }
-          .company-name{
-            font-size: 25px;
-            padding: 14px 22px;
-            border-bottom: solid 1px gainsboro;
-          }
-          .company-list{
-            a, label{
-              color: black;
-              font-size: 17px;
-              display: inline-block;
-              padding: 10px;
-              width: 100%;
-              transition: all 0.5s;
-            }
-            .group-list{
-              padding-left: 40px;
-              label:before{
-                content: '\f054';
-                font-family: 'Font Awesome 5 Free';
-                padding-right: 8px;
-                font-weight: 900;
-                color: $blue;
-              }
-              .on-off{
-                display: none;
-              }
-              .user-list{
-                height: 0;
-                overflow: hidden;
-              }
-              .on-off:checked + label + .user-list{
-                height: auto;
-                .user-name{
-                  padding-left: 30px;
-                }
-                .user-name:hover{
-                  background-color: lightblue;
-                }
-              }
-              .on-off:checked + label:before{
-                content: '\f078';
-                color: $blue;
-              }
-            }
-            .field:hover{
-              background-color: lightblue;
-            }
-          }
-        }
-        .right{
-          width: calc(100% - 260px);
-          .nav-bar{
-            display: flex;
-            .user-name{
-              margin-top: 35px;
-              font-size: 20px;
-            }
-          }
-          .write{
-            margin: 40px;
-            color: $white;
-            background-color: $blue;
-            padding: 10px 14px;
-            border: 1px solid lavender;
-            border-radius: 4px;
-          }
-          .user-page{
-            padding: 20px;
-            h3{
-              margin: 20px;
-              font-size: 18px;
-              color: $blue;
-            }
-            .user-info{
-              display: flex;
-              .info-right{
-                .link-btn{
-                  margin: 40px;
-                  display: block;
-                  color: $white;
-                  background-color: $blue;
-                  padding: 7px 14px;
-                  border: 1px solid lavender;
-                  border-radius: 4px;
-                }
-                .link-btn:hover{
-                  opacity: 0.8;
-                }
-              }
-            }
-            .user-main{
-              display: flex;
-              .archives-list{
-                margin: 0 auto;
-                .archive-link{
-                  padding: 3px;
-                  a{
-                    font-size: 17px;
-                  }
-                }
-              }
-            }
-            .open-close{
-              margin: 20px;
-              .div-plus{
-                display: inline-block;
-                padding: 10px;
-                background-color: $blue;
-                color: $white;
-                border-radius: 3px;
-                cursor: pointer;
-              }
-              .open{
-                display: none;
-              }
-              .open + div{
-                height: 0;
-                overflow: hidden;
-              }
-              .open:checked + div{
-                height: auto;
-              }
-            }
-            .move-out{
-              margin: 30px 20px 0;
-            }
-            .info-left{
-              table{
-                margin-left: 50px;
-                tr{
-                  border-width: 1px 0;
-                  border-style: solid;
-                  th, td{
-                    height: 57px;
-                    padding-left: 20px;
-                  }
-                  th{
-                    width: 150px;
-                    background-color: whitesmoke;
-                  }
-                  td{
-                    width: 500px;
-                    .user-name, .user-address{
-                      font-size: 18px;
-                    }
-                    .user-hurigana, .user-zipcode{
-                      font-size: 12px;
-                    }
-                  }
-                }
-              }
-            }
-          }
-          .user-list{
-            margin: 0 auto;
-            table{
-              margin: 0 auto;
-              th{
-                background-color: whitesmoke;
-              }
-              th, td{
-                border: 1px solid #a0c8cf;
-                padding: 8px;
-                text-align: center;
-                word-break: keep-all;
-                p{
-                  text-align: left;
-                  word-break: break-all;
-                }
-              }
-              .date{
-                width: 120px;
-              }
-              .content{
-                width: 500px;
-              }
-              .edit{
-                width: 50px;
-              }
-            }
-            .table-list{
-              width: 900px;
-            }
-          }
-          .post-index{
-            .post-list{
-              display: flex;
-            }
-          }
+      .post-index{
+        .post-list{
+          display: flex;
         }
       }
     }
