@@ -19,6 +19,7 @@
                   %th.edit= sort_link(@q, :gender, '性別')
                   %th= sort_link(@q, :care_required, '介護度')
                   %th.birth= sort_link(@q, :occupancy, '入居日')
+                  %th ID
               %tbody
                 - @users.each do |u|
                   %tr
@@ -29,6 +30,7 @@
                     %td= u.gender
                     %td= u.care_required
                     %td= "#{u.occupancy.year}年""#{wareki(u.occupancy)}"
+                    %td= u.login_id
           .open-close
             %label.div-plus{for: 'div'}
               退去者情報
