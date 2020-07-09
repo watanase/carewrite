@@ -83,6 +83,7 @@ class UsersController < ApplicationController
       :status,
       :occupancy,
       :room_number,
+      :login_id,
       :password,
       :password_confirmation,
       :group_id,

@@ -13,6 +13,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer         :status
       t.date            :occupancy
       t.integer         :room_number
+      t.string          :login_id,  null:false, unique:true
 
       t.timestamps
     end

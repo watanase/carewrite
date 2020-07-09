@@ -25,7 +25,6 @@
   .field.user-field
     = f.label :street_address
     = f.text_field :street_address, placeholder: '住所を入力してください', class: 'input-area user-input, address-area'
-    %input{:type => "button", :value => "実行"}
   .field.user-field
     = f.label :care_required
     = f.select :care_required, User.care_requireds.keys.to_a, {}, class: 'input-area select-input'
@@ -36,6 +35,10 @@
     = f.label :occupancy
     .date-area
       = raw sprintf(f.date_select(:occupancy, use_month_numbers: true,start_year: 1990, end_year: (Time.now.year), default: Date.new(1990, 1, 1), date_separator: '%s'), '年 ', '月 ') + '日'
+  .field.user-field
+    = f.label :login_id
+    = f.text_field :login_id, placeholder: 'ログイン用IDを設定してください', class: 'input-area user-input', id: 'rand'
+  %input{type: 'button', value: 'ランダムにIDを作成する', id: 'button', class: 'input'}
   - if ["new", 'create'].include? action_name
     .field.user-field
       = f.label 'パスワード(※必須)'
