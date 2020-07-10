@@ -73,3 +73,5 @@ gem 'jquery-rails'
 gem "font-awesome-sass"
 gem 'ransack'
 gem 'wareki'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
