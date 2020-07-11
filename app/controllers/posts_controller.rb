@@ -5,7 +5,8 @@ class PostsController < ApplicationController
 
   def index
     @group = Group.new
-    @posts = Post.where(user_id: @user).paginate(page: params[:page], per_page: 5)
+    @q = Post.ransack(params[:q])
+    @posts = Post.where(user_id: @user).paginate(page: params[:page], per_page: 25)
     @archives = @user.devide_monthly
   end
 

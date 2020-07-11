@@ -5,7 +5,7 @@
       = link_to "#{@user.name}", user_path(@user), class: 'link-btn'
     - else
       = link_to "#{@user.name}", family_see_user_path(@user), class: 'link-btn'
-- if ["archives"].include? action_name
+- if ["archives", 'family_archives'].include? action_name
   %h1= "#{ymconvn(@yyyymm)}の記録一覧"
 - else
   %h1 記録一覧

@@ -46,13 +46,13 @@ class UsersController < ApplicationController
     @group = Group.new
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
-    @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]].paginate(page: params[:page], per_page: 5)
+    @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]].paginate(page: params[:page], per_page: 25)
   end
 
   def family_archives
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
-    @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]].paginate(page: params[:page], per_page: 20)
+    @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]].paginate(page: params[:page], per_page: 25)
   end
 
   def destroy
