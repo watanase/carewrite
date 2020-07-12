@@ -1,6 +1,6 @@
 = form_with(model: [@company, @group], local: true) do |f|
   .field
-    = f.label 'グループの新規作成'
+    = f.label :name
     = f.text_field :name, placeholder: 'グループ名を入力', class: 'input-area'
   .field.submit
-    = f.submit "グループを作成", class: 'submit-btn'
+    = f.submit class: 'submit-btn'

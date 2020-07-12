@@ -26,20 +26,22 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @company = Company.find(current_company.id)
   end
 
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to company_path(current_company)
+      redirect_to company_groups_path(current_company)
     else
       render :edit
     end
   end
 
   def destroy
+    @group = Group.find(params[:id])
     @group.destroy
-    redirect_to company_recorder_path(current_company)
+    redirect_to company_groups_path(current_company)
   end
 
   private
