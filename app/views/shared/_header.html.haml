@@ -8,7 +8,7 @@
       .name
         = "#{current_recorder.name}"
   .header-menu
-    - if @path.is('users#show', 'posts#index', 'users#edit', 'posts#new', 'users#archives')
+    - if @path.is('users#show', 'posts#index', 'users#edit', 'posts#new', 'users#archives', 'posts#search', 'users#search')
       .watch-record
         = link_to user_posts_path(@user), class: 'menu-btn' do
           %i.fas.fa-book

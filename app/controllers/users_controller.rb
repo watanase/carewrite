@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update move_out archives family_see family_archives destroy]
   before_action :select_company, only: %i[new create edit update show archives]
   before_action :move_to_index, only: %i[show family]
+  before_action :search
   require 'will_paginate/array'
 
   def new
@@ -58,6 +59,11 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to company_path(current_company)
+  end
+
+  def search
+    @search = Post.ransack(params[:q])
+    @posts = @search.result.paginate(page: params[:page], per_page: 25).where(user_id: @user)
   end
 
   private

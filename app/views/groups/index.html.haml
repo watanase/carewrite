@@ -21,4 +21,4 @@
                   %tr
                     %td= g.name
                     %td= link_to '編集', edit_company_group_path(current_company, g)
-                    %td= link_to '削除',  company_recorder_path(current_company, g), method: :delete, data: {confirm: "「#{r.name}」を削除しますか?", cancel: "キャンセル", commit: "削除" }
+                    %td= link_to '削除',  company_recorder_path(current_company, g), method: :delete, data: {confirm: "「#{g.name}」を削除しますか?", cancel: "キャンセル", commit: "削除" }

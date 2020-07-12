@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
   before_action :select_user
   before_action :set_post, only:[:edit, :update]
-
+  before_action :search
 
   def index
     @group = Group.new
-    @q = Post.ransack(params[:q])
     @posts = Post.where(user_id: @user).paginate(page: params[:page], per_page: 25)
     @archives = @user.devide_monthly
   end
@@ -44,6 +43,12 @@ class PostsController < ApplicationController
 
   def family_see
     @posts = Post.where(user_id: @user).paginate(page: params[:page], per_page: 25)
+    @archives = @user.devide_monthly
+  end
+
+  def search
+    @search = Post.ransack(params[:q])
+    @posts = @search.result.paginate(page: params[:page], per_page: 25).where(user_id: @user)
     @archives = @user.devide_monthly
   end
 

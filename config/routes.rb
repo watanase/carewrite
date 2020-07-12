@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :posts, except:[:show] do
       collection do
         get :family_see
+        get :search
       end
     end
     member do
