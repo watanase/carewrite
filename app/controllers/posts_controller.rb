@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :select_user
-  before_action :set_post, only:[:edit, :update]
+  before_action :set_post, only: %i[edit update]
   before_action :search
 
   def index
@@ -63,8 +63,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post
-    ).permit(:focus, :content, :datetime, :name
-    ).merge(user_id: params[:user_id], recorder_id: current_recorder.id)
+    params.require(:post).permit(:focus, :content, :datetime, :name).merge(user_id: params[:user_id], recorder_id: current_recorder.id)
   end
 end

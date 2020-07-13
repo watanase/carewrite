@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def move_out
-    @user.update_attributes(status: 2, group_id: nil)
+    @user.update(status: 2, group_id: nil)
     redirect_to user_path(@user)
   end
 
@@ -47,13 +47,13 @@ class UsersController < ApplicationController
     @group = Group.new
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
-    @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]].paginate(page: params[:page], per_page: 25)
+    @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(page: params[:page], per_page: 25)
   end
 
   def family_archives
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
-    @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]].paginate(page: params[:page], per_page: 25)
+    @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(page: params[:page], per_page: 25)
   end
 
   def destroy
@@ -67,14 +67,13 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end
 
   def select_company
-    if logged_in_company?
-      @company = Company.find_by(id: current_company.id)
-    end
+    @company = Company.find_by(id: current_company.id) if logged_in_company?
   end
 
   def user_params
@@ -93,7 +92,7 @@ class UsersController < ApplicationController
       :login_id,
       :password,
       :password_confirmation,
-      :group_id,
+      :group_id
     ).merge(company_id: current_company.id)
   end
 

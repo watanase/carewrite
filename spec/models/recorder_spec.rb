@@ -7,7 +7,6 @@ describe Recorder do
         recorder = build(:recorder)
         expect(recorder).to be_valid
       end
-
     end
 
     context '登録できない場合' do
@@ -30,7 +29,6 @@ describe Recorder do
           recorder.errors[:password_confirmation]
         ).to include('とパスワードの入力が一致しません')
       end
-
     end
   end
 end

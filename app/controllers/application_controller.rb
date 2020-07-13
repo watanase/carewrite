@@ -7,29 +7,31 @@ class ApplicationController < ActionController::Base
   def request_path
     @path = controller_path + '#' + action_name
     def @path.is(*str)
-        str.map{|s| self.include?(s)}.include?(true)
+      str.map { |s| include?(s) }.include?(true)
     end
   end
 
   private
+
   # ログイン済みcompanyかどうか確認
   def logged_in_company
-    unless logged_in_company? && current_company?(@company)
-      redirect_to login_company_path
-    end
+    return if logged_in_company? && current_company?(@company)
+
+    redirect_to login_company_path
   end
+
   # ログイン済みrecorderかどうか確認
   def logged_in_recorder
-    unless logged_in_recorder? && current_recorder?(@recorder)
-      redirect_to login_recorder_path
-    end
+    return if logged_in_recorder? && current_recorder?(@recorder)
+
+    redirect_to login_recorder_path
   end
+
   # ログイン済みuserかどうか確認
   def logged_in_user
-    unless logged_in_user? && current_user?(@user)
-      redirect_to login_user_path
-    end
+    redirect_to login_user_path unless logged_in_user? && current_user?(@user)
   end
+
   # ログイン済みuserまたはuserに紐づくcompanyにログインしているかどうか確認
   def move_to_index
     if logged_in_company?
@@ -39,6 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end

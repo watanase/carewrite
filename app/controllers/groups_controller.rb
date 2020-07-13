@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only:[:show, :edit]
+  before_action :set_group, only: %i[show edit]
   before_action :set_company, only: %i[create show]
   before_action :logged_in_company, only: %i[show]
 
@@ -45,6 +45,7 @@ class GroupsController < ApplicationController
   end
 
   private
+
   def set_group
     @group = Group.find(params[:id])
   end

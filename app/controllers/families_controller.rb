@@ -5,6 +5,7 @@ class FamiliesController < ApplicationController
   end
 
   private
+
   def family_params
     params.require(:family).permit(
       :name, :hurigana, :phone, :zipcode, :street_address, :relationship, :information
