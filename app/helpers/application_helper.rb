@@ -17,7 +17,7 @@ module ApplicationHelper
     class_name = 'channel'
     class_name << ' active' if current_page?(path)
 
-    content_tag :p, class: class_name do
+    tag.p class: class_name do
       link_to name, path, class: 'channel_name'
     end
   end

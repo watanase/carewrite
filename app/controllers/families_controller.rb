@@ -8,7 +8,13 @@ class FamiliesController < ApplicationController
 
   def family_params
     params.require(:family).permit(
-      :name, :hurigana, :phone, :zipcode, :street_address, :relationship, :information
+      :name,
+      :hurigana,
+      :phone,
+      :zipcode,
+      :street_address,
+      :relationship,
+      :information
     ).merge(user_id: params[:user_id])
   end
 end

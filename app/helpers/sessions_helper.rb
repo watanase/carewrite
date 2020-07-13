@@ -7,9 +7,7 @@ module SessionsHelper
 
   # 現在ログイン中のcompanyを返す
   def current_company
-    if session[:company_id]
-      @current_company ||= Company.find_by(id: session[:company_id])
-    end
+    @current_company ||= Company.find_by(id: session[:company_id]) if session[:company_id]
   end
 
   # 受け取ったcompanyがログイン中のcompanyと一致すればtrueを返す
@@ -37,9 +35,7 @@ module SessionsHelper
 
   # 現在ログイン中のrecorderを返す
   def current_recorder
-    if session[:recorder_id]
-      @current_recorder ||= Recorder.find_by(id: session[:recorder_id])
-    end
+    @current_recorder ||= Recorder.find_by(id: session[:recorder_id]) if session[:recorder_id]
   end
 
   # 受け取ったrecorderがログイン中のrecorderと一致すればtrueを返す

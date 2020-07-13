@@ -63,7 +63,9 @@ class UsersController < ApplicationController
 
   def search
     @search = Post.ransack(params[:q])
-    @posts = @search.result.paginate(page: params[:page], per_page: 25).where(user_id: @user)
+    @posts = @search.result.paginate(
+      page: params[:page], per_page: 25
+    ).where(user_id: @user)
   end
 
   private
