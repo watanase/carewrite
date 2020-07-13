@@ -63,6 +63,11 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:focus, :content, :datetime, :name).merge(user_id: params[:user_id], recorder_id: current_recorder.id)
+    params.require(:post).permit(
+      :focus,
+      :content,
+      :datetime,
+      :name
+    ).merge(user_id: params[:user_id], recorder_id: current_recorder.id)
   end
 end

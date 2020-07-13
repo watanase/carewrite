@@ -47,13 +47,17 @@ class UsersController < ApplicationController
     @group = Group.new
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
-    @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(page: params[:page], per_page: 25)
+    @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(
+      page: params[:page], per_page: 25
+    )
   end
 
   def family_archives
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
-    @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(page: params[:page], per_page: 25)
+    @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(
+      page: params[:page], per_page: 25
+    )
   end
 
   def destroy
@@ -80,20 +84,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :name,
-      :hurigana,
-      :gender,
-      :birthday,
-      :zipcode,
-      :street_address,
-      :image,
-      :care_required,
-      :status,
-      :occupancy,
-      :room_number,
-      :login_id,
-      :password,
-      :password_confirmation,
+      :name,        :hurigana,
+      :gender,      :birthday,
+      :zipcode,     :street_address,
+      :image,       :care_required,
+      :status,      :occupancy,
+      :room_number, :login_id,
+      :password,    :password_confirmation,
       :group_id
     ).merge(company_id: current_company.id)
   end

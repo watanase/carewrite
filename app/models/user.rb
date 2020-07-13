@@ -5,7 +5,7 @@ class User < ApplicationRecord
   belongs_to :company
   belongs_to :group
 
-  validates :name, presence: true
+  validates :name, :login_id, presence: true
   validates :login_id, uniqueness: true
 
   enum gender: { '性別を選択': 0, '男性': 1, '女性': 2 }
@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   require 'date'
   def calc_age(birthday)
-    (Date.today.strftime('%Y%m%d').to_i - birthday.strftime('%Y%m%d').to_i) / 10_000
+    (Time.zone.today.strftime('%Y%m%d').to_i - birthday.strftime('%Y%m%d').to_i) / 10_000
   end
 
   def devide_monthly

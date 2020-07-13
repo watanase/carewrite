@@ -1,9 +1,9 @@
 module ApplicationHelper
   # 和暦表示
   require 'date'
-  def wareki(date = Date.today)
-    _wareki, mon, day = date.jisx0301.split('.')
-    gengou, year = _wareki.partition(/\d+/).take(2)
+  def wareki(date = Time.zone.today)
+    wareki, mon, day = date.jisx0301.split('.')
+    gengou, year = wareki.partition(/\d+/).take(2)
     gengou.sub!(/[MTSH]/,
                 'M' => '明治',
                 'T' => '大正',

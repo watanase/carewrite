@@ -7,7 +7,7 @@ module SessionsHelper
 
   # 現在ログイン中のcompanyを返す
   def current_company
-    @current_company ||= Company.find_by(id: session[:company_id]) if session[:company_id]
+    Company.find_by(id: session[:company_id]) if session[:company_id]
   end
 
   # 受け取ったcompanyがログイン中のcompanyと一致すればtrueを返す
@@ -24,7 +24,6 @@ module SessionsHelper
   def log_out_company
     session.delete(:company_id)
     session.delete(:recorder_id)
-    @current_company = nil
   end
 
   ## recorderメソッド
@@ -35,7 +34,7 @@ module SessionsHelper
 
   # 現在ログイン中のrecorderを返す
   def current_recorder
-    @current_recorder ||= Recorder.find_by(id: session[:recorder_id]) if session[:recorder_id]
+    Recorder.find_by(id: session[:recorder_id]) if session[:recorder_id]
   end
 
   # 受け取ったrecorderがログイン中のrecorderと一致すればtrueを返す
@@ -51,7 +50,6 @@ module SessionsHelper
   # 現在のrecorderをログアウトする
   def log_out_recorder
     session.delete(:recorder_id)
-    @current_recorder = nil
   end
 
   ## userメソッド
@@ -62,7 +60,7 @@ module SessionsHelper
 
   # 現在ログイン中のuserを返す
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
   # 受け取ったuserがログイン中のuserと一致すればtrueを返す
@@ -78,6 +76,5 @@ module SessionsHelper
   # 現在のuserをログアウトする
   def log_out_user
     session.delete(:user_id)
-    @current_user = nil
   end
 end
