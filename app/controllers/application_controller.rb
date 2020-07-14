@@ -1,15 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :request_path
   include SessionsHelper
-
-  # アクション別にビュー表示
-  def request_path
-    @path = controller_path + '#' + action_name
-    def @path.is(*str)
-      str.map { |s| include?(s) }.include?(true)
-    end
-  end
 
   private
 

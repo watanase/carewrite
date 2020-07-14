@@ -7,25 +7,25 @@
       %h4 記録者:
       .name
         = "#{current_recorder.name}"
-  .header-menu
-    - if @path.is('users#show', 'posts#index', 'users#edit', 'posts#new', 'users#archives', 'posts#search', 'users#search')
-      .watch-record
-        = link_to user_posts_path(@user), class: 'menu-btn' do
-          %i.fas.fa-book
-          記録を見る
-      .write-record
-        - if logged_in_recorder?
-          = link_to new_user_post_path(@user), class: 'menu-btn' do
-            %i.far.fa-edit
-            記録を書く
-      .info
-        - if logged_in_company?
-          .edit-info
-            = link_to edit_user_path(@user), class: 'menu-btn' do
-              %i.far.fa-address-book
-              登録情報の編集
-          - unless @user.status == '退去済み'
-            .move_user
-              = link_to move_out_user_path(@user), class: 'menu-btn' do
-                %i.fas.fa-cog
-                利用者を退去済みに移動
+  -# .header-menu
+  -#   - if @path.is('users#show', 'posts#index', 'users#edit', 'posts#new', 'users#archives', 'posts#search', 'users#search')
+  -#     .watch-record
+  -#       = link_to user_posts_path(@user), class: 'menu-btn' do
+  -#         %i.fas.fa-book
+  -#         記録を見る
+  -#     .write-record
+  -#       - if logged_in_recorder?
+  -#         = link_to new_user_post_path(@user), class: 'menu-btn' do
+  -#           %i.far.fa-edit
+  -#           記録を書く
+  -#     .info
+  -#       - if logged_in_company?
+  -#         .edit-info
+  -#           = link_to edit_user_path(@user), class: 'menu-btn' do
+  -#             %i.far.fa-address-book
+  -#             登録情報の編集
+  -#         - unless @user.status == '退去済み'
+  -#           .move_user
+  -#             = link_to move_out_user_path(@user), class: 'menu-btn' do
+  -#               %i.fas.fa-cog
+  -#               利用者を退去済みに移動
