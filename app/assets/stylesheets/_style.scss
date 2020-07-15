@@ -157,6 +157,9 @@
                 word-break: break-all;
               }
             }
+            .align-left{
+              text-align: left;
+            }
             .date{
               min-width: 120px;
             }
@@ -170,7 +173,7 @@
               width: 80px;
             }
             .birth{
-              min-width: 260px;
+              min-width: 255px;
             }
           }
           .table-list{
