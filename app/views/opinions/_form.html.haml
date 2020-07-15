@@ -1,0 +1,9 @@
+= form_with(model: [@user, @opinion], local: true) do |f|
+  .field
+    = f.label :content
+    = f.text_area :content, placeholder: 'ご意見を入力してください', required: "", class: ''
+  .field
+    = f.label :name
+    = f.text_field :name, placeholder: '匿名でも送信できます', class: ''
+  .field
+    = f.submit '送信する', class: 'submit-btn'

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :users do
+    resources :opinions, only:[:new, :create]
     resources :families, only:[:create]
     resources :posts, except:[:show] do
       collection do

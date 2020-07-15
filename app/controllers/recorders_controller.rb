@@ -11,7 +11,6 @@ class RecordersController < ApplicationController
   end
 
   def create
-    # binding.pry
     @recorder = Recorder.create(recorder_params)
     if @recorder.save
       redirect_to company_path(current_company)
