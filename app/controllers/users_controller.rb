@@ -6,6 +6,10 @@ class UsersController < ApplicationController
   before_action :search
   require 'will_paginate/array'
 
+  def index
+    @company = Company.find_by(id: current_user.company_id) if logged_in_user?
+  end
+
   def new
     @user = User.new
     @users = User.where(company_id: current_company.id)
@@ -72,6 +76,7 @@ class UsersController < ApplicationController
 
   def family_see
     @families = @user.families.all
+    @company = Company.find_by(id: current_user.company_id)
   end
 
   private

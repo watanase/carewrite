@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resources :companies, only:[:index, :new, :create, :show] do
     resources :groups, only:[:index, :new, :create, :show, :edit, :update, :destroy]
     resources :recorders, only:[:index, :new, :create, :destroy]
+    resources :opinions, only:[:index, :new, :create]
   end
 
   resources :users do
-    resources :opinions, only:[:new, :create]
     resources :families, only:[:create]
     resources :posts, except:[:show] do
       collection do
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get :move_out, :family_see
     end
   end
+
 
   get  '/users/:id/posts/:yyyymm', to: 'users#archives', as: :user_archive
   get  '/users/:id/family/:yyyymm', to: 'users#family_archives', as: :user_family_archive

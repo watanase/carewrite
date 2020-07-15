@@ -44,6 +44,7 @@ class PostsController < ApplicationController
   def family_see
     @posts = Post.where(user_id: @user).paginate(page: params[:page], per_page: 25)
     @archives = @user.devide_monthly
+    @company = Company.find_by(id: current_user.company_id)
   end
 
   def search
