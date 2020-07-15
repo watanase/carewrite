@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :company_check, only: %i[new create edit update]
-  before_action :set_user, only: %i[show edit update move_out archives family_archives destroy]
+  before_action :set_user, only: %i[show edit update move_out archives family_archives family_see destroy]
   before_action :select_company, only: %i[new create edit update show archives]
   before_action :move_to_index, only: %i[show]
   before_action :search
@@ -68,6 +68,10 @@ class UsersController < ApplicationController
     @posts = @search.result.paginate(
       page: params[:page], per_page: 25
     ).where(user_id: @user)
+  end
+
+  def family_see
+    @families = @user.families.all
   end
 
   private

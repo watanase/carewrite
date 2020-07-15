@@ -14,7 +14,7 @@
         %tr
           %th 生年月日
           %td
-            = "#{@user.birthday.year}""#{wareki(@user.birthday)}"" / #{@user.calc_age(@user.birthday)}歳"
+            = "#{@user.birthday.year}年""#{datedisplay(@user.birthday)}"" / #{@user.calc_age(@user.birthday)}歳"
         %tr
           %th 性別
           %td
@@ -41,7 +41,7 @@
         %tr
           %th 入居日
           %td
-            = @user.occupancy
+            = "#{@user.occupancy.year}年""#{datedisplay(@user.occupancy)}"
     .contact-field
       %h2 連絡先
       - if @families

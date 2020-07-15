@@ -1,15 +1,7 @@
 module ApplicationHelper
   # 和暦表示
-  require 'date'
-  def wareki(date = Time.zone.today)
-    wareki, mon, day = date.jisx0301.split('.')
-    gengou, year = wareki.partition(/\d+/).take(2)
-    gengou.sub!(/[MTSH]/,
-                'M' => '明治',
-                'T' => '大正',
-                'S' => '昭和',
-                'H' => '平成')
-    format(' ( %s%d年 ) %d月 %d日', gengou, year.to_i, mon.to_i, day.to_i)
+  def datedisplay(time)
+    time.strftime(' ( %Je%Jg年 ) %Js%Jl月%Jd日')
   end
 
   # 選択中のリンクを識別
@@ -22,6 +14,7 @@ module ApplicationHelper
     end
   end
 
+  # アーカイブ
   def ymconv(yyyymm, cnt)
     yyyy = yyyymm[0, 4]
     mm = yyyymm[4, 2]

@@ -10,7 +10,7 @@
     = search_form_for @search, url:search_user_posts_path(@user) do |f|
       = f.search_field :focus_or_content_cont, placeholder: '記録を検索', class: 'search-area'
       = f.submit "検索", class: 'search-btn'
-- if ["archives", 'family_archives'].include? action_name
+- if ['archives', 'family_archives'].include? action_name
   %h1= "#{ymconvn(@yyyymm)}の記録一覧"
 - elsif ['search'].include? action_name
   %h1 検索一覧
