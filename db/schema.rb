@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_07_15_065609) do
 
   create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "hurigana"
+    t.string "furigana"
     t.string "phone"
     t.integer "zipcode"
     t.string "street_address"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_07_15_065609) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "hurigana"
+    t.string "furigana"
     t.string "password_digest", null: false
     t.bigint "company_id"
     t.integer "gender"

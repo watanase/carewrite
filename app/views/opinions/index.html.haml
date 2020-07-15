@@ -7,4 +7,9 @@
     .center
     .right
       - @opinions.each do |o|
-        = o.content
+        .opinion-list
+          .opinion-main
+            = simple_format(o.content)
+          .opinion-name
+            = o.name
+            = l o.created_at, format: :long

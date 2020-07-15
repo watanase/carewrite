@@ -7,8 +7,8 @@
         %tr
           %th 氏名
           %td
-            .user-hurigana
-              = @user.hurigana
+            .user-furigana
+              = @user.furigana
             .user-name
               = @user.name
         %tr
@@ -51,8 +51,8 @@
             %tr
               %th 氏名
               %td
-                .user-hurigana
-                  = f.hurigana
+                .user-furigana
+                  = f.furigana
                 .user-name
                   = f.name
             %tr
@@ -88,8 +88,8 @@
                 = f.label :name
                 = f.text_field :name, placeholder: '連絡者名を入力してください', class: 'input-area user-input'
               .field.user-field
-                = f.label :hurigana
-                = f.text_field :hurigana, placeholder: 'フリガナを入力してください', class: 'input-area user-input'
+                = f.label :furigana
+                = f.text_field :furigana, placeholder: 'フリガナを入力してください', class: 'input-area user-input'
               .field.user-field
                 = f.label :phone
                 = f.text_field :phone, placeholder: '電話番号を入力してください', class: 'input-area user-input'

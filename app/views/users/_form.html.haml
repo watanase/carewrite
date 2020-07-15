@@ -4,8 +4,8 @@
     = f.label '利用者名(※必須)'
     = f.text_field :name, placeholder: '利用者名を入力してください', required: "", class: 'input-area user-input'
   .field.user-field
-    = f.label :hurigana
-    = f.text_field :hurigana, placeholder: 'フリガナを入力してください', class: 'input-area user-input'
+    = f.label :furigana
+    = f.text_field :furigana, placeholder: 'フリガナを入力してください', class: 'input-area user-input'
   .field.user-field
     = f.label :group_id
     = f.collection_select :group_id, @company.groups, :id, :name, prompt: "未選択", class: 'input-area select-input'
@@ -46,5 +46,5 @@
     .field.user-field
       = f.label '確認用パスワード(※必須)'
       = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', required: "", class: 'input-area user-input'
-  .field.user-field
+  .field.user-field.submit
     = f.submit class: 'submit-btn'
