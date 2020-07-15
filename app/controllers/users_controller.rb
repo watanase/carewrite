@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
   before_action :company_check, only: %i[new create edit update]
-  before_action :set_user, only: %i[show edit update move_out archives family_see family_archives destroy]
+  before_action :set_user, only: %i[show edit update move_out archives family_archives family_see destroy]
   before_action :select_company, only: %i[new create edit update show archives]
-  before_action :move_to_index, only: %i[show family]
+  before_action :move_to_index, only: %i[show]
+  before_action :search
+  require 'will_paginate/array'
 
   def new
     @user = User.new
-    @group = Group.new
     @users = User.where(company_id: current_company.id)
   end
 
@@ -37,21 +38,24 @@ class UsersController < ApplicationController
   end
 
   def move_out
-    @user.update_attributes(status: 2, group_id: nil)
+    @user.update(status: 2, group_id: nil)
     redirect_to user_path(@user)
   end
 
   def archives
-    @group = Group.new
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
-    @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]]
+    @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(
+      page: params[:page], per_page: 25
+    )
   end
 
   def family_archives
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
-    @posts = @user.posts.group_by{|post| post.datetime.strftime('%Y%m')[@yyyymm]}[params[:yyyymm]]
+    @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(
+      page: params[:page], per_page: 25
+    )
   end
 
   def destroy
@@ -59,34 +63,37 @@ class UsersController < ApplicationController
     redirect_to company_path(current_company)
   end
 
+  def search
+    @search = Post.ransack(params[:q])
+    @posts = @search.result.paginate(
+      page: params[:page], per_page: 25
+    ).where(user_id: @user)
+  end
+
+  def family_see
+    @families = @user.families.all
+  end
+
   private
+
   def set_user
     @user = User.find(params[:id])
   end
 
   def select_company
-    if logged_in_company?
-      @company = Company.find_by(id: current_company.id)
-    end
+    @company = Company.find_by(id: current_company.id) if logged_in_company?
   end
 
   def user_params
     params.require(:user).permit(
-      :name,
-      :hurigana,
-      :gender,
-      :birthday,
-      :zipcode,
-      :street_address,
-      :image,
-      :care_required,
-      :status,
-      :occupancy,
-      :room_number,
-      :login_id,
-      :password,
-      :password_confirmation,
-      :group_id,
+      :name,        :hurigana,
+      :gender,      :birthday,
+      :zipcode,     :street_address,
+      :image,       :care_required,
+      :status,      :occupancy,
+      :room_number, :login_id,
+      :password,    :password_confirmation,
+      :group_id
     ).merge(company_id: current_company.id)
   end
 

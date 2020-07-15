@@ -25,11 +25,11 @@
                   %tr
                     %td= u.room_number
                     %td= link_to "#{u.name}",  user_path(u)
-                    %td= "#{u.birthday.year}年""#{wareki(u.birthday)}"
-                    %td= u.calcAge(u.birthday)
+                    %td.align-left= "#{u.birthday.year}年""#{datedisplay(u.birthday)}"
+                    %td= u.calc_age(u.birthday)
                     %td= u.gender
                     %td= u.care_required
-                    %td= "#{u.occupancy.year}年""#{wareki(u.occupancy)}"
+                    %td.align-left= "#{u.occupancy.year}年""#{datedisplay(u.occupancy)}"
                     %td= u.login_id
           .open-close
             %label.div-plus{for: 'div'}

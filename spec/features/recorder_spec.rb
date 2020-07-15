@@ -15,7 +15,6 @@
 #     # ログインに成功したことを検証する
 #     expect(page).to have_content '記録を終了する'
 
-
 #   end
 
 # end

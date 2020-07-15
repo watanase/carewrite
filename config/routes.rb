@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "users#index"
 
   resources :companies, only:[:index, :new, :create, :show] do
-    resources :groups, only:[:index, :new, :create, :show, :edit]
+    resources :groups, only:[:index, :new, :create, :show, :edit, :update, :destroy]
     resources :recorders, only:[:index, :new, :create, :destroy]
   end
 
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :posts, except:[:show] do
       collection do
         get :family_see
+        get :search
       end
     end
     member do

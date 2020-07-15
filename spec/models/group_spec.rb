@@ -7,7 +7,6 @@ describe Group do
         group = build(:group)
         expect(group).to be_valid
       end
-
     end
 
     context '登録できない場合' do
@@ -16,7 +15,6 @@ describe Group do
         group.valid?
         expect(group.errors[:name]).to include('を入力してください')
       end
-
     end
   end
 end

@@ -1,0 +1,30 @@
+.company-header
+  .campany-name
+    - if logged_in_company?
+      = link_to "#{current_company.name}", company_path(current_company), class: 'header-btn'
+  .recorder-name
+    - if logged_in_recorder?
+      %h4 記録者:
+      .name
+        = "#{current_recorder.name}"
+  .header-menu
+    .watch-record
+      = link_to user_posts_path(@user), class: 'menu-btn' do
+        %i.fas.fa-book
+        記録を見る
+    .write-record
+      - if logged_in_recorder?
+        = link_to new_user_post_path(@user), class: 'menu-btn' do
+          %i.far.fa-edit
+          記録を書く
+    .info
+      - if logged_in_company?
+        .edit-info
+          = link_to edit_user_path(@user), class: 'menu-btn' do
+            %i.far.fa-address-book
+            登録情報の編集
+        - unless @user.status == '退去済み'
+          .move_user
+            = link_to move_out_user_path(@user), class: 'menu-btn' do
+              %i.fas.fa-cog
+              利用者を退去済みに移動

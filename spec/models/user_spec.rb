@@ -7,7 +7,6 @@ describe User do
         user = build(:user)
         expect(user).to be_valid
       end
-
     end
 
     context '登録できない場合' do
@@ -30,8 +29,6 @@ describe User do
           user.errors[:password_confirmation]
         ).to include('とパスワードの入力が一致しません')
       end
-
     end
   end
-
 end

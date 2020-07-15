@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_184253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_recorders_on_company_id"
+    t.index ["login_id"], name: "index_recorders_on_login_id", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_184253) do
     t.bigint "group_id"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["group_id"], name: "index_users_on_group_id"
+    t.index ["login_id"], name: "index_users_on_login_id", unique: true
   end
 
   add_foreign_key "families", "users"

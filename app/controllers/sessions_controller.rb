@@ -1,11 +1,10 @@
 class SessionsController < ApplicationController
   ## companyメソッド
-  def new_company
-  end
+  def new_company; end
 
   def create_company
     @company = Company.find_by(name: params[:name])
-    if @company && @company.authenticate(params[:password])
+    if @company&.authenticate(params[:password])
       session[:company_id] = @company.id
       redirect_to company_path(@company)
     else
@@ -17,7 +16,8 @@ class SessionsController < ApplicationController
     log_out_company if logged_in_company?
     redirect_to root_path
   end
-  ##recorderメソッド
+
+  # #recorderメソッド
   def new_recorder
     @company = current_company
     @group = Group.new
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
   def create_recorder
     @recorder = Recorder.find_by(login_id: params[:login_id])
-    if @recorder && @recorder.authenticate(params[:password])
+    if @recorder&.authenticate(params[:password])
       session[:recorder_id] = @recorder.id
       redirect_to company_path(current_company)
     else
@@ -37,14 +37,14 @@ class SessionsController < ApplicationController
     log_out_recorder if logged_in_recorder?
     redirect_to company_path(current_company)
   end
-  ##userメソッド
-  def new_user
-  end
+
+  # #userメソッド
+  def new_user; end
 
   def create_user
     # binding.pry
     @user = User.find_by(login_id: params[:login_id])
-    if @user && @user.authenticate(params[:password])
+    if @user&.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to family_see_user_path(@user)
     else
