@@ -74,8 +74,8 @@
               %th その他
               %td
                 = f.information
-    .open-close
-      - if logged_in_company?
+    - if ['show'].include? action_name
+      .open-close
         %label.div-plus{for: 'div'}
           連絡先を追加する
           %i.fas.fa-plus

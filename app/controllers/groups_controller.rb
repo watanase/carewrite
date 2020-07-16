@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit]
   before_action :set_company, only: %i[create show]
-  before_action :logged_in_company, only: %i[show]
 
   def index
     @groups = Group.where(company_id: current_company.id)

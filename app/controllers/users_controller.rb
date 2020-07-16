@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  before_action :company_check, only: %i[new create edit update]
+  # before_action :move_to_index, only: %i[show]
+  # before_action :logged_in_company, only: %i[show]
+  before_action :company_check, only: %i[new edit]
   before_action :set_user, only: %i[show edit update move_out archives family_archives family_see destroy]
   before_action :select_company, only: %i[new create edit update show archives]
-  before_action :move_to_index, only: %i[show]
   before_action :search
   require 'will_paginate/array'
 

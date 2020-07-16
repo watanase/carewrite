@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  # before_action :logged_in_company, only: %i[index new edit]
+  # before_action :move_to_index, only: %i[family_see]
   before_action :select_user
   before_action :set_post, only: %i[edit update]
   before_action :search
