@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
+  before_action :move_to_root, only: %i[index new]
   before_action :set_company, only: %i[show]
+  before_action :logged_in_company, only: %i[show]
 
   def new
     @company = Company.new

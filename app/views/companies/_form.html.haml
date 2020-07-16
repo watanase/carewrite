@@ -1,12 +1,12 @@
 = form_with(model: @company, local: true) do |f|
   .field
     = f.label :name
-    = f.text_field :name, placeholder: '企業の名前を入力してください', required: "", class: 'input-area'
+    = f.text_field :name, placeholder: '企業の名前を入力してください', required: '', class: 'input-area'
   .field
     = f.label :password
-    = f.password_field :password, placeholder: 'パスワードを入力してください', required: "", class: 'input-area'
+    = f.password_field :password, placeholder: 'パスワードを入力してください', required: '', class: 'input-area'
   .field
     = f.label :password_confirmation
-    = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', required: "", class: 'input-area'
+    = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', required: '', class: 'input-area'
   .field.submit
     = f.submit '企業を登録する', class: 'submit-btn'

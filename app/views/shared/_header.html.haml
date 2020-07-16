@@ -1,8 +1,8 @@
 .company-header
   .campany-name
-    = link_to "#{current_company.name}", company_path(current_company), class: 'header-btn'
+    = link_to current_company.name, company_path(current_company), class: 'header-btn'
   .recorder-name
     - if logged_in_recorder?
       %h4 記録者:
       .name
-        = "#{current_recorder.name}"
+        = current_recorder.name

@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :move_to_root, only: %i[new_company new_user]
   ## companyメソッド
   def new_company; end
 
@@ -42,7 +43,6 @@ class SessionsController < ApplicationController
   def new_user; end
 
   def create_user
-    # binding.pry
     @user = User.find_by(login_id: params[:login_id])
     if @user&.authenticate(params[:password])
       session[:user_id] = @user.id

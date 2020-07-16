@@ -1,19 +1,19 @@
 .company-list
   .field
-    = sidebar_link_item "利用者を登録", new_user_path
+    = sidebar_link_item '利用者を登録', new_user_path
   .field
-    = sidebar_link_item "記録者を登録", new_company_recorder_path(current_company)
+    = sidebar_link_item '記録者を登録', new_company_recorder_path(current_company)
   .field
-    = sidebar_link_item "グループを作成", new_company_group_path(current_company)
+    = sidebar_link_item 'グループを作成', new_company_group_path(current_company)
   - if current_company.groups
     - current_company.groups.each_with_index do |g, i|
       .group-list
-        %input.on-off{id: "Panel#{i}", type: "checkbox"}
+        %input.on-off{id: "Panel#{i}", type: 'checkbox'}
         %label.field{for: "Panel#{i}"}= g.name
         .user-list
           - g.users.each do |u|
             .user-name
-              = sidebar_link_item "#{u.name}", user_path(u)
+              = sidebar_link_item u.name, user_path(u)
   .ctr
     .field
       = link_to 'グループを管理', company_groups_path(current_company)
@@ -21,10 +21,10 @@
       = link_to '記録者を管理', company_recorders_path(current_company)
     .field
       - if logged_in_recorder?
-        = link_to "記録を終了する", logout_recorder_path, method: :delete
+        = link_to '記録を終了する', logout_recorder_path, method: :delete
       - else
-        = sidebar_link_item "記録者としてログイン", login_recorder_path
+        = sidebar_link_item '記録者としてログイン', login_recorder_path
     .field
-      = link_to "企業からログアウト", logout_company_path, method: :delete
+      = link_to '企業からログアウト', logout_company_path, method: :delete
     .field
       = link_to 'ご意見箱', company_opinions_path(current_company)

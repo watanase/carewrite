@@ -2,14 +2,14 @@
   %h2 利用者名
   .user-name
     - if ['index', 'archives', 'search'].include? action_name
-      = link_to "#{@user.name}", user_path(@user), class: 'link-btn'
+      = link_to @user.name, user_path(@user), class: 'link-btn'
     - else
-      = link_to "#{@user.name}", family_see_user_path(@user), class: 'link-btn'
+      = link_to @user.name, family_see_user_path(@user), class: 'link-btn'
 - if ['index', 'archives', 'search'].include? action_name
   .search
     = search_form_for @search, url:search_user_posts_path(@user) do |f|
       = f.search_field :focus_or_content_cont, placeholder: '記録を検索', class: 'search-area'
-      = f.submit "検索", class: 'search-btn'
+      = f.submit '検索', class: 'search-btn'
 - if ['archives', 'family_archives'].include? action_name
   %h1= "#{ymconvn(@yyyymm)}の記録一覧"
 - elsif ['search'].include? action_name
@@ -49,6 +49,6 @@
       - @archives.each do |yyyymm, count|
         .archive-link
           - if ['index', 'archives', 'search'].include? action_name
-            = link_to "#{ymconv(yyyymm, count.to_s)}", user_archive_path(@user, yyyymm)
+            = link_to ymconv(yyyymm, count.to_s), user_archive_path(@user, yyyymm)
           - else
-            = link_to "#{ymconv(yyyymm, count.to_s)}", user_family_archive_path(@user, yyyymm)
+            = link_to ymconv(yyyymm, count.to_s), user_family_archive_path(@user, yyyymm)

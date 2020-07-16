@@ -136,9 +136,6 @@
         }
         .user-list{
           margin: 0 auto;
-          .user-table{
-          width: 900px;
-          }
           .recorder-table{
             width: 400px;
             margin: 0 auto;
@@ -174,6 +171,10 @@
             }
             .birth{
               min-width: 255px;
+            }
+            .fas{
+              color: $blue;
+              margin-left: 5px;
             }
           }
           .table-list{

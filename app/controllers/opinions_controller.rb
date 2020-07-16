@@ -1,5 +1,5 @@
 class OpinionsController < ApplicationController
-  before_action :company_select, only:[:new, :create]
+  before_action :company_select, only: %i[new create]
 
   def index
     @opinions = Opinion.where(company_id: current_company.id)
@@ -19,6 +19,7 @@ class OpinionsController < ApplicationController
   end
 
   private
+
   def company_select
     @company = Company.find_by(id: current_user.company_id)
   end

@@ -1,17 +1,17 @@
 = form_with(model: @user, local: true) do |f|
-  = render "shared/error_messages", model: f.object
+  = render 'shared/error_messages', model: f.object
   .field.user-field
     = f.label '利用者名(※必須)'
-    = f.text_field :name, placeholder: '利用者名を入力してください', required: "", class: 'input-area user-input'
+    = f.text_field :name, placeholder: '利用者名を入力してください', required: '', class: 'input-area user-input'
   .field.user-field
     = f.label :furigana
     = f.text_field :furigana, placeholder: 'フリガナを入力してください', class: 'input-area user-input'
   .field.user-field
     = f.label :group_id
-    = f.collection_select :group_id, @company.groups, :id, :name, prompt: "未選択", class: 'input-area select-input'
+    = f.collection_select :group_id, @company.groups, :id, :name, prompt: '未選択', class: 'input-area select-input'
   .field.user-field
     = f.label :room_number
-    = f.number_field :room_number, placeholder: '半角で入力してください', pattern: "^[0-9A-Za-z]+$", class: 'input-area user-input'
+    = f.number_field :room_number, placeholder: '半角で入力してください', pattern: '^[0-9A-Za-z]+$', class: 'input-area user-input'
   .field.user-field
     = f.label :gender
     = f.select :gender, User.genders.keys.to_a, {}, class: 'input-area select-input'
@@ -39,12 +39,12 @@
     = f.label :login_id
     = f.text_field :login_id, placeholder: 'ログイン用IDを設定してください', class: 'input-area user-input', id: 'rand'
   %input{type: 'button', value: 'ランダムにIDを作成する', id: 'button', class: 'input'}
-  - if ["new", 'create'].include? action_name
+  - if ['new', 'create'].include? action_name
     .field.user-field
       = f.label 'パスワード(※必須)'
-      = f.password_field :password, required: "", placeholder: 'パスワードを設定してください', class: 'input-area user-input'
+      = f.password_field :password, required: '', placeholder: 'パスワードを設定してください', class: 'input-area user-input'
     .field.user-field
       = f.label '確認用パスワード(※必須)'
-      = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', required: "", class: 'input-area user-input'
+      = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', required: '', class: 'input-area user-input'
   .field.user-field.submit
     = f.submit class: 'submit-btn'

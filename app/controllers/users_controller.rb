@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  # before_action :move_to_index, only: %i[show]
-  # before_action :logged_in_company, only: %i[show]
   before_action :company_check, only: %i[new edit]
   before_action :set_user, only: %i[show edit update move_out archives family_archives family_see destroy]
   before_action :select_company, only: %i[new create edit update show archives]
@@ -56,6 +54,7 @@ class UsersController < ApplicationController
   end
 
   def family_archives
+    @company = Company.find_by(id: current_user.company_id)
     @archives = @user.devide_monthly
     @yyyymm = params[:yyyymm]
     @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(
