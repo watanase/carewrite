@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
-  before_action :set_company, only: %i[index new create show edit]
+  before_action :select_company, only: %i[index new create show edit]
   before_action :logged_in_company, only: %i[index new]
 
   def index
@@ -46,7 +46,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
-  def set_company
+  def select_company
     if logged_in_company?
       @company = Company.find(current_company.id)
     end

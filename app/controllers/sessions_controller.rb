@@ -43,7 +43,7 @@ class SessionsController < ApplicationController
   def new_user; end
 
   def create_user
-    @user = User.find_by(login_id: params[:login_id])
+    @user = User.find_by!(login_id: params[:login_id])
     if @user&.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to family_see_user_path(@user)

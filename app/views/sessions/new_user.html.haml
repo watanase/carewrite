@@ -2,8 +2,7 @@
 .wrapper
   %h1 ログイン
   .form
-    -# = form_with model: @user, local: true do |f|
-    = form_for(:session, url: login_user_path) do |f|
+    = form_with model: @user, local: true do |f|
       .field
         = f.label :login_id, 'ログインID'
         = f.text_field :login_id, placeholder: 'ログインIDを入力してください', class: 'input-area'

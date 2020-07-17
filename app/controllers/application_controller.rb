@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # ログイン中のログインしないか確認
+  # ログイン中にログインしないか確認
   def move_to_root
     if logged_in_company? || logged_in_user?
       redirect_to root_path

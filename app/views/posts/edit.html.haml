@@ -5,6 +5,10 @@
       = render 'companies/side'
     .center
     .right
+      .nav-bar
+        %h2 利用者名
+        .user-name
+          = link_to @user.name, user_path(@user), class: 'link-btn'
       %h1 記録を編集
       .form
         = render 'form'

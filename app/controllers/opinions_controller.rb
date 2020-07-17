@@ -1,5 +1,9 @@
 class OpinionsController < ApplicationController
-  before_action :company_select, only: %i[new create]
+  before_action :company_select, only: %i[new]
+  before_action :company_check, only: %i[index]
+  before_action :logged_in_company, only: %i[index]
+  before_action :select_user, only: %i[new]
+  before_action :logged_in_user, only: %i[new]
 
   def index
     @opinions = Opinion.where(company_id: current_company.id)
@@ -20,8 +24,20 @@ class OpinionsController < ApplicationController
 
   private
 
+  def select_user
+    @user = current_user
+  end
+
   def company_select
-    @company = Company.find_by(id: current_user.company_id)
+    if logged_in_user?
+      @company = Company.find_by(id: current_user.company_id)
+    end
+  end
+
+  def company_check
+    if logged_in_company?
+      @company = Company.find(current_company.id)
+    end
   end
 
   def opinion_params
