@@ -1,13 +1,14 @@
 = form_with(model:[@user, @post], local: true) do |f|
+  = render 'shared/error_messages', model: f.object
   .field
     = f.label :datetime
     = f.datetime_field :datetime, class: 'input-area'
   .field
     = f.label :focus
-    = f.text_field :focus, placeholder: 'フォーカス内容を入力してください', required: "", class: 'input-area'
+    = f.text_field :focus, placeholder: 'フォーカス内容を入力してください', required: true, class: 'input-area'
   .field
     = f.label :content
-    = f.text_area :content, placeholder: '記録内容を入力してください', required: "", class: 'input-area input-field'
+    = f.text_area :content, placeholder: '記録内容を入力してください', required: true, class: 'input-area input-field'
   .field
     = f.label :name
     = f.text_field :name, placeholder: '記録者が異なる場合に入力してください', class: 'input-area'

@@ -9,13 +9,16 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    @recorder = Recorder.new
     @users = User.where(company_id: current_company.id)
   end
 
   def create
     @group = Group.create(group_params)
-    redirect_to company_path(@company)
+    if @group.save
+      redirect_to company_path(@company)
+    else
+      render :new
+    end
   end
 
   def show

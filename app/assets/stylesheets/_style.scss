@@ -31,10 +31,12 @@
     .left{
       width: 230px;
       background-color: whitesmoke;
-      min-height: 100vh;
+      min-height: 80vh;
       position: fixed;
       left: 0;
       top: 60px;
+      bottom: 0;
+      overflow: auto;
       .channel.active {
         background: $blue;
         a{
@@ -47,7 +49,6 @@
         border-bottom: solid 1px gainsboro;
       }
       .company-list{
-
         a, label{
           color: black;
           font-size: 17px;
@@ -88,9 +89,6 @@
         }
         .field:hover{
           background-color: lightblue;
-        }
-        .ctr{
-          margin-top: 100px;
         }
       }
     }

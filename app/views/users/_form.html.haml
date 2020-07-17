@@ -2,7 +2,7 @@
   = render 'shared/error_messages', model: f.object
   .field.user-field
     = f.label '利用者名(※必須)'
-    = f.text_field :name, placeholder: '利用者名を入力してください', required: '', class: 'input-area user-input'
+    = f.text_field :name, placeholder: '利用者名を入力してください', required: true, class: 'input-area user-input'
   .field.user-field
     = f.label :furigana
     = f.text_field :furigana, placeholder: 'フリガナを入力してください', class: 'input-area user-input'
@@ -36,15 +36,15 @@
     .date-area
       = raw sprintf(f.date_select(:occupancy, use_month_numbers: true,start_year: 1990, end_year: (Time.now.year), default: Date.new(1990, 1, 1), date_separator: '%s'), '年 ', '月 ') + '日'
   .field.user-field
-    = f.label :login_id
-    = f.text_field :login_id, placeholder: 'ログイン用IDを設定してください', class: 'input-area user-input', id: 'rand'
+    = f.label :login_id, 'ログインID(※必須)'
+    = f.text_field :login_id, required: true, placeholder: 'ログイン用IDを設定してください', class: 'input-area user-input', id: 'rand'
   %input{type: 'button', value: 'ランダムにIDを作成する', id: 'button', class: 'input'}
   - if ['new', 'create'].include? action_name
     .field.user-field
       = f.label 'パスワード(※必須)'
-      = f.password_field :password, required: '', placeholder: 'パスワードを設定してください', class: 'input-area user-input'
+      = f.password_field :password, required: true, placeholder: 'パスワードを設定してください', class: 'input-area user-input'
     .field.user-field
       = f.label '確認用パスワード(※必須)'
-      = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', required: '', class: 'input-area user-input'
+      = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', required: true, class: 'input-area user-input'
   .field.user-field.submit
     = f.submit class: 'submit-btn'

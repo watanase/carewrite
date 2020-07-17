@@ -1,5 +1,5 @@
 class RecordersController < ApplicationController
-  before_action :select_company, only: %i[index new]
+  before_action :select_company, only: %i[index new create]
   before_action :logged_in_company, only: %i[index new]
 
   def index

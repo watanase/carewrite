@@ -14,17 +14,16 @@
           - g.users.each do |u|
             .user-name
               = sidebar_link_item u.name, user_path(u)
-  .ctr
-    .field
-      = link_to 'グループを管理', company_groups_path(current_company)
-    .field
-      = link_to '記録者を管理', company_recorders_path(current_company)
-    .field
-      - if logged_in_recorder?
-        = link_to '記録を終了する', logout_recorder_path, method: :delete
-      - else
-        = sidebar_link_item '記録者としてログイン', login_recorder_path
-    .field
-      = link_to '企業からログアウト', logout_company_path, method: :delete
-    .field
-      = link_to 'ご意見箱', company_opinions_path(current_company)
+  .field
+    = link_to 'グループを管理', company_groups_path(current_company)
+  .field
+    = link_to '記録者を管理', company_recorders_path(current_company)
+  .field
+    - if logged_in_recorder?
+      = link_to '記録を終了する', logout_recorder_path, method: :delete
+    - else
+      = sidebar_link_item '記録者としてログイン', login_recorder_path
+  .field
+    = link_to '企業からログアウト', logout_company_path, method: :delete
+  .field
+    = link_to 'ご意見箱', company_opinions_path(current_company)

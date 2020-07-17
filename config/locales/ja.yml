@@ -72,6 +72,9 @@ ja:
         street_address: 住所
         relationship: 利用者との関係
         information: その他の情報
+      session:
+        name: 氏名
+        password: パスワード
     models:
       user: ユーザ
     errors:

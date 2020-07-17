@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to user_posts_path(@user)
     else
-      rednder :new
+      render :new
     end
   end
 
