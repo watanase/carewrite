@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :move_to_root, only: %i[new_company  create_company new_user create_user]
+  before_action :move_to_root, only: %i[new_company create_company new_user create_user]
 
   ## companyメソッド
   def new_company; end
