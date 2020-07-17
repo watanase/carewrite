@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       log_in_company(company)
       redirect_to company_path(company)
     else
+      flash.now[:danger] = t('.flash.invalid_password')
       render :new_company
     end
   end
@@ -22,7 +23,6 @@ class SessionsController < ApplicationController
   # #recorderメソッド
   def new_recorder
     @company = current_company
-    @group = Group.new
   end
 
   def create_recorder
@@ -31,6 +31,7 @@ class SessionsController < ApplicationController
       log_in_recorder(recorder)
       redirect_to company_path(current_company)
     else
+      flash.now[:danger] = t('.flash.invalid_password')
       render :new_recorder
     end
   end
@@ -49,7 +50,7 @@ class SessionsController < ApplicationController
       log_in_user(user)
       redirect_to family_see_user_path(user), notice: 'ログインしました'
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = t('.flash.invalid_password')
       render :new_user
     end
   end
