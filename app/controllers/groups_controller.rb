@@ -47,9 +47,9 @@ class GroupsController < ApplicationController
   end
 
   def select_company
-    if logged_in_company?
-      @company = Company.find(current_company.id)
-    end
+    return unless logged_in_company?
+
+    @company = Company.find(current_company.id)
   end
 
   def group_params

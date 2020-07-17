@@ -3,6 +3,8 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show]
   before_action :logged_in_company, only: %i[show]
 
+  def index; end
+
   def new
     @company = Company.new
   end

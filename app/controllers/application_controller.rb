@@ -33,9 +33,9 @@ class ApplicationController < ActionController::Base
 
   # ログイン中にログインしないか確認
   def move_to_root
-    if logged_in_company? || logged_in_user?
-      redirect_to root_path
-    end
+    return unless logged_in_company? || logged_in_user?
+
+    redirect_to root_path
   end
 
   protected

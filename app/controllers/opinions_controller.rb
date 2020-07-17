@@ -29,15 +29,15 @@ class OpinionsController < ApplicationController
   end
 
   def company_select
-    if logged_in_user?
-      @company = Company.find_by(id: current_user.company_id)
-    end
+    return unless logged_in_user?
+
+    @company = Company.find_by(id: current_user.company_id)
   end
 
   def company_check
-    if logged_in_company?
-      @company = Company.find(current_company.id)
-    end
+    return unless logged_in_company?
+
+    @company = Company.find(current_company.id)
   end
 
   def opinion_params

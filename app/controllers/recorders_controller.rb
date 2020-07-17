@@ -27,12 +27,12 @@ class RecordersController < ApplicationController
   end
 
   private
-  def select_company
-    if logged_in_company?
-      @company = Company.find(current_company.id)
-    end
-  end
 
+  def select_company
+    return unless logged_in_company?
+
+    @company = Company.find(current_company.id)
+  end
 
   def recorder_params
     params.require(:recorder).permit(

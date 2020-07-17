@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update move_out archives family_archives family_see destroy]
   before_action :select_company, only: %i[new create edit update show archives]
   before_action :move_to_index, only: %i[show edit archives family_see family_archives]
+  before_action :set_archives, only: %i[archives family_archives]
   before_action :search
   require 'will_paginate/array'
 
@@ -47,8 +48,6 @@ class UsersController < ApplicationController
   end
 
   def archives
-    @archives = @user.devide_monthly
-    @yyyymm = params[:yyyymm]
     @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(
       page: params[:page], per_page: 25
     )
@@ -56,8 +55,6 @@ class UsersController < ApplicationController
 
   def family_archives
     @company = Company.find_by(id: current_user.company_id)
-    @archives = @user.devide_monthly
-    @yyyymm = params[:yyyymm]
     @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(
       page: params[:page], per_page: 25
     )
@@ -81,6 +78,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_archives
+    @archives = @user.devide_monthly
+    @yyyymm = params[:yyyymm]
+  end
 
   def set_user
     @user = User.find(params[:id])
