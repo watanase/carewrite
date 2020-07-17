@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  protect_from_forgery with: :exception
   include SessionsHelper
 
   private
@@ -29,6 +29,13 @@ class ApplicationController < ActionController::Base
       redirect_to login_user_path unless current_company.id == @user.company_id
     else logged_in_user
     end
+  end
+
+  # ログイン中にログインしないか確認
+  def move_to_root
+    return unless logged_in_company? || logged_in_user?
+
+    redirect_to root_path
   end
 
   protected

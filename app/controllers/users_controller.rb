@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
-  before_action :company_check, only: %i[new create edit update]
+  before_action :company_check, only: %i[new edit]
   before_action :set_user, only: %i[show edit update move_out archives family_archives family_see destroy]
   before_action :select_company, only: %i[new create edit update show archives]
-  before_action :move_to_index, only: %i[show]
+  before_action :move_to_index, only: %i[show edit archives family_see family_archives]
+  before_action :set_archives, only: %i[archives family_archives]
   before_action :search
   require 'will_paginate/array'
+
+  def index
+    @company = Company.find_by(id: current_user.company_id) if logged_in_user?
+  end
 
   def new
     @user = User.new
@@ -43,16 +48,13 @@ class UsersController < ApplicationController
   end
 
   def archives
-    @archives = @user.devide_monthly
-    @yyyymm = params[:yyyymm]
     @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(
       page: params[:page], per_page: 25
     )
   end
 
   def family_archives
-    @archives = @user.devide_monthly
-    @yyyymm = params[:yyyymm]
+    @company = Company.find_by(id: current_user.company_id)
     @posts = @user.posts.group_by { |post| post.datetime.strftime('%Y%m')[@yyyymm] }[params[:yyyymm]].paginate(
       page: params[:page], per_page: 25
     )
@@ -72,9 +74,15 @@ class UsersController < ApplicationController
 
   def family_see
     @families = @user.families.all
+    @company = Company.find_by(id: current_user.company_id)
   end
 
   private
+
+  def set_archives
+    @archives = @user.devide_monthly
+    @yyyymm = params[:yyyymm]
+  end
 
   def set_user
     @user = User.find(params[:id])
@@ -86,7 +94,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :name,        :hurigana,
+      :name,        :furigana,
       :gender,      :birthday,
       :zipcode,     :street_address,
       :image,       :care_required,

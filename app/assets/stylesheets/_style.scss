@@ -31,10 +31,12 @@
     .left{
       width: 230px;
       background-color: whitesmoke;
-      min-height: 100vh;
+      min-height: 80vh;
       position: fixed;
       left: 0;
       top: 60px;
+      bottom: 0;
+      overflow: auto;
       .channel.active {
         background: $blue;
         a{
@@ -47,7 +49,6 @@
         border-bottom: solid 1px gainsboro;
       }
       .company-list{
-
         a, label{
           color: black;
           font-size: 17px;
@@ -88,9 +89,6 @@
         }
         .field:hover{
           background-color: lightblue;
-        }
-        .ctr{
-          margin-top: 100px;
         }
       }
     }
@@ -136,9 +134,6 @@
         }
         .user-list{
           margin: 0 auto;
-          .user-table{
-          width: 900px;
-          }
           .recorder-table{
             width: 400px;
             margin: 0 auto;
@@ -174,6 +169,10 @@
             }
             .birth{
               min-width: 255px;
+            }
+            .fas{
+              color: $blue;
+              margin-left: 5px;
             }
           }
           .table-list{
@@ -224,7 +223,7 @@
               .user-name, .user-address{
                 font-size: 18px;
               }
-              .user-hurigana, .user-zipcode{
+              .user-furigana, .user-zipcode{
                 font-size: 12px;
               }
             }
@@ -234,6 +233,17 @@
       .post-index{
         .post-list{
           display: flex;
+        }
+      }
+      .opinion-list{
+        padding: 5px;
+        border: 1px solid $blue;
+        width: 700px;
+        border-radius: 5px;
+        margin: 20px auto;
+        .opinion-name{
+          text-align: right;
+          padding-right: 10px;
         }
       }
     }

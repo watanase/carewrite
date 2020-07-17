@@ -1,0 +1,15 @@
+= render 'shared/header'
+.container
+  .company-home
+    .left
+      -if logged_in_company?
+        = render 'companies/side'
+    .center
+    .right
+      - @opinions.each do |o|
+        .opinion-list
+          .opinion-main
+            = simple_format(o.content)
+          .opinion-name
+            = o.name
+            = l o.created_at, format: :long

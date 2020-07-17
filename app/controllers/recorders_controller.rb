@@ -1,22 +1,21 @@
 class RecordersController < ApplicationController
+  before_action :select_company, only: %i[index new create]
+  before_action :logged_in_company, only: %i[index new]
+
   def index
     @recorders = Recorder.where(company_id: current_company.id)
   end
 
   def new
     @recorder = Recorder.new
-    @company = Company.find(current_company.id)
-    @group = Group.new
     @users = User.where(company_id: current_company.id)
   end
 
   def create
-    # binding.pry
     @recorder = Recorder.create(recorder_params)
     if @recorder.save
       redirect_to company_path(current_company)
     else
-      @company = Company.find(current_company.id)
       render :new
     end
   end
@@ -28,6 +27,12 @@ class RecordersController < ApplicationController
   end
 
   private
+
+  def select_company
+    return unless logged_in_company?
+
+    @company = Company.find(current_company.id)
+  end
 
   def recorder_params
     params.require(:recorder).permit(

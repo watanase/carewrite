@@ -2,7 +2,7 @@ class CreateFamilies < ActiveRecord::Migration[5.2]
   def change
     create_table :families do |t|
       t.string          :name, null:false
-      t.string          :hurigana
+      t.string          :furigana
       t.string          :phone
       t.integer         :zipcode
       t.string          :street_address

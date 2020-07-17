@@ -1,13 +1,15 @@
-= render "layouts/header"
+= render 'layouts/header'
 .wrapper
   %h1 ログイン
   .form
     = form_with model: @user, local: true do |f|
+      - flash.each do |key, value|
+        = content_tag :div, value, class: key
       .field
         = f.label :login_id, 'ログインID'
-        = f.text_field :login_id, placeholder: 'ログインIDを入力してください', class: 'input-area'
+        = f.text_field :login_id, required: true, placeholder: 'ログインIDを入力してください', class: 'input-area'
       .field
         = f.label 'パスワード'
-        = f.password_field :password, placeholder: 'パスワードを入力してください', class: 'input-area'
+        = f.password_field :password, required: true, placeholder: 'パスワードを入力してください', class: 'input-area'
       .field.submit
         = f.submit 'ログインする', class: 'submit-btn'

@@ -9,7 +9,7 @@ class FamiliesController < ApplicationController
   def family_params
     params.require(:family).permit(
       :name,
-      :hurigana,
+      :furigana,
       :phone,
       :zipcode,
       :street_address,

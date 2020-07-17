@@ -1,18 +1,18 @@
 = form_with(model: [@company, @recorder], local: true) do |f|
-  = render "shared/error_messages", model: f.object
+  = render 'shared/error_messages', model: f.object
   .field
     = f.label :name
-    = f.text_field :name, placeholder: '記録者の名前を入力してください', required: "", class: 'input-area'
+    = f.text_field :name, placeholder: '記録者の名前を入力してください', required: true, class: 'input-area'
   .field
     = f.label :login_id
-    = f.text_field :login_id, placeholder: 'ログイン用のIDを設定してください', required: '', class: 'input-area', id: 'rand'
+    = f.text_field :login_id, placeholder: 'ログイン用のIDを設定してください', required: true, class: 'input-area', id: 'rand'
   %input{type: 'button', value: 'ランダムにIDを作成する', id: 'button', class: 'cent'}
-  - if ["new", 'create'].include? action_name
+  - if ['new', 'create'].include? action_name
     .field
       = f.label :password
-      = f.password_field :password, placeholder: 'パスワードを設定してください', required: "", class: 'input-area'
+      = f.password_field :password, placeholder: 'パスワードを設定してください', required: true, class: 'input-area'
     .field
       = f.label :password_confirmation
-      = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', class: 'input-area'
+      = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', required: true, class: 'input-area'
   .field.submit
     = f.submit '記録者を登録', class: 'submit-btn'

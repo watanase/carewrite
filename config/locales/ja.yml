@@ -1,11 +1,5 @@
 ja:
   views:
-    pagination:
-      first: "&laquo; "
-      last: " &raquo;"
-      previous: "&lsaquo; "
-      next: " &rsaquo;"
-      truncate: "..."
   will_paginate:
     previous_label: 前
     next_label: 次
@@ -31,9 +25,12 @@ ja:
         name: 記録者
       group:
         name: グループ名
+      opinion:
+        content: ご意見
+        name: お名前
       user:
         name: 利用者名
-        hurigana: フリガナ
+        furigana: フリガナ
         group_id: グループ
         image: 写真
         gender: 性別
@@ -69,12 +66,15 @@ ja:
         updated_at: 更新日
       family:
         name: 連絡者名
-        hurigana: フリガナ
+        furigana: フリガナ
         phone: 電話番号
         zipcode: 郵便番号
         street_address: 住所
         relationship: 利用者との関係
         information: その他の情報
+      session:
+        name: 氏名
+        password: パスワード
     models:
       user: ユーザ
     errors:
@@ -271,6 +271,16 @@ ja:
     precision:
       format:
         delimiter: ''
+  sessions:
+    create_recorder:
+      flash:
+        invalid_password: パスワードが正しくありません
+    create_user:
+      flash:
+        invalid_password: パスワードが正しくありません
+    create_company:
+      flash:
+        invalid_password: パスワードが正しくありません
   support:
     array:
       last_word_connector: "、"

@@ -19,6 +19,9 @@
               %tbody
                 - @groups.each do |g|
                   %tr
-                    %td= g.name
+                    %td
+                      = link_to company_group_path(current_company, g) do
+                        = g.name
+                        %i.fas.fa-external-link-alt
                     %td= link_to '編集', edit_company_group_path(current_company, g)
                     %td= link_to '削除',  company_group_path(current_company, g), method: :delete, data: {confirm: "「#{g.name}」を削除しますか?", cancel: "キャンセル", commit: "削除" }

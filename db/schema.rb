@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_184253) do
+ActiveRecord::Schema.define(version: 2020_07_15_065609) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "password_digest", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_184253) do
 
   create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "hurigana"
+    t.string "furigana"
     t.string "phone"
     t.integer "zipcode"
     t.string "street_address"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2020_06_05_184253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_groups_on_company_id"
+  end
+
+  create_table "opinions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.string "name"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_opinions_on_company_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -67,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_184253) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "hurigana"
+    t.string "furigana"
     t.string "password_digest", null: false
     t.bigint "company_id"
     t.integer "gender"
@@ -89,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_184253) do
 
   add_foreign_key "families", "users"
   add_foreign_key "groups", "companies"
+  add_foreign_key "opinions", "companies"
   add_foreign_key "posts", "recorders"
   add_foreign_key "posts", "users"
   add_foreign_key "recorders", "companies"

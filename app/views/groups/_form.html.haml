@@ -1,6 +1,7 @@
 = form_with(model: [@company, @group], local: true) do |f|
+  = render 'shared/error_messages', model: f.object
   .field
     = f.label :name
-    = f.text_field :name, placeholder: 'グループ名を入力', class: 'input-area'
+    = f.text_field :name, placeholder: 'グループ名を入力', required: true, class: 'input-area'
   .field.submit
     = f.submit class: 'submit-btn'

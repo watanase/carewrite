@@ -1,11 +1,16 @@
-= render "layouts/header"
+= render 'layouts/header'
 .wrapper
   %h1 どちらで利用しますか？
   .main
-    .user-side
-      - if logged_in_user?
-        = link_to "家族としての利用を終了する", logout_user_path, method: :delete, class: 'main-btn blue'
-      - else
-        = link_to "家族として利用する", login_user_path, class: 'main-btn'
-    .company-side
-      = link_to '企業をして利用する', companies_path, class: 'main-btn'
+    - unless logged_in_company?
+      .user-side
+        - if logged_in_user?
+          = link_to '家族としての利用を終了する', logout_user_path, method: :delete, class: 'main-btn blue'
+        - else
+          = link_to '家族として利用する', login_user_path, class: 'main-btn'
+    - unless logged_in_user?
+      .company-side
+        - if logged_in_company?
+          = link_to '企業ページ', company_path(current_company), class: 'main-btn'
+        - else
+          = link_to '企業をして利用する', companies_path, class: 'main-btn'
