@@ -1,7 +1,7 @@
 lock '3.12.1'
 
 set :application, 'carewrite'
-set :deploy_to, '/var/www/projects/carewrite'
+set :deploy_to, '/var/www/carewrite'
 
 set :repo_url,  'git@github.com:watanase/carewrite.git'
 
