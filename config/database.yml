@@ -49,8 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: carewrite_production
-  username: root
-  password: <%= ENV['CAREWRITE_DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
-  host: localhost
+  database: <%= Rails.application.credentials.db[:database] %>
+  username: <%= Rails.application.credentials.db[:username] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  socket: <%= Rails.application.credentials.db[:socket] %>
