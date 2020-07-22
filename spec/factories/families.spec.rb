@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :family do
-    name                  { 'hoge' }
+    name  { 'hoge' }
   end
 end

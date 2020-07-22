@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :opinion do
-    content                  { 'huga' }
+    content { 'huga' }
   end
 end

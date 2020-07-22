@@ -4,7 +4,7 @@ describe Family do
   describe '#create' do
     context '登録できる場合' do
       it 'nameがあれば登録できる' do
-        group = build(:family)
+        family = build(:family)
         expect(family).to be_valid
       end
     end
