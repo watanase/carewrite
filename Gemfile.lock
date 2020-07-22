@@ -240,6 +240,8 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.3)
+    rspec_junit_formatter (0.4.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.87.1)
       parallel (~> 1.10)
       parser (>= 2.7.1.1)
@@ -353,6 +355,7 @@ DEPENDENCIES
   rails-controller-testing
   ransack
   rspec-rails
+  rspec_junit_formatter
   rubocop
   rubocop-rails
   sass-rails (~> 5.0)
@@ -371,4 +374,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.6
+   2.1.4
