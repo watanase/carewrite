@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'user/ログインとログアウト' do
   background do
-    User.create!(login_id: 'abe', password: '00000000')
+    User.create!(name: 'fuga', login_id: 'abe', password: '00000000')
   end
   scenario 'ログインする' do
     # ログインページを開く

@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.feature 'company/ログインとログアウト' do
   background do
-    Company.create!(login_id: 'hoo', password: '00000000')
-    Recorder.create!(login_id: 'huga', password: '00000000')
+    Company.create!(name: 'hoo', password: '00000000')
+    Recorder.create!(name: 'abe', login_id: 'huga', password: '00000000')
   end
   scenario 'companyにログインして、recorderにログインする' do
     # ログインページを開く
     visit login_company_path
     # ログインフォームにnameとパスワードを入力する
-    fill_in 'login_id', with: 'hoo'
+    fill_in 'name', with: 'hoo'
     fill_in 'password', with: '00000000'
     # ログインボタンをクリックする
     click_on '企業にログイン'
