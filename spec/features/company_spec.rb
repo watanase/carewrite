@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'company/ログインとログアウト' do
   background do
     Company.create!(login_id: 'hoo', password: '00000000')
-    Recorder.create!(login_id: 'huga' password: '00000000')
+    Recorder.create!(login_id: 'huga', password: '00000000')
   end
   scenario 'companyにログインして、recorderにログインする' do
     # ログインページを開く
