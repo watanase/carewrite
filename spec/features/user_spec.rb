@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.feature 'user/ログインとログアウト' do
   background do
-    User.create!(name: 'abe', password: '00000000')
+    User.create!(login_id: 'abe', password: '00000000')
   end
   scenario 'ログインする' do
     # ログインページを開く
     visit login_user_path
     # ログインフォームにnameとパスワードを入力する
-    fill_in 'name', with: 'abe'
+    fill_in 'login_id', with: 'abe'
     fill_in 'password', with: '00000000'
     # ログインボタンをクリックする
     click_on 'ログイン'

@@ -11,7 +11,7 @@ describe Opinion do
 
     context '登録できない場合' do
       it 'contentがなければ登録できない' do
-        opinion = build(:opinion, name: nil)
+        opinion = build(:opinion, content: nil)
         opinion.valid?
         expect(opinion.errors[:content]).to include('を入力してください')
       end
