@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.feature 'user/ログインとログアウト' do
   background do
     Company.create!(id: 1, name: 'hoo', password: '00000000')
-    User.create!(name: 'fuga', login_id: 'abe', password: '00000000', company_id: 1)
+    User.create!(
+      name: 'fuga',
+      login_id: 'abe', password: '00000000', company_id: 1, birthday: '1900-01-01', occupancy: '1900-01-01'
+    )
   end
   scenario 'ログインする' do
     # ログインページを開く
