@@ -4,7 +4,6 @@ RSpec.feature 'user/ログインとログアウト' do
   background do
     User.create!(name: 'fuga', login_id: 'abe', password: '00000000', company_id: 1)
     Company.create!(id: 1, name: 'hoo', password: '00000000')
-
   end
   scenario 'ログインする' do
     # ログインページを開く
