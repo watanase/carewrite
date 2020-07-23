@@ -22,7 +22,7 @@ RSpec.feature 'company/ログインとログアウト' do
     fill_in 'login_id', with: 'huga'
     fill_in 'password', with: '00000000'
     # ログインボタンをクリックする
-    click_on '記録者としてログイン'
+    click_on '記録者としてログインする'
     # ログインに成功したことを検証する
     expect(page).to have_content '記録を終了する'
   end
