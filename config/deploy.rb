@@ -1,4 +1,4 @@
-lock '3.12.1'
+lock '3.14.1'
 
 set :application, 'carewrite'
 set :deploy_to, '/var/www/carewrite'
