@@ -12,6 +12,7 @@ RSpec.feature 'user/ログインとログアウト' do
       occupancy: '1900-01-01'
     )
   end
+
   scenario 'ログインする' do
     # ログインページを開く
     visit login_user_path
