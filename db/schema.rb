@@ -45,9 +45,11 @@ ActiveRecord::Schema.define(version: 2020_07_15_065609) do
     t.string "content"
     t.string "name"
     t.bigint "company_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_opinions_on_company_id"
+    t.index ["user_id"], name: "index_opinions_on_user_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_07_15_065609) do
   add_foreign_key "families", "users"
   add_foreign_key "groups", "companies"
   add_foreign_key "opinions", "companies"
+  add_foreign_key "opinions", "users"
   add_foreign_key "posts", "recorders"
   add_foreign_key "posts", "users"
   add_foreign_key "recorders", "companies"

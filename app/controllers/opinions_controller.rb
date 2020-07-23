@@ -41,6 +41,6 @@ class OpinionsController < ApplicationController
   end
 
   def opinion_params
-    params.require(:opinion).permit(:name, :content).merge(company_id: params[:company_id])
+    params.require(:opinion).permit(:name, :content).merge(company_id: params[:company_id], user_id: current_user.id)
   end
 end
