@@ -39,9 +39,9 @@ RSpec.feature 'company/ログインとログアウト' do
     visit user_path(1)
     visit new_user_post_path(1)
 
-    # fill_in 'datetime', with: '1900-01-01'
-    fill_in 'focus', with: 'foo'
-    fill_in 'content', with: 'fuzz'
+    fill_in 'post[datetime]', with: '1900-01-01'
+    fill_in 'post[focus]', with: 'foo'
+    fill_in 'post[content]', with: 'fuzz'
 
     click_on '登録する'
 
