@@ -4,14 +4,14 @@ RSpec.feature 'company/ログインとログアウト' do
   background do
     Company.create!(name: 'hoo', password: '00000000')
     Recorder.create!(name: 'abe', login_id: 'huga', password: '00000000')
-    user = User.create!(
-            name: 'fuga',
-            login_id: 'abe',
-            password: '00000000',
-            company_id: 1,
-            birthday: '1900-01-01',
-            occupancy: '1900-01-01'
-          )
+    User.create!(
+      name: 'fuga',
+      login_id: 'abe',
+      password: '00000000',
+      company_id: 1,
+      birthday: '1900-01-01',
+      occupancy: '1900-01-01'
+    )
   end
   scenario 'companyにログインして、recorderにログインする' do
     # ログインページを開く
