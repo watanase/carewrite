@@ -4,6 +4,7 @@ class CreateOpinions < ActiveRecord::Migration[5.2]
       t.string :content
       t.string :name
       t.references :company, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

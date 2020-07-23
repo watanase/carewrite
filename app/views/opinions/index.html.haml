@@ -11,5 +11,6 @@
           .opinion-main
             = simple_format(o.content)
           .opinion-name
-            = o.name
+            = link_to o.name, user_path(o.user_id)
             = l o.created_at, format: :long
+      = will_paginate @opinions

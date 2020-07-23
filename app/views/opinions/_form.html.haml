@@ -2,9 +2,9 @@
   = render 'shared/error_messages', model: f.object
   .field
     = f.label :content
-    = f.text_area :content, required: true, placeholder: 'ご意見を入力してください', required: true, class: 'input-area input-field'
+    = f.text_area :content, required: true, placeholder: '企業へのご意見を入力してください', required: true, class: 'input-area input-field'
   .field
     = f.label :name
-    = f.text_field :name, placeholder: '匿名でも送信できます', class: 'input-area'
+    = f.text_field :name, placeholder: '無記名でも送信できます', class: 'input-area'
   .field.submit
     = f.submit '送信する', class: 'submit-btn'

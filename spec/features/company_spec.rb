@@ -2,14 +2,23 @@ require 'rails_helper'
 
 RSpec.feature 'company/ログインとログアウト' do
   background do
-    Company.create!(name: 'abc', password: '00000000')
-    Recorder.create!(name: 'foo', password: '00000000')
+    Company.create!(name: 'hoo', password: '00000000')
+    Recorder.create!(name: 'abe', login_id: 'huga', password: '00000000')
+    User.create!(
+      id: '1',
+      name: 'fuga',
+      login_id: 'abe',
+      password: '00000000',
+      company_id: 1,
+      birthday: '1900-01-01',
+      occupancy: '1900-01-01'
+    )
   end
   scenario 'companyにログインして、recorderにログインする' do
     # ログインページを開く
     visit login_company_path
     # ログインフォームにnameとパスワードを入力する
-    fill_in 'name', with: 'abc'
+    fill_in 'name', with: 'hoo'
     fill_in 'password', with: '00000000'
     # ログインボタンをクリックする
     click_on '企業にログイン'
@@ -19,11 +28,23 @@ RSpec.feature 'company/ログインとログアウト' do
     # ログインページを開く
     visit login_recorder_path
     # ログインフォームにnameとパスワードを入力する
-    fill_in 'name', with: 'foo'
+    fill_in 'login_id', with: 'huga'
     fill_in 'password', with: '00000000'
     # ログインボタンをクリックする
-    click_on '記録者としてログイン'
+    click_on '記録者としてログインする'
     # ログインに成功したことを検証する
     expect(page).to have_content '記録を終了する'
+
+    # ユーザーページを開いて記録を書く
+    visit user_path(1)
+    visit new_user_post_path(1)
+    # 記録フォームに入力する
+    fill_in 'post[datetime]', with: '1900-01-01'
+    fill_in 'post[focus]', with: 'foo'
+    fill_in 'post[content]', with: 'fuzz'
+    # 登録ボタンを押す
+    click_on '登録する'
+    # 記録が登録できたか確認する
+    expect(page).to have_content '編集'
   end
 end

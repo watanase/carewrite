@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Recorder do
   describe '#create' do
     context '登録できる場合' do
-      it 'name、password、password_confirmationがあれば登録できる' do
+      it 'name、login_id、password、password_confirmationがあれば登録できる' do
         recorder = build(:recorder)
         expect(recorder).to be_valid
       end
@@ -14,6 +14,12 @@ describe Recorder do
         recorder = build(:recorder, name: nil)
         recorder.valid?
         expect(recorder.errors[:name]).to include('を入力してください')
+      end
+
+      it 'login_idがなければ登録できない' do
+        recorder = build(:recorder, login_id: nil)
+        recorder.valid?
+        expect(recorder.errors[:login_id]).to include('を入力してください')
       end
 
       it 'passwordがなければ登録できない' do
