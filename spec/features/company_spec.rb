@@ -5,6 +5,7 @@ RSpec.feature 'company/ログインとログアウト' do
     Company.create!(name: 'hoo', password: '00000000')
     Recorder.create!(name: 'abe', login_id: 'huga', password: '00000000')
     User.create!(
+      id: '1',
       name: 'fuga',
       login_id: 'abe',
       password: '00000000',
@@ -35,8 +36,8 @@ RSpec.feature 'company/ログインとログアウト' do
     expect(page).to have_content '記録を終了する'
 
     # ユーザーページを開いて記録を書く
-    visit user_path
-    visit new_user_post_path
+    visit user_path(1)
+    visit new_user_post_path(1)
 
     fill_in 'login_id', with: '1900-01-01'
     fill_in 'focus', with: 'foo'
