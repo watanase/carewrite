@@ -35,8 +35,8 @@ RSpec.feature 'company/ログインとログアウト' do
     expect(page).to have_content '記録を終了する'
 
     # ユーザーページを開いて記録を書く
-    visit user_path(user)
-    visit new_user_post_path(user)
+    visit user_path
+    visit new_user_post_path
 
     fill_in 'login_id', with: '1900-01-01'
     fill_in 'focus', with: 'foo'
