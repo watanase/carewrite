@@ -6,7 +6,7 @@ class OpinionsController < ApplicationController
   before_action :logged_in_user, only: %i[new]
 
   def index
-    @opinions = Opinion.where(company_id: current_company.id)
+    @opinions = Opinion.where(company_id: current_company.id).paginate(page: params[:page], per_page: 20)
   end
 
   def new

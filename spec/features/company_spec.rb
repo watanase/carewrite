@@ -38,13 +38,13 @@ RSpec.feature 'company/ログインとログアウト' do
     # ユーザーページを開いて記録を書く
     visit user_path(1)
     visit new_user_post_path(1)
-
+    # 記録フォームに入力する
     fill_in 'post[datetime]', with: '1900-01-01'
     fill_in 'post[focus]', with: 'foo'
     fill_in 'post[content]', with: 'fuzz'
-
+    # 登録ボタンを押す
     click_on '登録する'
-
+    # 記録が登録できたか確認する
     expect(page).to have_content '編集'
   end
 end
