@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :families, only:[:create]
+    resources :families, only:[:new, :create, :edit, :update, :destroy]
     resources :posts, except:[:show] do
       collection do
         get :family_see

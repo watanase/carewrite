@@ -12,5 +12,7 @@
   .field
     = f.label :name
     = f.text_field :name, placeholder: '記録者が異なる場合に入力してください', class: 'input-area'
-  .field.submit
+  .field.submit.edit
+    - if ['edit'].include? action_name
+      = link_to 'キャンセル', user_posts_path(@user), class: 'submit-btn'
     = f.submit class: 'submit-btn'

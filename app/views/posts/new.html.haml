@@ -8,7 +8,9 @@
       .nav-bar
         %h2 利用者名
         .user-name
-          = link_to @user.name, user_path(@user), class: 'link-btn'
+          = link_to user_path(@user), class: 'link-btn' do
+            = @user.name
+            %i.fas.fa-external-link-alt
       %h1 記録を書く
       .form
         = render 'form'

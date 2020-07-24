@@ -1,9 +1,10 @@
 .company-header
   .campany-name
     = link_to current_company.name, company_path(current_company), class: 'header-btn'
-    = link_to '編集', edit_company_path(current_company)
   .recorder-name
     - if logged_in_recorder?
       %h4 記録者:
       .name
         = current_recorder.name
+  .header-menu
+    = link_to '企業名を編集', edit_company_path(current_company), class: 'menu-btn'

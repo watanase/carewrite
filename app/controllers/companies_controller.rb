@@ -27,8 +27,7 @@ class CompaniesController < ApplicationController
     @move_out_users = User.where(company_id: current_company.id, status: [2])
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @company.update(company_params)

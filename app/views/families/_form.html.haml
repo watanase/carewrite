@@ -1,0 +1,25 @@
+= form_with model:[@user, @family], local: true do |f|
+  .field.user-field
+    = f.label :name
+    = f.text_field :name, placeholder: '連絡者名を入力してください', class: 'input-area user-input'
+  .field.user-field
+    = f.label :furigana
+    = f.text_field :furigana, placeholder: 'フリガナを入力してください', class: 'input-area user-input'
+  .field.user-field
+    = f.label :phone
+    = f.text_field :phone, placeholder: '電話番号を入力してください', class: 'input-area user-input'
+  .field.user-field
+    = f.label :zipcode
+    = f.text_field :zipcode, placeholder: '郵便番号入力してください', class: 'input-area user-input'
+  .field.user-field
+    = f.label :street_address
+    = f.text_field :street_address, placeholder: '住所を入力してください', class: 'input-area user-input'
+  .field.user-field
+    = f.label :relationship
+    = f.text_field :relationship, placeholder: '関係を入力してください', class: 'input-area user-input'
+  .field.user-field
+    = f.label :information
+    = f.text_field :information, placeholder: 'その他の情報を入力', class: 'input-area user-input'
+  .field.user-field.edit
+    = link_to 'キャンセル', user_path(@user), class: 'submit-btn'
+    = f.submit class: 'submit-btn'

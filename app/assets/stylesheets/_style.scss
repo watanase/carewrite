@@ -229,6 +229,18 @@
             }
           }
         }
+        .family-jeneral{
+          display: flex;
+          .family-config{
+            display: flex;
+            flex-direction: column;
+            .config{
+              padding: 5px;
+              width: 110px;
+              text-align: right;
+            }
+          }
+        }
       }
       .post-index{
         .post-list{

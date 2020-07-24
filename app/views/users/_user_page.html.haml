@@ -47,63 +47,47 @@
       - if @families
         -@families.each_with_index do |f, i|
           %h3=  "連絡先 #{i+1}"
-          %table
-            %tr
-              %th 氏名
-              %td
-                .user-furigana
-                  = f.furigana
-                .user-name
-                  = f.name
-            %tr
-              %th 電話番号
-              %td
-                = f.phone
-            %tr
-              %th 住所
-              %td
-                .user-zipcode
-                  = f.zipcode.tr('０-９', '0-9')
-                .user-address
-                  = f.street_address
-            %tr
-              %th 利用者との関係
-              %td
-                = f.relationship
-            %tr
-              %th その他
-              %td
-                = f.information
+          .family-jeneral
+            - if logged_in_company?
+              .family-config
+                .config
+                  = link_to edit_user_family_path(@user, f) do
+                    %i.far.fa-address-book
+                    編集する
+                .config
+                  = link_to user_family_path(@user, f), method: :delete, data: {confirm: "「#{f.name}」を削除しますか?", cancel: "キャンセル", commit: "削除" } do
+                    %i.far.fa-times-circle
+                    削除する
+            %table
+              %tr
+                %th 氏名
+                %td
+                  .user-furigana
+                    = f.furigana
+                  .user-name
+                    = f.name
+              %tr
+                %th 電話番号
+                %td
+                  = f.phone
+              %tr
+                %th 住所
+                %td
+                  .user-zipcode
+                    = f.zipcode.tr('０-９', '0-9')
+                  .user-address
+                    = f.street_address
+              %tr
+                %th 利用者との関係
+                %td
+                  = f.relationship
+              %tr
+                %th その他
+                %td
+                  = f.information
     - if ['show'].include? action_name
       .open-close
-        %label.div-plus{for: 'div'}
-          連絡先を追加する
-          %i.fas.fa-plus
-        %input.open{id: 'div', type: 'checkbox'}
-        .contact-form
-          %h1 連絡先を入力
-          .form
-            = form_with model:[@user, @family], local: true do |f|
-              .field.user-field
-                = f.label :name
-                = f.text_field :name, placeholder: '連絡者名を入力してください', class: 'input-area user-input'
-              .field.user-field
-                = f.label :furigana
-                = f.text_field :furigana, placeholder: 'フリガナを入力してください', class: 'input-area user-input'
-              .field.user-field
-                = f.label :phone
-                = f.text_field :phone, placeholder: '電話番号を入力してください', class: 'input-area user-input'
-              .field.user-field
-                = f.label :zipcode
-                = f.text_field :zipcode, placeholder: '郵便番号入力してください', class: 'input-area user-input'
-              .field.user-field
-                = f.label :street_address
-                = f.text_field :street_address, placeholder: '住所を入力してください', class: 'input-area user-input'
-              .field.user-field
-                = f.label :relationship
-                = f.text_field :relationship, placeholder: '関係を入力してください', class: 'input-area user-input'
-              .field.user-field
-                = f.label :information
-                = f.text_field :information, placeholder: 'その他の情報を入力', class: 'input-area user-input'
-              .field.user-field
-                = f.submit class: 'submit-btn'
+        = link_to new_user_family_path(@user) do
+          %label.div-plus
+            連絡先を追加する
+            %i.fas.fa-plus
