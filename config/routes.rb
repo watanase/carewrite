@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "users#index"
 
-  resources :companies, only:[:index, :new, :create, :show] do
+  resources :companies, only:[:index, :new, :create, :show, :edit, :update] do
     resources :groups
     resources :recorders, only:[:index, :new, :create, :destroy]
     resources :opinions, only:[:index, :new, :create]

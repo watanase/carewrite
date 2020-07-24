@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_07_15_065609) do
     t.string "name", null: false
     t.string "furigana"
     t.string "phone"
-    t.integer "zipcode"
+    t.string "zipcode"
     t.string "street_address"
     t.string "relationship"
     t.text "information"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_07_15_065609) do
     t.bigint "company_id"
     t.integer "gender"
     t.date "birthday"
-    t.integer "zipcode"
+    t.string "zipcode"
     t.string "street_address"
     t.integer "care_required"
     t.integer "status"

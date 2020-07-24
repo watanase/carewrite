@@ -3,5 +3,7 @@
   .field
     = f.label :name
     = f.text_field :name, placeholder: 'グループ名を入力', required: true, class: 'input-area'
-  .field.submit
+  .field.submit.edit
+    - if ['edit'].include? action_name
+      = link_to 'キャンセル', company_groups_path(@company, @group), class: 'submit-btn'
     = f.submit class: 'submit-btn'
