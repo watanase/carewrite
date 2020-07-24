@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :move_to_root, only: %i[index new]
-  before_action :set_company, only: %i[show edit]
+  before_action :set_company, only: %i[show edit update]
   before_action :logged_in_company, only: %i[show edit]
 
   def index; end
