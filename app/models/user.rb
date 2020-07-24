@@ -21,4 +21,9 @@ class User < ApplicationRecord
   def devide_monthly
     posts.group_by { |post| post.datetime.strftime('%Y%m') }.map { |k, v| [k, v.size] }.sort.reverse
   end
+
+  def delete_string
+    self.zipcode = zipcode.rstrip('-') if zipcode
+    # self.profile = profile.rstrip if profile
+  end
 end
