@@ -7,6 +7,7 @@ RSpec.feature 'user/ログインとログアウト' do
       name: 'fuga',
       login_id: 'abe',
       password: '00000000',
+      zipcode: '900-9000',
       company_id: 1,
       birthday: '1900-01-01',
       occupancy: '1900-01-01'
