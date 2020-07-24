@@ -16,7 +16,7 @@ class FamiliesController < ApplicationController
   def edit; end
 
   def update
-    if @user.update(user_params)
+    if @family.update(family_params)
       redirect_to @user
     else
       render :edit
