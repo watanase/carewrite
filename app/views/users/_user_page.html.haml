@@ -27,6 +27,7 @@
           %th 住所
           %td
             .user-zipcode
+            - if @user.zipcode?
               = @user.zipcode.tr('０-９', '0-9')
             .user-address
               = @user.street_address
@@ -74,6 +75,7 @@
                 %th 住所
                 %td
                   .user-zipcode
+                  - if @user.zipcode?
                     = f.zipcode.tr('０-９', '0-9')
                   .user-address
                     = f.street_address
