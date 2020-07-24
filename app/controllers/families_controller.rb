@@ -1,5 +1,5 @@
 class FamiliesController < ApplicationController
-  before_action :select_user, only: %i[new edit destroy]
+  before_action :select_user, only: %i[new edit update destroy]
   before_action :set_family, only: %i[edit update destroy]
   before_action :move_to_index, only: %i[new edit]
   before_action :select_company, only: %i[new edit]
@@ -17,7 +17,7 @@ class FamiliesController < ApplicationController
 
   def update
     if @family.update(family_params)
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       render :edit
     end
