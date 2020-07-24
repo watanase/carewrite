@@ -48,7 +48,7 @@
                 - @move_out_users.each do |u|
                   %tr
                     %td= link_to u.name,  user_path(u)
-                    %td= "#{u.birthday.year}年#{wareki(u.birthday)}"
+                    %td= "#{u.birthday.year}年#{datedisplay(u.birthday)}"
                     %td= u.gender
-                    %td= "#{u.occupancy.year}年#{wareki(u.occupancy)}"
+                    %td= "#{u.occupancy.year}年#{datedisplay(u.occupancy)}"
                     %td= link_to '削除',  user_path(u), method: :delete, data: {confirm: "「#{u.name}」を削除しますか?", cancel: "キャンセル", commit: "削除" }
