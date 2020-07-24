@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :login_id, presence: true, uniqueness: true
 
+  before_validation :delete_string
+
   enum gender: { '性別を選択': 0, '男性': 1, '女性': 2 }
   enum care_required: { '介護度を選択': 0, '要支援１': 1, '要支援２': 2, '要介護１': 3, '要介護２': 4, '要介護３': 5, '要介護４': 6, '要介護５': 7 }
   enum status: { '入居予定': 0, '入居中': 1, '退去済み': 2 }
@@ -23,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def delete_string
-    self.zipcode = zipcode.rstrip('-') if zipcode
+    self.zipcode = zipcode.rstrip(-) if zipcode
     # self.profile = profile.rstrip if profile
   end
 end
