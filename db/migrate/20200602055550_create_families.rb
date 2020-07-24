@@ -4,7 +4,7 @@ class CreateFamilies < ActiveRecord::Migration[5.2]
       t.string          :name, null:false
       t.string          :furigana
       t.string          :phone
-      t.integer         :zipcode
+      t.string         :zipcode
       t.string          :street_address
       t.string          :relationship
       t.text            :information

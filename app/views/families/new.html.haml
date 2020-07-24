@@ -1,0 +1,12 @@
+= render 'shared/user_header'
+.container
+  .company-home
+    .left
+      -if logged_in_company?
+        = render 'companies/side'
+    .center
+    .right
+      .contact-form
+        %h1 連絡先を入力
+      .form
+        = render 'form'

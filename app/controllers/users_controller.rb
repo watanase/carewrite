@@ -26,7 +26,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @family = Family.new
     @families = @user.families.all
   end
 

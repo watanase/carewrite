@@ -3,11 +3,14 @@
   .field
     = f.label :name
     = f.text_field :name, placeholder: '企業の名前を入力してください', required: true, class: 'input-area'
-  .field
-    = f.label :password
-    = f.password_field :password, placeholder: 'パスワードを入力してください', required: true, class: 'input-area'
-  .field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', required: true, class: 'input-area'
-  .field.submit
-    = f.submit '企業を登録する', class: 'submit-btn'
+  - if ['new', 'create'].include? action_name
+    .field
+      = f.label :password
+      = f.password_field :password, placeholder: 'パスワードを入力してください', required: true, class: 'input-area'
+    .field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, placeholder: 'パスワードを再入力してください', required: true, class: 'input-area'
+  .field.submit.edit
+    - if ['edit'].include? action_name
+      = link_to 'キャンセル', company_path(@company), class: 'submit-btn'
+    = f.submit class: 'submit-btn'

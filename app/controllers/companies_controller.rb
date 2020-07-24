@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :move_to_root, only: %i[index new]
-  before_action :set_company, only: %i[show]
-  before_action :logged_in_company, only: %i[show]
+  before_action :set_company, only: %i[show edit]
+  before_action :logged_in_company, only: %i[show edit]
 
   def index; end
 
@@ -25,6 +25,16 @@ class CompaniesController < ApplicationController
     ).ransack(params[:q])
     @users = @q.result(distinct: true)
     @move_out_users = User.where(company_id: current_company.id, status: [2])
+  end
+
+  def edit; end
+
+  def update
+    if @company.update(company_params)
+      redirect_to company_path(current_company)
+    else
+      render :edit
+    end
   end
 
   private

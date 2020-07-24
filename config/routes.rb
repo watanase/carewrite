@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   root "users#index"
 
-  resources :companies, only:[:index, :new, :create, :show] do
+  resources :companies, only:[:index, :new, :create, :show, :edit, :update] do
     resources :groups
     resources :recorders, only:[:index, :new, :create, :destroy]
     resources :opinions, only:[:index, :new, :create]
   end
 
   resources :users do
-    resources :families, only:[:create]
+    resources :families, only:[:new, :create, :edit, :update, :destroy]
     resources :posts, except:[:show] do
       collection do
         get :family_see

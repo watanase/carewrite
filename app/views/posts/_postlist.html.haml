@@ -2,9 +2,13 @@
   %h2 利用者名
   .user-name
     - if ['index', 'archives', 'search'].include? action_name
-      = link_to @user.name, user_path(@user), class: 'link-btn'
+      = link_to user_path(@user), class: 'link-btn' do
+        = @user.name
+        %i.fas.fa-external-link-alt
     - else
-      = link_to @user.name, family_see_user_path(@user), class: 'link-btn'
+      = link_to family_see_user_path(@user), class: 'link-btn' do
+        = @user.name
+        %i.fas.fa-external-link-alt
 - if ['index', 'archives', 'search'].include? action_name
   .search
     = search_form_for @search, url:search_user_posts_path(@user) do |f|
