@@ -1,6 +1,6 @@
 class FamiliesController < ApplicationController
   before_action :select_user, only: %i[new edit destroy]
-  before_action :set_family, only: %i[edit destroy]
+  before_action :set_family, only: %i[edit update destroy]
   before_action :move_to_index, only: %i[new edit]
   before_action :select_company, only: %i[new edit]
 
