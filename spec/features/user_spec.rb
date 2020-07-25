@@ -21,7 +21,7 @@ RSpec.feature 'user/ログインとログアウト' do
     fill_in 'login_id', with: 'abe'
     fill_in 'password', with: '00000000'
     # ログインボタンをクリックする
-    click_on 'ログイン'
+    click_on 'ログインする'
     # ログインに成功したことを検証する
     expect(page).to have_content 'ご意見箱'
     # userへのログインでは'記録を書く'へのリンクが表示されないことを検証する
