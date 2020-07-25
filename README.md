@@ -11,7 +11,7 @@ https://carewrite.info/<br>
 #### フロント
 - Haml
 - Scss
-- jQuery
+- Javascript
 
 #### バックエンド
 - Ruby 2.5.1

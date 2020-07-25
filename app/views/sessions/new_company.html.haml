@@ -13,3 +13,7 @@
         = f.password_field :password, required: true, placeholder: 'パスワードを入力してください', class: 'input-area'
       .field.submit
         = f.submit '企業にログインする', class: 'submit-btn'
+    = form_with model: @company, local: true do |f|
+      =f.hidden_field :name, value: 'てすと事業所'
+      =f.hidden_field :password, value: '000000'
+      =f.submit 'テストログイン', class: 'test-btn'

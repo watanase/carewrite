@@ -18,3 +18,7 @@
             = f.password_field :password, required: true, placeholder: 'パスワードを入力してください', class: 'input-area'
           .field.submit
             = f.submit '記録者としてログインする', class: 'submit-btn'
+        = form_with model: @recorder, local: true do |f|
+          =f.hidden_field :login_id, value: '7zm8fh0x'
+          =f.hidden_field :password, value: '000000'
+          =f.submit 'テストログイン', class: 'test-btn'
